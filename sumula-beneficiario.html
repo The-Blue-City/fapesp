@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Súmula Curricular · Carolina Pérez Ferrés · PIPE FAPESP</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ─────────────────────────── SIDEBAR ─────────────────────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sidebar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-mark em {
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .sidebar-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label {
+    padding: 22px 32px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 10px 32px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-weight: 400;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .nav-item:hover {
+    background: var(--paper-warm);
+    color: var(--ink);
+  }
+
+  .nav-item.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: var(--paper-warm);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    width: 20px;
+  }
+
+  .nav-item.active .nav-num { color: var(--accent); font-weight: 600; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─────────────────────────── MAIN ─────────────────────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  .page-content {
+    padding: 80px 80px 120px;
+    max-width: 880px;
+  }
+
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+  }
+
+  .page-eyebrow .tag {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 4px 10px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .page-eyebrow .sep {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .page-title em { color: var(--accent); }
+
+  .page-deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+    max-width: 720px;
+    margin-bottom: 40px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ─── Profile header ─── */
+  .profile-card {
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    margin-bottom: 56px;
+    background: var(--paper-warm);
+  }
+
+  .profile-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .profile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .profile-link {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .profile-link-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    min-width: 100px;
+    flex-shrink: 0;
+  }
+
+  .profile-link a {
+    color: var(--accent);
+    text-decoration: none;
+    word-break: break-all;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+
+  .profile-link a:hover { text-decoration: underline; }
+
+  /* ─────────────────────────── DOCUMENT SECTIONS ─────────────────────────── */
+  .doc-section {
+    margin-bottom: 64px;
+    scroll-margin-top: 20px;
+  }
+
+  .doc-section-head {
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .doc-section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .doc-section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .doc-subsection-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    margin-bottom: 12px;
+    margin-top: 28px;
+  }
+
+  .doc-content {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .doc-content p {
+    margin-bottom: 16px;
+  }
+
+  .doc-content .instruction {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    background: var(--paper-warm);
+    border-left: 2px solid var(--rule);
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  /* ─── Tables ─── */
+  .doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 28px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+  }
+
+  .doc-table th,
+  .doc-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .doc-table th {
+    background: var(--paper-warm);
+    font-weight: 600;
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .doc-table td {
+    color: var(--ink-soft);
+  }
+
+  /* ─── Cards for jobs/products ─── */
+  .item-card {
+    border: 1px solid var(--rule);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    background: var(--paper);
+  }
+
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .item-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  .item-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  .item-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .item-body p { margin-bottom: 12px; }
+  .item-body p:last-child { margin-bottom: 0; }
+
+  .item-justify {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--rule);
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-mute);
+    line-height: 1.65;
+  }
+
+  .item-justify-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-style: normal;
+    margin-right: 8px;
+  }
+
+  /* ─── Indicators grid ─── */
+  .indicators {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin: 24px 0;
+  }
+
+  .indicator {
+    padding: 18px 22px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .indicator:nth-child(2n) { border-right: none; }
+  .indicator:nth-last-child(-n+2) { border-bottom: none; }
+
+  .indicator-label {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .indicator-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .indicator-value.zero { color: var(--ink-faint); }
+  .indicator-value.has { color: var(--accent); }
+
+  /* ─── Lists ─── */
+  .doc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .doc-list li {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    padding: 12px 0 12px 28px;
+    border-bottom: 1px solid var(--rule-soft);
+    position: relative;
+  }
+
+  .doc-list li:last-child { border-bottom: none; }
+
+  .doc-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .doc-list li strong {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  /* ─── Status banner ─── */
+  .doc-status {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin-bottom: 48px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .doc-status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .doc-status-value {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .doc-status-value.warn { color: var(--warn); }
+
+  /* ─── Mobile topbar ─── */
+  #mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 20px;
+    z-index: 90;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #mobile-topbar .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+
+  #mobile-topbar .mobile-mark em { color: var(--accent); }
+
+  .menu-btn {
+    background: none;
+    border: 1px solid var(--ink);
+    width: 38px; height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 1024px) {
+    :root { --sidebar-w: 260px; }
+    .page-content { padding: 56px 48px 80px; }
+    .page-title { font-size: 30px; }
+  }
+
+  @media (max-width: 720px) {
+    :root { --sidebar-w: 0px; }
+    #mobile-topbar { display: flex; }
+    body { padding-top: 64px; }
+
+    .sidebar {
+      position: fixed !important;
+      width: 280px !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; width: 100%; }
+
+    .page-content { padding: 32px 20px 60px; }
+    .page-title { font-size: 26px; }
+    .page-deck { font-size: 15px; margin-bottom: 36px; }
+    .profile-card { padding: 20px; }
+    .profile-name { font-size: 22px; }
+    .profile-link { flex-direction: column; gap: 2px; }
+    .profile-link-label { min-width: auto; }
+    .doc-section-head { flex-direction: column; gap: 4px; }
+    .doc-section-title { font-size: 20px; }
+    .item-head { flex-direction: column; gap: 4px; }
+    .doc-status { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .indicators { grid-template-columns: 1fr; }
+    .indicator { border-right: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ MOBILE TOPBAR ═══════════════ -->
+<div id="mobile-topbar">
+  <div class="mobile-mark">Súmula <em>Curricular</em></div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Súmula <em>Curricular</em></div>
+    <div class="sidebar-sub">Beneficiário · PIPE FAPESP</div>
+  </div>
+
+  <div class="sidebar-label">Seções da súmula</div>
+  <a class="nav-item" href="#sec-1"><span class="nav-num">01</span><span>Formação</span></a>
+  <a class="nav-item" href="#sec-2"><span class="nav-num">02</span><span>Histórico profissional</span></a>
+  <a class="nav-item" href="#sec-3"><span class="nav-num">03</span><span>Contribuições à ciência</span></a>
+  <a class="nav-item" href="#sec-4"><span class="nav-num">04</span><span>Financiamentos</span></a>
+  <a class="nav-item" href="#sec-5"><span class="nav-num">05</span><span>Indicadores quantitativos</span></a>
+  <a class="nav-item" href="#sec-6"><span class="nav-num">06</span><span>Outras informações</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span class="tag">Doc 02</span>
+      <span>Súmula Curricular do Beneficiário</span>
+      <span class="sep"></span>
+    </div>
+
+    <h1 class="page-title">Súmula Curricular <em>do Beneficiário</em></h1>
+    <p class="page-deck">
+      Documento de apresentação da Pesquisadora Responsável conforme modelo FAPESP.
+      Conteúdo atual conforme submetido em 16/01/2026.
+    </p>
+
+    <div class="profile-card">
+      <div class="profile-name">Carolina Pérez Ferrés</div>
+      <div class="profile-links">
+        <div class="profile-link">
+          <span class="profile-link-label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/carolinaferres/" target="_blank">linkedin.com/in/carolinaferres</a>
+        </div>
+        <div class="profile-link">
+          <span class="profile-link-label">ORCID</span>
+          <a href="https://orcid.org/0009-0000-5046-2471" target="_blank">0009-0000-5046-2471</a>
+        </div>
+        <div class="profile-link">
+          <span class="profile-link-label">Lattes</span>
+          <a href="http://lattes.cnpq.br/7613570475458349" target="_blank">lattes.cnpq.br/7613570475458349</a>
+        </div>
+        <div class="profile-link">
+          <span class="profile-link-label">Web of Science</span>
+          <a href="https://www.webofscience.com/wos/author/record/NNG-6108-2025" target="_blank">NNG-6108-2025</a>
+        </div>
+        <div class="profile-link">
+          <span class="profile-link-label">Google Scholar</span>
+          <a href="https://scholar.google.com/citations?hl=en&user=fj6R2hgAAAAJ" target="_blank">scholar.google.com/citations</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-status">
+      <div class="doc-status-item">
+        <span class="doc-status-label">Versão atual</span>
+        <span class="doc-status-value">v.2 — submetida em 16/01/2026</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Modelo</span>
+        <span class="doc-status-value">FAPESP — 6 seções</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Função no projeto</span>
+        <span class="doc-status-value">Pesquisadora Responsável (PE-III)</span>
+      </div>
+    </div>
+
+    <!-- ──────────── SEÇÃO 1 ──────────── -->
+    <section class="doc-section" id="sec-1">
+      <div class="doc-section-head">
+        <span class="doc-section-num">01</span>
+        <h2 class="doc-section-title">Formação</h2>
+      </div>
+      <div class="doc-content">
+
+        <div class="instruction">
+          Indicar títulos, formação acadêmica (graduação, mestrado, doutorado, residência, livre-docência, pós-doutorado) e outros treinamentos e certificações.
+        </div>
+
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th style="width:50%">Título ou atividade</th>
+              <th style="width:18%">Período</th>
+              <th>Instituição de ensino</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bacharelado em Design — Desenho Industrial (ênfase em sistemas, metodologia de projeto, documentação técnica e design de interação)</td>
+              <td>1995–2002</td>
+              <td>Faculdade de Arquitetura, Artes, Comunicação e Design (FAAC) — UNESP, Câmpus de Bauru</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="doc-subsection-title">1.1 — Formação · Informações adicionais</h3>
+        <div class="instruction">
+          Informar eventuais interrupções/afastamentos em razão do advento de prole, de deficiência, de incapacidades temporárias ou de cuidados intensivos a pessoas enfermas, idosas ou com deficiência (Portaria PR nº 171/2024).
+        </div>
+        <p>Não houve afastamentos ou interrupções conforme os critérios da Portaria PR nº 171/2024.</p>
+      </div>
+    </section>
+
+    <!-- ──────────── SEÇÃO 2 ──────────── -->
+    <section class="doc-section" id="sec-2">
+      <div class="doc-section-head">
+        <span class="doc-section-num">02</span>
+        <h2 class="doc-section-title">Histórico Profissional / Acadêmico</h2>
+      </div>
+      <div class="doc-content">
+
+        <div class="instruction">
+          Listar até 3 principais posições profissionais ocupadas. Podem ser acadêmicas, empresariais ou administrativas, bem como atividades associativas, atuação em empreendedorismo e startups, distinções acadêmicas e prêmios recebidos.
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">1. Partner — POK (Proof of Knowledge)</div>
+            <div class="item-period">Maio/2024 — atual</div>
+          </div>
+          <div class="item-body">
+            <p>Sócia da POK, plataforma que permite a emissão e validação de certificados, diplomas e credenciais digitais por instituições educacionais e corporativas, com armazenamento em blockchain. Atua na liderança estratégica e na expansão da plataforma no Brasil e no exterior, com foco em empregabilidade, rastreabilidade de conquistas profissionais e transformação digital da educação.</p>
+            <p>Atuação direta na definição metodológica da plataforma, na articulação entre requisitos técnicos, desenho de processos e critérios de validação, bem como na coordenação de equipes multidisciplinares envolvidas no desenvolvimento, documentação e governança dos sistemas digitais.</p>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">2. CEO — The Blue City (Plataforma Missão Cidade Azul)</div>
+            <div class="item-period">Abril/2022 — atual</div>
+          </div>
+          <div class="item-body">
+            <p>Fundadora da The Blue City, plataforma voltada ao engajamento socioambiental por meio de jogos digitais. Responsável pela criação, desenvolvimento e expansão de ciclos de jogos que conectam empresas, escolas e comunidades em torno de metas ESG, sustentabilidade urbana e proteção do capital natural. Atua também como produtora cultural e coordenadora de projetos em audiovisual, eventos e game design.</p>
+            <p>Atuação direta na concepção metodológica da plataforma, na estruturação dos ciclos de jogos, na definição de processos de documentação, validação e iteração, bem como na coordenação de equipes técnicas e criativas multidisciplinares envolvidas no desenvolvimento dos sistemas digitais.</p>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">3. CMO — Teros</div>
+            <div class="item-period">Julho/2019 — Março/2022</div>
+          </div>
+          <div class="item-body">
+            <p>Diretora de marketing da Teros, empresa especializada em estratégias regulatórias, precificação e open banking. Liderou iniciativas baseadas em ciência de dados e inovação tecnológica, com foco na criação e implementação de soluções para diversos setores da economia brasileira.</p>
+            <p>Atuação na interface entre produto, tecnologia e método, contribuindo para a definição de requisitos, estruturação de processos analíticos e coordenação de equipes multidisciplinares envolvidas no desenvolvimento e validação de soluções baseadas em dados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────── SEÇÃO 3 ──────────── -->
+    <section class="doc-section" id="sec-3">
+      <div class="doc-section-head">
+        <span class="doc-section-num">03</span>
+        <h2 class="doc-section-title">Contribuições à Ciência (Científicas, Tecnológicas ou de Inovação)</h2>
+      </div>
+      <div class="doc-content">
+
+        <div class="instruction">
+          3.a) Listar até 5 pesquisas/produtos mais relevantes dos últimos 5 anos. 3.b) Incluir, em cada resultado, a justificativa da escolha: impacto, relevância e importância para o projeto desta submissão.
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">1. Plataforma The Blue City (Missão Cidade Azul)</div>
+            <div class="item-period">2022 — atual</div>
+          </div>
+          <div class="item-body">
+            <p>Ferres, C. Plataforma gamificada de engajamento socioambiental que combina jogos digitais, storytelling e missões no mundo real para formar embaixadores ambientais em escolas, empresas e comunidades.</p>
+          </div>
+          <div class="item-justify">
+            <span class="item-justify-label">Justificativa</span>
+            A Plataforma The Blue City constitui um sistema digital aplicado que integra jogos, narrativa e processos estruturados de engajamento, operando como ambiente real de experimentação e validação de metodologias de design, documentação e iteração de jogos educativos. O projeto gerou ciclos completos de desenvolvimento, aplicação e avaliação em contextos institucionais diversos, incluindo escolas e empresas, permitindo testar abordagens de organização de conteúdo, coordenação de equipes multidisciplinares e validação de soluções digitais em escala real.
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">2. Plataforma POK — Proof of Knowledge</div>
+            <div class="item-period">2024 — atual</div>
+          </div>
+          <div class="item-body">
+            <p>Ferres, C. Plataforma de certificação digital em blockchain que permite às instituições educacionais e corporativas emitirem microcredenciais seguras e rastreáveis, promovendo empregabilidade e transformação digital da educação.</p>
+          </div>
+          <div class="item-justify">
+            <span class="item-justify-label">Justificativa</span>
+            A Plataforma POK constitui um sistema tecnológico aplicado voltado à emissão, gestão e verificação de registros digitais, incorporando mecanismos de rastreabilidade, validação e governança de dados. O desenvolvimento da plataforma envolveu a definição de modelos operacionais, fluxos de emissão e processos de verificação em ambientes institucionais reais, permitindo testar e consolidar práticas de documentação, controle e validação de informações digitais em escala.
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">3. Série de TV As Cidades Azuis</div>
+            <div class="item-period">2017 — 2020</div>
+          </div>
+          <div class="item-body">
+            <p>Ferres, C.; Andrighetti, M.; Borba, G. Série documental em 13 episódios sobre a invisibilização dos rios urbanos e suas relações com o desenvolvimento das cidades. Produção contemplada pela Ancine, com veiculação nacional e enfoque em educação ambiental.</p>
+          </div>
+          <div class="item-justify">
+            <span class="item-justify-label">Justificativa</span>
+            A série As Cidades Azuis constitui um projeto audiovisual estruturado que envolveu pesquisa temática, concepção narrativa, planejamento de produção e coordenação de equipes multidisciplinares ao longo de um ciclo completo de desenvolvimento. O projeto demandou a organização de conteúdos complexos em formatos documentais acessíveis, bem como a definição de processos de validação editorial e técnica, contribuindo para a consolidação de práticas de estruturação, documentação e disseminação de conhecimento em larga escala.
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">4. Intervenção Viva Rio Pinheiros</div>
+            <div class="item-period">2014 — 2017</div>
+          </div>
+          <div class="item-body">
+            <p>Ferres, C.; Burgierman, D.; Foster, R. Intervenção urbana realizada na ciclovia do Rio Pinheiros, em São Paulo, com instalação de um mural de 100 metros que narrava a história do rio e da cidade. O projeto incluiu ações de mobilização como passeio ciclístico e piquenique comunitário, com financiamento coletivo e apoio de empresas como Superinteressante e Urban Arts.</p>
+          </div>
+          <div class="item-justify">
+            <span class="item-justify-label">Justificativa</span>
+            A intervenção Viva Rio Pinheiros envolveu a concepção e execução de um projeto urbano de caráter interdisciplinar, integrando pesquisa histórica, estruturação narrativa, planejamento visual e coordenação de ações presenciais. O projeto demandou a organização de conteúdos complexos em um formato comunicacional acessível, bem como a definição de processos de produção, articulação com parceiros institucionais e gestão de iniciativas colaborativas em espaço público.
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head">
+            <div class="item-title">5. Projeto Cafenarua — Intervenções urbanas e design cívico</div>
+            <div class="item-period">2010 — 2015</div>
+          </div>
+          <div class="item-body">
+            <p>Ferres, C. Iniciativa de design urbano e arte pública que produziu vários projetos e instalações em espaços públicos, como Quadra Amiga, Galeria de Arte Reciclada e Escola na Praça, combinando ativismo, arte e transformação do espaço urbano.</p>
+          </div>
+          <div class="item-justify">
+            <span class="item-justify-label">Justificativa</span>
+            O Projeto Cafenarua compreendeu o desenvolvimento e a execução de intervenções urbanas de caráter participativo, envolvendo pesquisa de contexto, concepção de propostas, planejamento de ações e coordenação de atividades em espaço público. As iniciativas demandaram a organização de processos colaborativos, a articulação com diferentes atores locais e a estruturação de soluções educativas e comunicacionais aplicadas a territórios urbanos reais.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────── SEÇÃO 4 ──────────── -->
+    <section class="doc-section" id="sec-4">
+      <div class="doc-section-head">
+        <span class="doc-section-num">04</span>
+        <h2 class="doc-section-title">Financiamentos à Pesquisa</h2>
+      </div>
+      <div class="doc-content">
+        <div class="instruction">
+          Informar financiamentos à pesquisa mais relevantes (máximo de 5), vigentes e/ou concluídos, recebidos de agências ou empresas, brasileiras ou internacionais, como Pesquisador Responsável ou Pesquisador Principal.
+        </div>
+        <p>Não há.</p>
+      </div>
+    </section>
+
+    <!-- ──────────── SEÇÃO 5 ──────────── -->
+    <section class="doc-section" id="sec-5">
+      <div class="doc-section-head">
+        <span class="doc-section-num">05</span>
+        <h2 class="doc-section-title">Indicadores Quantitativos</h2>
+      </div>
+      <div class="doc-content">
+
+        <div class="instruction">
+          Indicação separada das quantidades totais por categoria.
+        </div>
+
+        <div class="indicators">
+          <div class="indicator">
+            <span class="indicator-label">Livros publicados</span>
+            <span class="indicator-value zero">0</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Publicações em periódicos com seletiva política editorial</span>
+            <span class="indicator-value zero">0</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Capítulos de livros</span>
+            <span class="indicator-value zero">0</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Dissertações de mestrado orientadas (defendidas / em andamento)</span>
+            <span class="indicator-value zero">0 / 0</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Teses de doutorado orientadas (defendidas / em andamento)</span>
+            <span class="indicator-value zero">0 / 0</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Supervisões de pós-doutorado (concluídas / em andamento)</span>
+            <span class="indicator-value zero">0 / 0</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Citações na literatura científica internacional</span>
+            <span class="indicator-value zero">0</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Patentes solicitadas, concedidas e licenciadas</span>
+            <span class="indicator-value zero">Não há</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Produtos desenvolvidos e lançados no mercado</span>
+            <span class="indicator-value has">5</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Processos otimizados implementados em empresas ou organizações sociais</span>
+            <span class="indicator-value has">3</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Empresas criadas ou apoiadas</span>
+            <span class="indicator-value has">2</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Consultorias técnicas e científicas relevantes</span>
+            <span class="indicator-value has">1</span>
+          </div>
+        </div>
+
+        <h3 class="doc-subsection-title">Produtos desenvolvidos e lançados no mercado (5)</h3>
+        <ul class="doc-list">
+          <li><strong>Plataforma de certificação digital POK — Proof of Knowledge (2024)</strong> — ferramenta em blockchain para emissão e rastreabilidade de microcredenciais educacionais e profissionais.</li>
+          <li><strong>Plataforma de jogos The Blue City — Missão Cidade Azul (2023)</strong> — sistema gamificado para engajamento socioambiental com empresas e comunidades, articulando metas ESG e impacto real. Desenvolvida com apoio das empresas Aegea, BASF e Valgroup, por meio de patrocínio via Lei de Incentivo à Cultura (Lei Rouanet). Combina storytelling, audiovisual e missões no mundo real para formar embaixadores ambientais e promover soluções sustentáveis em escala local.</li>
+          <li><strong>Série de TV As Cidades Azuis (2019)</strong> — série documental com 13 episódios de 26 minutos, exibida nacionalmente em canais públicos e culturais. Realizada com patrocínio da Ancine e produzida em parceria com a Sopa Digital, foi filmada em diversas cidades do país combinando entrevistas, imagens de arquivo, trilha sonora original e linguagem acessível para promover educação ambiental.</li>
+          <li><strong>Intervenção artística Viva Rio Pinheiros (2014)</strong> — instalação de um mural artístico de 100 metros na ciclovia do Rio Pinheiros, em São Paulo, realizada como ação de mobilização cultural e ambiental. A iniciativa integrou arte urbana, engajamento comunitário e ativismo ecológico, com apoio institucional e financiamento coletivo.</li>
+          <li><strong>Cafenarua — Intervenções Urbanas e Ocupação Cultural (2014–2015)</strong> — projeto independente de design urbano voltado à requalificação e ativação do espaço público. Incluiu o Projeto Coruja (atividades educativas e culturais no Parque Linear das Corujas), a Galeria Coruja (galeria de arte a céu aberto apresentada na 10ª Bienal de Arquitetura de São Paulo) e o Projeto Escola na Praça (aulas de arte, geografia e educação física ao espaço público com estudantes da rede pública).</li>
+        </ul>
+
+        <h3 class="doc-subsection-title">Processos otimizados implementados em empresas ou organizações sociais (3)</h3>
+        <ul class="doc-list">
+          <li><strong>Metodologia de engajamento ESG com gamificação</strong> — aplicada em empresas como Aegea, BASF e Valgroup através da plataforma Missão Cidade Azul.</li>
+          <li><strong>Metodologia de mapeamento narrativo de rios urbanos invisibilizados</strong> — aplicada através da plataforma Cidade Azul, integrando design urbano, educação ambiental e cultura.</li>
+          <li><strong>Modelo de exposição educativa em espaço público com tecnologia audiovisual</strong> — exemplificado pela animação O Caminho das Águas, em exibição contínua no Centro de Inovação Verde Bruno Covas.</li>
+        </ul>
+
+        <h3 class="doc-subsection-title">Empresas criadas ou apoiadas (2)</h3>
+        <ul class="doc-list">
+          <li><strong>The Blue City</strong> — 2022 — presente</li>
+          <li><strong>POK — Proof of Knowledge</strong> — cofundadora, 2024 — presente</li>
+        </ul>
+
+        <h3 class="doc-subsection-title">Consultorias técnicas e científicas relevantes (1)</h3>
+        <ul class="doc-list">
+          <li>Consultoria e implementação de estratégias de engajamento ESG com base em jogos digitais e indicadores socioambientais para empresas do setor de saneamento, química e embalagens sustentáveis.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ──────────── SEÇÃO 6 ──────────── -->
+    <section class="doc-section" id="sec-6">
+      <div class="doc-section-head">
+        <span class="doc-section-num">06</span>
+        <h2 class="doc-section-title">Outras Informações Relevantes</h2>
+      </div>
+      <div class="doc-content">
+
+        <h3 class="doc-subsection-title">6.a — Informações biográficas complementares</h3>
+        <p>Nos últimos quinze anos, atuei de forma destacada na intersecção entre design, inovação urbana e tecnologias educacionais aplicadas a desafios socioambientais. Fundei a The Blue City, uma plataforma que utiliza jogos digitais para engajar comunidades e empresas em ações ESG, reconhecida por sua capacidade de formar lideranças locais e gerar impacto mensurável. Também sou sócia da POK, plataforma de certificação baseada em blockchain voltada à transformação digital da educação e da formação profissional.</p>
+        <p>Minha atuação combina empreendedorismo de impacto, liderança de projetos complexos, e interlocução ativa com instituições públicas, privadas e do terceiro setor no Brasil e no exterior.</p>
+
+        <h3 class="doc-subsection-title">6.b — Experiência internacional em pesquisa</h3>
+        <div class="instruction">
+          Após o doutoramento, evidenciando sua participação em redes internacionais de colaboração em pesquisa com resultados publicados.
+        </div>
+        <p>Embora minha trajetória não esteja vinculada a programas acadêmicos de pós-doutorado, tive experiências relevantes de articulação internacional em contextos de inovação e impacto social. Em 2015, fui selecionada como Fellow da Red Bull Amaphiko Brasil, programa internacional de aceleração de empreendedores sociais, e no mesmo ano fui finalista do SXSW ECO Place by Design (Austin, EUA), o que me inseriu em uma rede global de inovação urbana.</p>
+        <p>Ao longo da trajetória da The Blue City, mantive interlocução com instituições e especialistas de diferentes países, inclusive participando de eventos multilaterais e preparando a apresentação de resultados para a COP30 (2025). Além disso, apresentei o projeto Cidade Azul no Salzburg Global Seminar (Áustria, 2016), durante o encontro internacional The Arts as a Catalyst for Sustainability. A atividade reuniu especialistas de diversos países para discutir o papel da arte na transformação cultural e ambiental, fortalecendo o embasamento conceitual e internacional da minha atuação.</p>
+
+        <h3 class="doc-subsection-title">6.c — Prêmios, distinções e honrarias</h3>
+        <ul class="doc-list">
+          <li><strong>Finalista no SXSW ECO Place by Design (2015)</strong>, Estados Unidos — reconhecimento internacional na área de inovação urbana sustentável, com o projeto Cidade Azul.</li>
+          <li><strong>Fellow da Red Bull Amaphiko Brasil (2015)</strong> — programa global de aceleração para empreendedores sociais com impacto comunitário.</li>
+          <li><strong>Convidada do Salzburg Global Seminar (2016)</strong>, Áustria — apresentação do projeto Cidade Azul no seminário internacional The Arts as a Catalyst for Sustainability, reunindo especialistas de diversos países para debater o papel da arte na transformação cultural e ambiental.</li>
+        </ul>
+
+        <div class="item-card" style="margin-top:24px;">
+          <div class="item-head">
+            <div class="item-title">Observação adicional — Clipping de imprensa</div>
+          </div>
+          <div class="item-body">
+            <p>Foi compartilhado em anexo um clipping com matérias jornalísticas, reportagens e registros públicos que evidenciam a repercussão e o impacto dos projetos desenvolvidos ao longo da trajetória. Esse material complementa os indicadores qualitativos da atuação e contribui para a análise da relevância social, educacional e ambiental das soluções criadas.</p>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all;">
+              <a href="https://drive.google.com/file/d/1EgirZoXc8ULN5FM4Z5AhdljWwDrQLNrP/view?usp=sharing" target="_blank" style="color:var(--accent);text-decoration:none;">↗ drive.google.com/file/d/1EgirZoXc8ULN5FM4Z5AhdljWwDrQLNrP</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+  function toggleSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    const isOpen = sb.classList.toggle('open');
+    ov.style.display = isOpen ? 'block' : 'none';
+  }
+
+  const sections = document.querySelectorAll('.doc-section');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  function updateActive() {
+    const scrollY = window.scrollY + 100;
+    let currentId = '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= scrollY) currentId = sec.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + currentId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 720) {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anexo II · Infraestrutura institucional · PIPE FAPESP</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ─────────────────────────── SIDEBAR ─────────────────────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sidebar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-mark em { font-weight: 400; color: var(--accent); }
+
+  .sidebar-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label {
+    padding: 22px 32px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label.section {
+    margin-top: 4px;
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 22px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 10px 32px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-weight: 400;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .nav-item:hover { background: var(--paper-warm); color: var(--ink); }
+
+  .nav-item.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: var(--paper-warm);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .nav-item.active .nav-num { color: var(--accent); font-weight: 600; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─────────────────────────── MAIN ─────────────────────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  .page-content {
+    padding: 80px 80px 120px;
+    max-width: 880px;
+  }
+
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+  }
+
+  .page-eyebrow .tag {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 4px 10px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .page-eyebrow .sep {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .page-title em { color: var(--accent); }
+
+  .page-deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+    max-width: 720px;
+    margin-bottom: 40px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ─── Status banner ─── */
+  .doc-status {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .doc-status-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .doc-status-value {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  /* ─── Issues banner (revisão necessária) ─── */
+  .issues-banner {
+    background: var(--warn-soft);
+    border-left: 3px solid var(--warn);
+    padding: 20px 24px;
+    margin-bottom: 48px;
+  }
+
+  .issues-banner-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warn);
+    margin-bottom: 10px;
+  }
+
+  .issues-banner-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .issues-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .issues-list li {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    padding: 6px 0 6px 22px;
+    position: relative;
+  }
+
+  .issues-list li::before {
+    content: '⚠';
+    position: absolute;
+    left: 0;
+    color: var(--warn);
+    font-size: 12px;
+    top: 7px;
+  }
+
+  .issues-list li strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .issues-list li code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    background: var(--paper);
+    padding: 1px 6px;
+    border: 1px solid var(--rule);
+    color: var(--warn);
+  }
+
+  /* ─── Header data fields ─── */
+  .header-fields {
+    border: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+
+  .header-field {
+    padding: 14px 22px;
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .header-field:last-child { border-bottom: none; }
+
+  .header-field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .header-field-value {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .header-field-value.empty {
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  .header-field-value.divergent {
+    background: linear-gradient(to bottom, transparent 65%, var(--warn-soft) 65%);
+  }
+
+  /* ─── Section groups ─── */
+  .section-group {
+    margin-bottom: 56px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-group-head {
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .section-group-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .section-group-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  /* ─── Question cards ─── */
+  .qa-card {
+    border: 1px solid var(--rule);
+    margin-bottom: 16px;
+    background: var(--paper);
+    scroll-margin-top: 20px;
+  }
+
+  .qa-head {
+    background: var(--paper-warm);
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .qa-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .qa-question {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.45;
+  }
+
+  .qa-answer {
+    padding: 18px 22px;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .qa-answer-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 999px;
+  }
+
+  .qa-answer-tag.no {
+    color: var(--ink-mute);
+    border-color: var(--rule);
+  }
+
+  /* ─── Declaration ─── */
+  .declaration {
+    border: 1px solid var(--ink);
+    padding: 24px 28px;
+    background: var(--paper);
+    margin-top: 32px;
+  }
+
+  .declaration-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .declaration-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+
+  .declaration-sig {
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .declaration-sig-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .declaration-sig-name {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  .declaration-sig-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  /* ─── Mobile topbar ─── */
+  #mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 20px;
+    z-index: 90;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #mobile-topbar .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+
+  #mobile-topbar .mobile-mark em { color: var(--accent); }
+
+  .menu-btn {
+    background: none;
+    border: 1px solid var(--ink);
+    width: 38px; height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 1024px) {
+    :root { --sidebar-w: 260px; }
+    .page-content { padding: 56px 48px 80px; }
+    .page-title { font-size: 30px; }
+  }
+
+  @media (max-width: 720px) {
+    :root { --sidebar-w: 0px; }
+    #mobile-topbar { display: flex; }
+    body { padding-top: 64px; }
+
+    .sidebar {
+      position: fixed !important;
+      width: 280px !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; width: 100%; }
+
+    .page-content { padding: 32px 20px 60px; }
+    .page-title { font-size: 26px; }
+    .page-deck { font-size: 15px; margin-bottom: 36px; }
+    .doc-status { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .header-field { flex-direction: column; gap: 4px; }
+    .header-field-label { min-width: auto; }
+    .section-group-head { flex-direction: column; gap: 4px; }
+    .section-group-title { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ MOBILE TOPBAR ═══════════════ -->
+<div id="mobile-topbar">
+  <div class="mobile-mark">Anexo II · <em>Infraestrutura</em></div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Anexo II · <em>Infraestrutura</em></div>
+    <div class="sidebar-sub">Informação da Instituição Sede</div>
+  </div>
+
+  <div class="sidebar-label">Cabeçalho</div>
+  <a class="nav-item" href="#cabecalho"><span class="nav-num">—</span><span>Dados do projeto</span></a>
+
+  <div class="sidebar-label section">1 — Infraestrutura existente</div>
+  <a class="nav-item" href="#sec-1a"><span class="nav-num">1.a</span><span>Serviços técnicos</span></a>
+  <a class="nav-item" href="#sec-1b"><span class="nav-num">1.b</span><span>Administração e gestão</span></a>
+
+  <div class="sidebar-label section">2 — Infraestrutura adicional</div>
+  <a class="nav-item" href="#sec-2a"><span class="nav-num">2.a</span><span>Pessoal</span></a>
+  <a class="nav-item" href="#sec-2b"><span class="nav-num">2.b</span><span>Instalações</span></a>
+  <a class="nav-item" href="#sec-2c"><span class="nav-num">2.c</span><span>Serviços</span></a>
+
+  <div class="sidebar-label section">Declarações</div>
+  <a class="nav-item" href="#decl-1"><span class="nav-num">—</span><span>Da Instituição Sede</span></a>
+  <a class="nav-item" href="#decl-2"><span class="nav-num">—</span><span>Do Pesquisador Responsável</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span class="tag">Doc 07</span>
+      <span>Anexo II · Infraestrutura institucional</span>
+      <span class="sep"></span>
+    </div>
+
+    <h1 class="page-title">Anexo II · <em>Infraestrutura</em> institucional</h1>
+    <p class="page-deck">
+      Informação aprovada pela Instituição Sede sobre a infraestrutura disponível
+      para o desenvolvimento do projeto. Documento de declaração formal.
+    </p>
+
+    <div class="doc-status">
+      <div class="doc-status-item">
+        <span class="doc-status-label">Versão atual</span>
+        <span class="doc-status-value">v.1 — submetida em 01/06/2025</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Arquivo SAGe</span>
+        <span class="doc-status-value">Anexo II_InformacaoInstituicao.pdf</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Modelo FAPESP</span>
+        <span class="doc-status-value">Novembro/2019</span>
+      </div>
+    </div>
+
+    <!-- ──────────── CABEÇALHO ──────────── -->
+    <section class="section-group" id="cabecalho">
+      <div class="section-group-head">
+        <span class="section-group-num">—</span>
+        <h2 class="section-group-title">Dados do projeto</h2>
+      </div>
+
+      <div class="header-fields">
+        <div class="header-field">
+          <span class="header-field-label">Título do projeto</span>
+          <span class="header-field-value">Inteligência Artificial para Automatização da Geração de Game Design Documents em Jogos</span>
+        </div>
+        <div class="header-field">
+          <span class="header-field-label">Bolsista</span>
+          <span class="header-field-value">Carolina Pérez Ferrés</span>
+        </div>
+        <div class="header-field">
+          <span class="header-field-label">Pesquisador Responsável</span>
+          <span class="header-field-value">—</span>
+        </div>
+        <div class="header-field">
+          <span class="header-field-label">Instituição Sede</span>
+          <span class="header-field-value">Cidade Azul Comunicação Eireli</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────── 1 · INFRAESTRUTURA EXISTENTE ──────────── -->
+    <section class="section-group">
+      <div class="section-group-head">
+        <span class="section-group-num">01</span>
+        <h2 class="section-group-title">Infraestrutura existente</h2>
+      </div>
+
+      <article class="qa-card" id="sec-1a">
+        <div class="qa-head">
+          <span class="qa-num">1.a</span>
+          <span class="qa-question">A Instituição Sede oferece serviços técnicos ou pessoal técnico de apoio ao projeto de pesquisa proposto?</span>
+        </div>
+        <div class="qa-answer">
+          <span class="qa-answer-tag">Sim</span>
+          A empresa dispõe de capacidade técnica especializada ecapaz de oferecer suporte ao projeto. Já conta com know-how proveniente de iniciativas anteriores relacionadas a game design e automação.
+        </div>
+      </article>
+
+      <article class="qa-card" id="sec-1b">
+        <div class="qa-head">
+          <span class="qa-num">1.b</span>
+          <span class="qa-question">A Instituição Sede oferece serviços de administração e gestão de projetos (contabilidade, prestação de contas, compras, importações, preparação de propostas de financiamento, agendamento de reuniões, acompanhamento, supervisão de equipamentos, contatos com visitantes, representação em eventos etc.)?</span>
+        </div>
+        <div class="qa-answer">
+          <span class="qa-answer-tag">Sim</span>
+          A gestão administrativa, contábil e de compras é realizada com apoio de escitório de contabilidade especializado. A empresa já opera com controle orçamentário, emissão de notas fiscais, prestação de contas e relacionamento com fornecedores, além de estrutura para acompanhar cronogramas, reuniões e eventos institucionais.
+        </div>
+      </article>
+    </section>
+
+    <!-- ──────────── 2 · INFRAESTRUTURA ADICIONAL ──────────── -->
+    <section class="section-group">
+      <div class="section-group-head">
+        <span class="section-group-num">02</span>
+        <h2 class="section-group-title">Infraestrutura adicional</h2>
+      </div>
+
+      <article class="qa-card" id="sec-2a">
+        <div class="qa-head">
+          <span class="qa-num">2.a</span>
+          <span class="qa-question">O projeto, caso aprovado, demandará pessoal adicional de apoio técnico e/ou administrativo, a ser providenciado pela Instituição Sede em prazo que não comprometa o andamento do projeto?</span>
+        </div>
+        <div class="qa-answer">
+          <span class="qa-answer-tag no">Não</span>
+          O projeto não demandará pessoal adicional de apoio técnico ou administrativo por parte da Instituição Sede. Toda a equipe necessária para a execução das atividades está prevista no plano de trabalho, incluindo os bolsistas de capacitação técnica que serão vinculados diretamente ao projeto, sem exigir complementação institucional.
+        </div>
+      </article>
+
+      <article class="qa-card" id="sec-2b">
+        <div class="qa-head">
+          <span class="qa-num">2.b</span>
+          <span class="qa-question">O projeto, caso aprovado, demandará instalações (ou alterações de instalações) adicionais, a serem providenciadas pela Instituição Sede em prazo que não comprometa o andamento do projeto?</span>
+        </div>
+        <div class="qa-answer">
+          <span class="qa-answer-tag no">Não</span>
+          As instalações atuais da empresa são suficientes para a execução do projeto, incluindo espaço físico, mobiliário e equipamentos de informática adequados.
+        </div>
+      </article>
+
+      <article class="qa-card" id="sec-2c">
+        <div class="qa-head">
+          <span class="qa-num">2.c</span>
+          <span class="qa-question">O projeto, caso aprovado, demandará serviços adicionais necessários, a serem providenciados pela Instituição Sede em prazo que não comprometa o andamento do projeto?</span>
+        </div>
+        <div class="qa-answer">
+          <span class="qa-answer-tag no">Não</span>
+          Os serviços já existentes são suficientes para apoiar o projeto. Caso surjam demandas específicas, estas serão providenciadas com a agilidade necessária para não comprometer o cronograma.
+        </div>
+      </article>
+    </section>
+
+    <!-- ──────────── DECLARAÇÕES ──────────── -->
+    <section class="section-group">
+      <div class="section-group-head">
+        <span class="section-group-num">—</span>
+        <h2 class="section-group-title">Declarações e assinaturas</h2>
+      </div>
+
+      <div class="declaration" id="decl-1">
+        <div class="declaration-date">São Paulo, 30 de maio de 2025</div>
+        <p class="declaration-text">
+          Declaro o compromisso da Instituição Sede em prover o apoio descrito nos itens acima.
+        </p>
+        <div class="declaration-sig">
+          <div class="declaration-sig-mark">✎ Assinado</div>
+          <div class="declaration-sig-name">Carolina Pérez Ferrés</div>
+          <div class="declaration-sig-role">Sócia da empresa Cidade Azul Comunicação Eireli</div>
+        </div>
+      </div>
+
+      <div class="declaration" id="decl-2" style="margin-top:20px;">
+        <p class="declaration-text">
+          Declaro que os itens listados acima são suficientes para a perfeita execução do projeto apresentado à FAPESP sob minha responsabilidade.
+        </p>
+        <div class="declaration-sig">
+          <div class="declaration-sig-mark">✎ Assinado</div>
+          <div class="declaration-sig-name">Carolina Pérez Ferrés</div>
+          <div class="declaration-sig-role">Pesquisadora Responsável</div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</main>
+
+<script>
+  function toggleSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    const isOpen = sb.classList.toggle('open');
+    ov.style.display = isOpen ? 'block' : 'none';
+  }
+
+  const sections = document.querySelectorAll('[id^="sec-"], [id^="decl-"], #cabecalho');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  function updateActive() {
+    const scrollY = window.scrollY + 120;
+    let currentId = '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= scrollY) currentId = sec.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + currentId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 720) {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>

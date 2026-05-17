@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Submissão · PIPE FAPESP Fase 1 · Fabulus</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;            /* azul-petróleo institucional */
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;              /* terracota para alertas */
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  em { font-style: normal; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ─────────────────────────── SIDEBAR ─────────────────────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-mark em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .sidebar-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label {
+    padding: 22px 32px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label.section {
+    margin-top: 4px;
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 22px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 10px 32px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-weight: 400;
+    user-select: none;
+    position: relative;
+  }
+
+  .nav-item:hover {
+    background: var(--paper-warm);
+    color: var(--ink);
+  }
+
+  .nav-item.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: var(--paper-warm);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    width: 24px;
+  }
+
+  .nav-item.active .nav-num { color: var(--accent); font-weight: 600; }
+
+  .nav-text { flex: 1; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─────────────────────────── MAIN ─────────────────────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  .page {
+    display: none;
+    min-height: 100vh;
+    animation: fadeIn 0.3s ease;
+  }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─────────────────────────── INTRO ─────────────────────────── */
+  .intro {
+    min-height: 100vh;
+    padding: 96px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .intro::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .intro-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 48px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .intro-meta .dot {
+    width: 4px; height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .intro-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+
+  .intro-title em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .intro-lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin-bottom: 64px;
+    letter-spacing: -0.01em;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    border-top: 1px solid var(--rule);
+    padding-top: 40px;
+  }
+
+  .intro-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .intro-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .intro-stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .intro-stat-value em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .intro-footer {
+    margin-top: 64px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ─────────────────────────── PAGE STRUCTURE ─────────────────────────── */
+  .page-content {
+    padding: 80px 80px 120px;
+    max-width: 1100px;
+  }
+
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+  }
+
+  .page-eyebrow .tag {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 4px 10px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .page-eyebrow .sep {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .page-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .page-deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+    max-width: 720px;
+    margin-bottom: 56px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ─── Sections within a page ─── */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section-head {
+    border-top: 1px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  .section-body p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    max-width: 720px;
+  }
+
+  /* ─── Field cards (placeholder for instruções operacionais) ─── */
+  .field {
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    background: var(--paper);
+    transition: border-color 0.15s ease;
+  }
+
+  .field:hover { border-color: var(--ink-faint); }
+
+  .field-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .field-name {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  .field-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .pill {
+    padding: 3px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .pill.required { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+  .pill.optional { color: var(--ink-faint); }
+  .pill.fixed    { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+  .field-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-mute);
+  }
+
+  .field-value {
+    margin-top: 10px;
+    padding: 14px 16px;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--rule);
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink-faint);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .field-value.filled {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    font-family: 'Inter Tight', sans-serif;
+  }
+
+  .field-value::before {
+    content: '⌁  a preencher';
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    opacity: 0.6;
+  }
+
+  .field-value.filled::before { display: none; }
+
+  .field-hint {
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+
+  .field-action {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    background: var(--paper);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+  .field-action:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .field-action .arrow {
+    transition: transform 0.15s ease;
+  }
+  .field-action:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .date-warning {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: var(--warn-soft);
+    border-left: 2px solid var(--warn);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--warn);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .date-warning::before {
+    content: '⚠';
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .field-placeholder {
+    font-style: normal;
+    color: var(--ink-faint);
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    padding: 12px 0;
+    border-top: 1px dashed var(--rule);
+    margin-top: 12px;
+  }
+
+  /* ─── Sub-tab nav (for screen 2 with sub-tabs) ─── */
+  .subtabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .subtab {
+    padding: 12px 20px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.15s ease;
+  }
+
+  .subtab:hover { color: var(--ink); }
+  .subtab.active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+
+  .subpage { display: none; }
+  .subpage.active { display: block; }
+
+  /* ─── Page footer nav ─── */
+  .page-nav {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .nav-btn:hover { background: var(--ink); color: var(--paper); }
+
+  .nav-btn.primary { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+  .nav-btn.primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .page-indicator {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  /* ─── Empty state for placeholder content ─── */
+  .empty-state {
+    border: 1px dashed var(--rule);
+    padding: 60px 40px;
+    text-align: center;
+    border-radius: 2px;
+    background: var(--paper-warm);
+    margin: 40px 0;
+  }
+
+  .empty-state-icon {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    color: var(--accent);
+    font-style: normal;
+    margin-bottom: 12px;
+  }
+
+  .empty-state-text {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    color: var(--ink-mute);
+    font-style: normal;
+  }
+
+  .empty-state-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 10px;
+  }
+
+  /* ─── Mobile topbar ─── */
+  #mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 20px;
+    z-index: 90;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #mobile-topbar .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  #mobile-topbar .mobile-mark em { font-style: normal; color: var(--accent); }
+
+  .menu-btn {
+    background: none;
+    border: 1px solid var(--ink);
+    width: 38px; height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 1024px) {
+    :root { --sidebar-w: 260px; }
+    .intro { padding: 64px 48px 48px; }
+    .intro-title { font-size: 28px; }
+    .intro-lede { font-size: 19px; }
+    .intro-grid { grid-template-columns: 1fr 1fr; }
+    .page-content { padding: 56px 48px 80px; }
+    .page-title { font-size: 40px; }
+  }
+
+  @media (max-width: 720px) {
+    :root { --sidebar-w: 0px; }
+    #mobile-topbar { display: flex; }
+    body { padding-top: 64px; }
+
+    .sidebar {
+      position: fixed !important;
+      top: 0; left: 0;
+      width: 280px !important;
+      height: 100vh !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; width: 100%; }
+
+    .intro { padding: 40px 24px; }
+    .intro-title { font-size: 22px; }
+    .intro-lede { font-size: 16px; margin-bottom: 40px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 20px; }
+    .intro-footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+
+    .page-content { padding: 32px 20px 60px; }
+    .page-title { font-size: 30px; }
+    .page-deck { font-size: 16px; margin-bottom: 36px; }
+    .section-head { flex-direction: column; gap: 4px; }
+    .field-head { flex-direction: column; align-items: flex-start; }
+    .page-nav { flex-direction: column; gap: 16px; }
+    .page-nav > * { width: 100%; text-align: center; }
+    .subtabs { gap: 0; overflow-x: auto; flex-wrap: nowrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ MOBILE TOPBAR ═══════════════ -->
+<div id="mobile-topbar">
+  <div class="mobile-mark">Fabulus · <em>FAPESP</em></div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-mark">Guia de <em>submissão</em></div>
+    <div class="sidebar-sub">PIPE FAPESP · Fase 1</div>
+  </div>
+
+  <div class="sidebar-label">Introdução</div>
+  <div class="nav-item active" onclick="goTo(0)">
+    <span class="nav-num">00</span>
+    <span class="nav-text">Apresentação</span>
+  </div>
+
+  <div class="sidebar-label section">Telas do SAGe</div>
+  <div class="nav-item" onclick="goTo(1)">
+    <span class="nav-num">01</span>
+    <span class="nav-text">Identificação do Processo</span>
+  </div>
+  <div class="nav-item" onclick="goTo(2)">
+    <span class="nav-num">02</span>
+    <span class="nav-text">Dados Gerais do Projeto</span>
+  </div>
+  <div class="nav-item" onclick="goTo(3)">
+    <span class="nav-num">03</span>
+    <span class="nav-text">R$ / US$</span>
+  </div>
+  <div class="nav-item" onclick="goTo(4)">
+    <span class="nav-num">04</span>
+    <span class="nav-text">Documentos</span>
+  </div>
+  <div class="nav-item" onclick="goTo(5)">
+    <span class="nav-num">05</span>
+    <span class="nav-text">Observações / Manifestações</span>
+  </div>
+  <div class="nav-item" onclick="goTo(6)">
+    <span class="nav-num">06</span>
+    <span class="nav-text">Campos Adicionais</span>
+  </div>
+
+  <div class="sidebar-label section">Fechamento</div>
+  <div class="nav-item" onclick="goTo(7)">
+    <span class="nav-num">07</span>
+    <span class="nav-text">Checklist final</span>
+  </div>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+  <!-- ──────────── PAGE 0 · INTRO ──────────── -->
+  <section class="page active" id="page-0">
+    <div class="intro">
+      <div>
+        <div class="intro-meta">
+          <span>Guia operacional</span>
+          <span class="dot"></span>
+          <span>Cidade Azul Comunicação</span>
+          <span class="dot"></span>
+          <span>Processo 2025/12980-7</span>
+        </div>
+
+        <h1 class="intro-title">Submissão <em>PIPE FAPESP</em><br>Fase 1 · Fluxo Contínuo</h1>
+
+        <p class="intro-lede">
+          Passo a passo operacional para preenchimento das telas do sistema SAGe,
+          espelhando a ordem em que os campos aparecem na plataforma da FAPESP.
+        </p>
+
+        <div class="intro-grid">
+          <div class="intro-stat">
+            <div class="intro-stat-label">Sistema</div>
+            <div class="intro-stat-value">SAGe · <em>FAPESP</em></div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-label">Linha de fomento</div>
+            <div class="intro-stat-value">PIPE Fase 1</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-label">Modalidade</div>
+            <div class="intro-stat-value"><em>Fluxo Contínuo</em></div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-label">Categoria de pesquisa</div>
+            <div class="intro-stat-value">Tecnológica</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-label">Duração</div>
+            <div class="intro-stat-value">9 meses</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ──────────── PAGE 1 · TELA 1 ──────────── -->
+  <section class="page" id="page-1">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Tela 01</span>
+        <span>Aba: Identificação do Processo</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Identificação <em>do Processo</em></h1>
+      <p class="page-deck">
+        Primeira tela do SAGe. Define os metadados básicos do processo:
+        linha de fomento, beneficiário, vínculo institucional e categoria de pesquisa.
+      </p>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">1.1</span>
+          <span class="section-title">Campos da tela</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Grupo de Financiamento</span>
+            <div class="field-meta"><span class="pill fixed">Valor fixo</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Linha de Fomento</span>
+            <div class="field-meta"><span class="pill fixed">Valor fixo</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Beneficiário</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Responsável</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Data de Início</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Duração</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Vínculo Institucional do Processo</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Instituição de Pesquisa / Empresa principal vinculada ao processo</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Data de Abertura</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Categoria de Pesquisa</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Opções: Pesquisa Tecnológica · Pesquisa Científica · Pesquisa Aplicada</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Modelo de Formulário</span>
+            <div class="field-meta"><span class="pill fixed">Valor fixo</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(0)">← Apresentação</button>
+        <span class="page-indicator">01 / 07</span>
+        <button class="nav-btn primary" onclick="goTo(2)">Tela 02 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PAGE 2 · TELA 2 (com sub-abas) ──────────── -->
+  <section class="page" id="page-2">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Tela 02</span>
+        <span>Aba: Dados Gerais do Projeto</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Dados Gerais <em>do Projeto</em></h1>
+      <p class="page-deck">
+        Segunda tela do SAGe. Dividida em quatro sub-abas: Identificação,
+        Instituições, Pessoas Envolvidas e Resumo / Descrição.
+      </p>
+
+      <div class="subtabs">
+        <div class="subtab active" onclick="goSub(2, 'a')">2A · Identificação</div>
+        <div class="subtab" onclick="goSub(2, 'b')">2B · Instituições</div>
+        <div class="subtab" onclick="goSub(2, 'c')">2C · Pessoas Envolvidas</div>
+        <div class="subtab" onclick="goSub(2, 'd')">2D · Resumo / Descrição</div>
+      </div>
+
+      <!-- Sub-aba 2A -->
+      <div class="subpage active" id="sub-2-a">
+        <div class="section">
+          <div class="section-head">
+            <span class="section-num">2A</span>
+            <span class="section-title">Identificação</span>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Título em Português</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Título em Inglês</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Sub-área de Conhecimento</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Especialidade</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Palavras-chave</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+            <div class="field-hint">Uma palavra-chave por linha</div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Classificação Nacional de Atividades Econômicas (CNAE)</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-aba 2B -->
+      <div class="subpage" id="sub-2-b">
+        <div class="section">
+          <div class="section-head">
+            <span class="section-num">2B</span>
+            <span class="section-title">Instituições</span>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Instituição de Pesquisa / Empresa Principal</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+            <div class="field-hint">Empresa beneficiária do auxílio PIPE</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-aba 2C -->
+      <div class="subpage" id="sub-2-c">
+        <div class="section">
+          <div class="section-head">
+            <span class="section-num">2C</span>
+            <span class="section-title">Pessoas Envolvidas</span>
+          </div>
+          <div class="section-body">
+            <p>Equipe do projeto. Cada pessoa pode acumular múltiplas funções (Pesquisador Responsável, Responsável pela Empresa, Coordenador junto à Empresa, etc.).</p>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Pesquisador Responsável</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+            <div class="field-hint">Nome · Função · Horas semanais dedicadas · Vigência · Vínculo principal</div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Responsável pela Empresa</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Coordenador junto à Empresa</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Pesquisadores Associados</span>
+              <div class="field-meta"><span class="pill optional">Opcional</span></div>
+            </div>
+            <div class="field-value"></div>
+            <div class="field-hint">Co-pesquisadores com experiência complementar ao projeto</div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Bolsistas (PE / TT)</span>
+              <div class="field-meta"><span class="pill optional">Opcional nesta tela</span></div>
+            </div>
+            <div class="field-value"></div>
+            <div class="field-hint">Cadastrados na Tela 03 — Quotas de Bolsa</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-aba 2D -->
+      <div class="subpage" id="sub-2-d">
+        <div class="section">
+          <div class="section-head">
+            <span class="section-num">2D</span>
+            <span class="section-title">Resumo / Descrição</span>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Resumo em Português</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Resumo em Inglês</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Objetivos</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Resultados Previstos</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">Aplicações Comerciais da Pesquisa</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <span class="field-name">O projeto poderá obter resultados que justifiquem solicitação de patente?</span>
+              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            </div>
+            <div class="field-value"></div>
+            <div class="field-hint">Opções: Sim · Não</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(1)">← Tela 01</button>
+        <span class="page-indicator">02 / 07</span>
+        <button class="nav-btn primary" onclick="goTo(3)">Tela 03 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PAGE 3 · TELA 3 ──────────── -->
+  <section class="page" id="page-3">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Tela 03</span>
+        <span>Aba: R$ / US$</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Orçamento <em>e fontes</em></h1>
+      <p class="page-deck">
+        Terceira tela do SAGe. Capital, custeio, reserva técnica, provisão para
+        importação e quotas de bolsa (PE / TT). Inclui também a sub-aba Outras Fontes.
+      </p>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">3.1</span>
+          <span class="section-title">Benefícios — Capital</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Material Permanente</span>
+            <div class="field-meta"><span class="pill optional">Excepcional na Fase 1</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Valor em R$ e US$. Concedido somente em condições excepcionais</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">3.2</span>
+          <span class="section-title">Benefícios — Custeio</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Despesas de Transporte</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Diárias</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Material de Consumo</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Serviços de Terceiros</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Apenas de natureza técnica e eventual</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">3.3</span>
+          <span class="section-title">Reserva Técnica e Provisão</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Reserva Técnica — Benefícios Complementares</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Reserva Técnica — Custo de Infraestrutura Direta do Projeto</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Percentual padrão: 15% (País) · 15% (Exterior)</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Provisão para Importação</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Percentual padrão: 15% (Exterior)</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">3.4</span>
+          <span class="section-title">Quotas de Bolsa</span>
+        </div>
+        <div class="section-body">
+          <p>Para cada modalidade: Carga Horária · Duração (meses) · Quantidade.</p>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Pesquisador em Pequenas Empresas (PE)</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Níveis disponíveis: PE-1 · PE-2 · PE-3</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Treinamento Técnico (TT)</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Níveis disponíveis: TT-1 · TT-2 · TT-3 · TT-4 · TT-4A · TT-5</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">3.5</span>
+          <span class="section-title">Outras Fontes (sub-aba)</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Outras fontes de financiamento</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Recursos próprios · Aceleradoras · Investidores · Outras agências</div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(2)">← Tela 02</button>
+        <span class="page-indicator">03 / 07</span>
+        <button class="nav-btn primary" onclick="goTo(4)">Tela 04 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PAGE 4 · TELA 4 ──────────── -->
+  <section class="page" id="page-4">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Tela 04</span>
+        <span>Aba: Documentos</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Documentos <em>anexados</em></h1>
+      <p class="page-deck">
+        Quarta tela do SAGe. Documentos exigidos na Etapa de Análise (avaliação científica)
+        e na Etapa de Contratação (formalização), incluindo outros anexos opcionais.
+      </p>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">4.1</span>
+          <span class="section-title">Etapa: Análise — Documentos científicos</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Projeto de Pesquisa (PIPE)</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Arquivo PDF — documento principal da proposta</div>
+          <a class="field-action" href="projeto-de-pesquisa.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Súmula curricular do beneficiário</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Pesquisador Responsável — formato FAPESP</div>
+          <a class="field-action" href="sumula-beneficiario.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Súmula curricular dos pesquisadores principais</span>
+            <div class="field-meta"><span class="pill optional">Quando aplicável</span></div>
+          </div>
+          <div class="field-value filled">Não se aplica</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Súmula curricular dos pesquisadores associados</span>
+            <div class="field-meta"><span class="pill optional">Quando aplicável</span></div>
+          </div>
+          <div class="field-value filled">Não se aplica</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Currículo de consultores a subcontratar</span>
+            <div class="field-meta"><span class="pill optional">Quando aplicável</span></div>
+          </div>
+          <div class="field-value filled">Não se aplica</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Qualificação de empresas e instituições de pesquisa a subcontratar</span>
+            <div class="field-meta"><span class="pill optional">Quando aplicável</span></div>
+          </div>
+          <div class="field-value filled">Não se aplica</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Descrição das responsabilidades da equipe</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Arquivo: ResumoPlanoPesquisador.pdf · descreve PE-III</div>
+          <a class="field-action" href="responsabilidades-equipe.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Descrição das atividades desenvolvidas pela equipe</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Arquivo: ResumoPlanoBolsistas.pdf · descreve TT-V e TT-IV</div>
+          <a class="field-action" href="atividades-equipe.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Planos de atividades individuais para bolsas TT / participação em cursos</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Arquivo: PlanoAtividadesBolsistas.pdf · um plano por bolsista solicitado (TT-V e TT-IV)</div>
+          <a class="field-action" href="planos-atividades-bolsistas.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Modelo de Negócios (Canvas)</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Arquivo: Canvas_TheBlueCity.pdf · Lean Canvas em 12 blocos · referenciado nos pareceres da Seção 3 (Viabilidade)</div>
+          <a class="field-action" href="modelo-negocios-canvas.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">4.2</span>
+          <span class="section-title">Etapa: Análise — Complementação de Proposta</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Anexo II — Infraestrutura institucional</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Arquivo: Anexo II_InformacaoInstituicao.pdf · Informação aprovada pela Instituição Sede</div>
+          <a class="field-action" href="anexo-ii-infraestrutura.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Balanço Patrimonial e DRE — últimos 2 exercícios</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">DRE_12.2024.pdf</div>
+          <a class="field-action" href="https://the-blue-city.github.io/content/DRE_12.2024.pdf" target="_blank">
+            Abrir PDF <span class="arrow">→</span>
+          </a>
+          <div class="date-warning">Verificar data do documento antes do envio</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Contrato social da empresa</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">CidadeAzul_ContratoSocial.pdf</div>
+          <a class="field-action" href="https://the-blue-city.github.io/content/CidadeAzul_ContratoSocial.pdf" target="_blank">
+            Abrir PDF <span class="arrow">→</span>
+          </a>
+          <div class="date-warning">Verificar data do documento antes do envio</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Comprovante de vínculo do Pesquisador Responsável com a pequena empresa</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Manifestação do Representante Legal da Empresa Sede</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Arquivo: Manifestacao_Representante_PIPE.pdf · declaração formal de apoio da Empresa Sede</div>
+          <a class="field-action" href="manifestacao-representante.html" target="_blank">
+            Abrir documento <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Orçamentos dos fornecedores / representantes autorizados</span>
+            <div class="field-meta"><span class="pill optional">Quando aplicável</span></div>
+          </div>
+          <div class="field-value filled">Não se aplica</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Parque de equipamentos</span>
+            <div class="field-meta"><span class="pill optional">Quando aplicável</span></div>
+          </div>
+          <div class="field-value filled">Não se aplica</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">4.3</span>
+          <span class="section-title">Etapa: Contratação</span>
+        </div>
+        <div class="section-body">
+          <p>Documentos administrativos exigidos para formalização do auxílio após aprovação.</p>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Cartão de CNPJ da empresa</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">CidadeAzul_CNPJ.pdf</div>
+          <a class="field-action" href="https://the-blue-city.github.io/content/CidadeAzul_CNPJ.pdf" target="_blank">
+            Abrir PDF <span class="arrow">→</span>
+          </a>
+          <div class="date-warning">Verificar data do documento antes do envio</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Certidão negativa de tributos federais e dívida ativa da União</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">CND_TributosFederais.pdf</div>
+          <a class="field-action" href="https://the-blue-city.github.io/content/CND_TributosFederais.pdf" target="_blank">
+            Abrir PDF <span class="arrow">→</span>
+          </a>
+          <div class="date-warning">Verificar data do documento antes do envio</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Certidão negativa de tributos da dívida ativa do Estado de SP</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">CND_DividaEstadual.pdf</div>
+          <a class="field-action" href="https://the-blue-city.github.io/content/CND_DividaEstadual.pdf" target="_blank">
+            Abrir PDF <span class="arrow">→</span>
+          </a>
+          <div class="date-warning">Verificar data do documento antes do envio</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Certificado de Regularidade do FGTS (CRF)</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">Regularidade_do_Empregador.pdf</div>
+          <a class="field-action" href="https://the-blue-city.github.io/content/Regularidade_do_Empregador.pdf" target="_blank">
+            Abrir PDF <span class="arrow">→</span>
+          </a>
+          <div class="date-warning">Verificar data do documento antes do envio</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Comprovante de residência do Pesquisador Responsável no Estado de SP</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">CarolinaFerres_ComprovanteEndereco.pdf</div>
+          <a class="field-action" href="https://the-blue-city.github.io/content/CarolinaFerres_ComprovanteEndereco.pdf" target="_blank">
+            Abrir PDF <span class="arrow">→</span>
+          </a>
+          <div class="date-warning">Verificar data do documento antes do envio</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Termo de Compromisso sobre Ética em Gestão e Boa Governança</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Termo de Aceitação de Transferência de Domínio (Cessão de Uso / Doação)</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">4.4</span>
+          <span class="section-title">Outros Documentos Anexados</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Carta ao Comitê / Anexo I</span>
+            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Carta de apresentação ou resposta às diligências</div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(3)">← Tela 03</button>
+        <span class="page-indicator">04 / 07</span>
+        <button class="nav-btn primary" onclick="goTo(5)">Tela 05 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PAGE 5 · TELA 5 ──────────── -->
+  <section class="page" id="page-5">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Tela 05</span>
+        <span>Aba: Observações / Manifestações</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Observações <em>ao Comitê</em></h1>
+      <p class="page-deck">
+        Quinta tela do SAGe. Campo livre destinado a observações para o
+        Comitê de Avaliação e registro de manifestações sobre a proposta.
+      </p>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">5.1</span>
+          <span class="section-title">Campo da tela</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Observação</span>
+            <div class="field-meta"><span class="pill optional">Texto livre</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Texto livre dirigido ao Comitê de Avaliação · pode acompanhar carta complementar anexada na Tela 04</div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(4)">← Tela 04</button>
+        <span class="page-indicator">05 / 07</span>
+        <button class="nav-btn primary" onclick="goTo(6)">Tela 06 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PAGE 6 · TELA 6 ──────────── -->
+  <section class="page" id="page-6">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Tela 06</span>
+        <span>Aba: Campos Adicionais</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Campos <em>adicionais</em></h1>
+      <p class="page-deck">
+        Sexta tela do SAGe. Questões avulsas exigidas pela linha de fomento,
+        como dados bancários da empresa principal e outras informações complementares.
+      </p>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">6.1</span>
+          <span class="section-title">Questões avulsas</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Bancos utilizados pela Empresa Principal</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Nome do banco · código · agência · conta corrente</div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(5)">← Tela 05</button>
+        <span class="page-indicator">06 / 07</span>
+        <button class="nav-btn primary" onclick="goTo(7)">Fechamento →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PAGE 7 · CHECKLIST FINAL ──────────── -->
+  <section class="page" id="page-7">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Fechamento</span>
+        <span>Antes de enviar</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Checklist <em>final</em></h1>
+      <p class="page-deck">
+        Verificação consolidada antes do envio da proposta: todas as telas preenchidas,
+        documentos anexados, valores conferidos, equipe cadastrada.
+      </p>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">7.1</span>
+          <span class="section-title">Verificação por tela</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Tela 01 — Identificação do Processo</span>
+            <div class="field-meta"><span class="pill required">Verificar</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Todos os campos preenchidos · vínculo institucional confirmado</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Tela 02 — Dados Gerais do Projeto</span>
+            <div class="field-meta"><span class="pill required">Verificar</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Sub-abas 2A, 2B, 2C e 2D completas</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Tela 03 — Orçamento</span>
+            <div class="field-meta"><span class="pill required">Verificar</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Valores totais conferidos · bolsas e reserva técnica corretas</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Tela 04 — Documentos</span>
+            <div class="field-meta"><span class="pill required">Verificar</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Todos os anexos obrigatórios da Etapa Análise e Contratação enviados</div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Tela 05 — Observações</span>
+            <div class="field-meta"><span class="pill optional">Quando aplicável</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Tela 06 — Campos Adicionais</span>
+            <div class="field-meta"><span class="pill required">Verificar</span></div>
+          </div>
+          <div class="field-value"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">7.2</span>
+          <span class="section-title">Envio da proposta</span>
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Validação final no SAGe</span>
+            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+          </div>
+          <div class="field-value"></div>
+          <div class="field-hint">Botão "Enviar para análise" · após confirmação não é possível editar</div>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(6)">← Tela 06</button>
+        <span class="page-indicator">07 / 07</span>
+        <button class="nav-btn primary" onclick="goTo(0)">↺ Voltar ao início</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const totalPages = 8;
+  let current = 0;
+
+  function goTo(index) {
+    if (window.innerWidth <= 720) {
+      document.querySelector('.sidebar').classList.remove('open');
+      document.getElementById('sidebar-overlay').style.display = 'none';
+    }
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + index).classList.add('active');
+    document.querySelectorAll('.nav-item')[index].classList.add('active');
+    current = index;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goSub(page, sub) {
+    const root = document.getElementById('page-' + page);
+    root.querySelectorAll('.subtab').forEach(t => t.classList.remove('active'));
+    root.querySelectorAll('.subpage').forEach(p => p.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('sub-' + page + '-' + sub).classList.add('active');
+  }
+
+  function toggleSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    const isOpen = sb.classList.toggle('open');
+    ov.style.display = isOpen ? 'block' : 'none';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      if (current < totalPages - 1) goTo(current + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      if (current > 0) goTo(current - 1);
+    }
+  });
+</script>
+</body>
+</html>

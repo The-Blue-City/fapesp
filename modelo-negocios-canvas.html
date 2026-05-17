@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelo de Negócios · Lean Canvas · PIPE FAPESP</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ─────────────────────────── SIDEBAR ─────────────────────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sidebar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-mark em { font-weight: 400; color: var(--accent); }
+
+  .sidebar-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label {
+    padding: 22px 32px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 10px 32px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-weight: 400;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .nav-item:hover { background: var(--paper-warm); color: var(--ink); }
+
+  .nav-item.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: var(--paper-warm);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .nav-item.active .nav-num { color: var(--accent); font-weight: 600; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─────────────────────────── MAIN ─────────────────────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  .page-content {
+    padding: 80px 80px 120px;
+    max-width: 1280px;
+  }
+
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+  }
+
+  .page-eyebrow .tag {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 4px 10px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .page-eyebrow .sep {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .page-title em { color: var(--accent); }
+
+  .page-deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+    max-width: 720px;
+    margin-bottom: 40px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ─── Status banner ─── */
+  .doc-status {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin-bottom: 48px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .doc-status-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .doc-status-value {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  /* ─────────────────────────── LEAN CANVAS GRID ─────────────────────────── */
+  .canvas-title-bar {
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 22px;
+    margin-bottom: 0;
+    background: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .canvas-title-bar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .canvas-title-bar-main {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+
+  /* Canvas as a 10-column × 3-row grid (classic Lean Canvas layout)
+     Cols: 1 Problemas | 2 Soluções existentes | 3 Solução | 4 Métricas | 5 PUV | 6 Conceito alto nível | 7 Vantagem | 8 Canais | 9 Segmentos | 10 Primeiros clientes
+     Bottom: Custos (cols 1-5) | Receitas (cols 6-10)
+  */
+  .lean-canvas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: minmax(180px, auto) minmax(180px, auto);
+    gap: 0;
+    border: 1px solid var(--ink);
+    margin-bottom: 80px;
+    background: var(--ink);
+  }
+
+  .canvas-block {
+    background: var(--paper);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    scroll-margin-top: 20px;
+  }
+
+  /* Remove bottom border for blocks in last row */
+  .canvas-block[style*="grid-row:2"],
+  .canvas-block[style*="grid-row: 2"] { border-bottom: none; }
+
+  /* PUV spans 2 rows, so it has no bottom border within grid */
+  .canvas-block.puv { border-bottom: none; }
+
+  /* Remove right border for last column */
+  .canvas-block[style*="grid-column:5"],
+  .canvas-block[style*="grid-column: 5"] { border-right: none; }
+
+  .canvas-block-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    border-bottom: 1px dashed var(--rule);
+    padding-bottom: 8px;
+  }
+
+  .canvas-block-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .canvas-block-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .canvas-block-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .canvas-block-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .canvas-block-body li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .canvas-block-body li:last-child { margin-bottom: 0; }
+
+  .canvas-block-body li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* PUV emphasis */
+  .canvas-block.puv {
+    background: var(--accent-soft);
+  }
+
+  /* ─────────────────────────── DETAIL SECTIONS ─────────────────────────── */
+  .doc-section {
+    margin-bottom: 56px;
+    scroll-margin-top: 20px;
+  }
+
+  .doc-section-head {
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .doc-section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .doc-section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .doc-content {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .doc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .doc-list li {
+    padding: 14px 0 14px 28px;
+    border-bottom: 1px solid var(--rule-soft);
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .doc-list li:last-child { border-bottom: none; }
+
+  .doc-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ─── Market sizing ─── */
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .market-card {
+    border: 1px solid var(--rule);
+    padding: 22px 24px;
+    background: var(--paper-warm);
+  }
+
+  .market-acronym {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .market-name {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  .market-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .market-currency {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ─── Mobile topbar ─── */
+  #mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 20px;
+    z-index: 90;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #mobile-topbar .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+
+  #mobile-topbar .mobile-mark em { color: var(--accent); }
+
+  .menu-btn {
+    background: none;
+    border: 1px solid var(--ink);
+    width: 38px; height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 1200px) {
+    :root { --sidebar-w: 280px; }
+    .page-content { padding: 56px 48px 80px; }
+    .canvas-block-body { font-size: 11.5px; }
+  }
+
+  @media (max-width: 900px) {
+    .lean-canvas {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+    .canvas-block {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .canvas-block:nth-child(2n) { border-right: none; }
+    .market-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    :root { --sidebar-w: 0px; }
+    #mobile-topbar { display: flex; }
+    body { padding-top: 64px; }
+
+    .sidebar {
+      position: fixed !important;
+      width: 280px !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; width: 100%; }
+
+    .page-content { padding: 32px 20px 60px; }
+    .page-title { font-size: 26px; }
+    .page-deck { font-size: 15px; margin-bottom: 36px; }
+    .doc-status { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .lean-canvas {
+      grid-template-columns: 1fr;
+    }
+    .canvas-block {
+      grid-column: 1 !important;
+      grid-row: auto !important;
+      border-right: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ MOBILE TOPBAR ═══════════════ -->
+<div id="mobile-topbar">
+  <div class="mobile-mark">Modelo de <em>Negócios</em></div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Modelo de <em>Negócios</em></div>
+    <div class="sidebar-sub">Lean Canvas · PIPE Fase 1</div>
+  </div>
+
+  <div class="sidebar-label">Blocos do Canvas</div>
+  <a class="nav-item" href="#bloco-1"><span class="nav-num">01</span><span>Problemas</span></a>
+  <a class="nav-item" href="#bloco-2"><span class="nav-num">02</span><span>Soluções existentes</span></a>
+  <a class="nav-item" href="#bloco-3"><span class="nav-num">03</span><span>Solução</span></a>
+  <a class="nav-item" href="#bloco-4"><span class="nav-num">04</span><span>Métricas-chave</span></a>
+  <a class="nav-item" href="#bloco-5"><span class="nav-num">05</span><span>Proposta única de valor</span></a>
+  <a class="nav-item" href="#bloco-5"><span class="nav-num">06</span><span>Conceito de alto nível</span></a>
+  <a class="nav-item" href="#bloco-7"><span class="nav-num">07</span><span>Vantagem vencedora</span></a>
+  <a class="nav-item" href="#bloco-8"><span class="nav-num">08</span><span>Canais</span></a>
+  <a class="nav-item" href="#bloco-9"><span class="nav-num">09</span><span>Segmentos de clientes</span></a>
+  <a class="nav-item" href="#bloco-10"><span class="nav-num">10</span><span>Primeiros clientes</span></a>
+  <a class="nav-item" href="#bloco-11"><span class="nav-num">11</span><span>Custos no PIPE Fase 1</span></a>
+  <a class="nav-item" href="#bloco-12"><span class="nav-num">12</span><span>Receitas e mercado</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span class="tag">Doc 06</span>
+      <span>Anexo 5 · Lean Canvas</span>
+      <span class="sep"></span>
+    </div>
+
+    <h1 class="page-title">Modelo de <em>Negócios</em> · Lean Canvas</h1>
+    <p class="page-deck">
+      Quadro estratégico que sintetiza o modelo de negócios da solução proposta:
+      do problema identificado ao mercado endereçável, em 12 blocos.
+    </p>
+
+    <div class="doc-status">
+      <div class="doc-status-item">
+        <span class="doc-status-label">Versão atual</span>
+        <span class="doc-status-value">v.1 — submetida em 25/06/2025</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Arquivo SAGe</span>
+        <span class="doc-status-value">Canvas_TheBlueCity.pdf</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Tagline</span>
+        <span class="doc-status-value">Do prompt ao GDD em minutos</span>
+      </div>
+    </div>
+
+    <!-- ═════════════ CANVAS VISUAL ═════════════ -->
+
+    <div class="canvas-title-bar">
+      <span class="canvas-title-bar-label">Canvas</span>
+      <span class="canvas-title-bar-main">IA para Design de Jogos Educativos · Do prompt ao Game Design Document em minutos</span>
+    </div>
+
+    <div class="lean-canvas">
+
+      <!-- COL 1 — Problemas (tall) + Soluções existentes -->
+      <div class="canvas-block" id="bloco-1" style="grid-column:1;grid-row:1;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">01</span>
+          <span class="canvas-block-title">Problemas</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Tempo e dependência de consultores especializados que elevam os custos para a produção de roteiros.</li>
+            <li>Pequenos estúdios e profissionais independentes não têm acesso a ferramentas para estruturar GDDs com qualidade profissional.</li>
+            <li>Baixa oferta de ferramentas que conectem IA e design de jogos de forma estruturada, confiável e produtiva.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="canvas-block" id="bloco-2" style="grid-column:1;grid-row:2;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">02</span>
+          <span class="canvas-block-title">Soluções existentes</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Plataformas como Ludo.ai, Wayline e Machinations oferecem soluções parciais (análises, balanceamento ou geração textual), mas não integram a criação completa de GDDs.</li>
+            <li>Ferramentas genéricas de IA (como GPT) ainda exigem domínio técnico elevado e não seguem padrões da indústria de jogos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COL 2 — Solução + Métricas -->
+      <div class="canvas-block" id="bloco-3" style="grid-column:2;grid-row:1;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">03</span>
+          <span class="canvas-block-title">Solução</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Ferramenta de IA especializada em gerar GDDs completos a partir de prompts textuais.</li>
+            <li>Criação automatizada de narrativa, mecânicas, estrutura lógica e conteúdo técnico seguindo boas práticas da indústria.</li>
+            <li>Interface intuitiva e aplicação prática validada em ambiente real.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="canvas-block" id="bloco-4" style="grid-column:2;grid-row:2;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">04</span>
+          <span class="canvas-block-title">Métricas-chave</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Tempo médio de geração de um GDD (meta: menos de 10 minutos por documento completo).</li>
+            <li>Nível de completude e aderência aos padrões da indústria.</li>
+            <li>Número de documentos gerados por mês por usuários ativos (engajamento).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COL 3 — PUV (tall, spans both rows) -->
+      <div class="canvas-block puv" id="bloco-5" style="grid-column:3;grid-row:1 / span 2;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">05</span>
+          <span class="canvas-block-title">Proposta única de valor</span>
+        </div>
+        <div class="canvas-block-body">
+          <p style="margin-bottom:14px;"><strong>Acesso democratizado ao design de jogos</strong> com qualidade técnica e baixo custo.</p>
+          <p style="margin-bottom:14px;">Solução focada no mercado latino-americano que gera Game Design Documents profissionais completos com IA.</p>
+          <div style="margin-top:22px;padding-top:14px;border-top:1px dashed var(--rule);">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">06 · Conceito de alto nível</div>
+            <p style="font-size:11.5px;line-height:1.55;">Ferramenta de IA que automatiza o design de jogos desde a concepção até a formalização técnica, ajudando estúdios, desenvolvedores e educadores a criarem Game Design Documents de forma ágil, estruturada e escalável.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 4 — Vantagem + Canais -->
+      <div class="canvas-block" id="bloco-7" style="grid-column:4;grid-row:1;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">07</span>
+          <span class="canvas-block-title">Vantagem vencedora</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Domínio técnico profundo em IA e game design.</li>
+            <li>Base em plataforma educacional já validada e operante.</li>
+            <li>Solução pensada para o mercado brasileiro e com vocação internacional.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="canvas-block" id="bloco-8" style="grid-column:4;grid-row:2;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">08</span>
+          <span class="canvas-block-title">Canais</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Comunidades de desenvolvedores de jogos (Discord, Reddit, Dev.to, ABRAGAMES).</li>
+            <li>Eventos e conferências de games e IA (BIG Festival, GDC, Reboot).</li>
+            <li>Parcerias com plataformas de ensino e publishers independentes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COL 5 — Segmentos + Primeiros clientes -->
+      <div class="canvas-block" id="bloco-9" style="grid-column:5;grid-row:1;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">09</span>
+          <span class="canvas-block-title">Segmentos de clientes</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Desenvolvedores autônomos (indie developers) e pequenos e médios estúdios.</li>
+            <li>Agências de marketing, edtechs e consultorias.</li>
+            <li>Setores de marketing e RH de grandes empresas.</li>
+            <li>Consultores, professores, instituições de ensino e pesquisadores que trabalham com jogos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="canvas-block" id="bloco-10" style="grid-column:5;grid-row:2;">
+        <div class="canvas-block-head">
+          <span class="canvas-block-num">10</span>
+          <span class="canvas-block-title">Primeiros clientes</span>
+        </div>
+        <div class="canvas-block-body">
+          <ul>
+            <li>Estúdios e plataformas parceiras da The Blue City e rede do Cubo Itaú.</li>
+            <li>Instituições de ensino com forte atuação em jogos digitais: FIAP, PUC-SP, UNICAMP, USP, SENAC-SP, FATEC-SP.</li>
+            <li>Empresas que utilizam jogos para treinamento: Ambev, Magalu, Vivo, Itaú, Bradesco.</li>
+            <li>Agências brasileiras com histórico de experiências gamificadas: LiveAD, Mutato, Suno United Creators, África.</li>
+            <li>Professores e devs independentes conectados a ABRAGAMES, BIG Festival e SPIN Indie Game.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═════════════ FOOTER (CUSTOS + RECEITAS) ═════════════ -->
+
+    <section class="doc-section" id="bloco-11">
+      <div class="doc-section-head">
+        <span class="doc-section-num">11</span>
+        <h2 class="doc-section-title">Custos e outras saídas de caixa no PIPE Fase 1</h2>
+      </div>
+      <div class="doc-content">
+        <p style="margin-bottom:16px;font-style:italic;color:var(--ink-mute);">Quais serão os principais tipos de custos, despesas e outras saídas de caixa durante o PIPE Fase 1.</p>
+        <ul class="doc-list">
+          <li>Bolsas FAPESP (PE-III, TT-4 e TT-5).</li>
+          <li>Infraestrutura digital (cloud, APIs, ferramentas de versionamento).</li>
+          <li>Custos operacionais com pesquisa, entrevistas e validação com usuários.</li>
+          <li>Proteção de propriedade intelectual da ferramenta desenvolvida.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="doc-section" id="bloco-12">
+      <div class="doc-section-head">
+        <span class="doc-section-num">12</span>
+        <h2 class="doc-section-title">Fontes de Receitas e Mercado</h2>
+      </div>
+      <div class="doc-content">
+        <ul class="doc-list">
+          <li><strong>Pay-per-GDD</strong> (créditos por documento gerado) com pacotes diferenciados por níveis de aprofundamento do GDD: Básico, Master e Premium.</li>
+          <li><strong>Consultoria</strong> com preços menores que o mercado.</li>
+        </ul>
+
+        <div class="market-grid">
+          <div class="market-card">
+            <div class="market-acronym">TAM</div>
+            <div class="market-name">Total Addressable Market</div>
+            <div class="market-value">R$ 2,87 trilhões</div>
+            <div class="market-currency">R$ 2.868.305.400.000,00</div>
+          </div>
+          <div class="market-card">
+            <div class="market-acronym">SAM</div>
+            <div class="market-name">Serviceable Available Market</div>
+            <div class="market-value">R$ 1,38 bilhão</div>
+            <div class="market-currency">R$ 1.381.284.000,00</div>
+          </div>
+          <div class="market-card">
+            <div class="market-acronym">SOM</div>
+            <div class="market-name">Serviceable Obtainable Market</div>
+            <div class="market-value">R$ 442 milhões</div>
+            <div class="market-currency">R$ 442.010.880,00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+  function toggleSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    const isOpen = sb.classList.toggle('open');
+    ov.style.display = isOpen ? 'block' : 'none';
+  }
+
+  const sections = document.querySelectorAll('.canvas-block[id], .doc-section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  function updateActive() {
+    const scrollY = window.scrollY + 120;
+    let currentId = '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= scrollY) currentId = sec.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + currentId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 720) {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>

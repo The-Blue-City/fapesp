@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifestação do Representante Legal · PIPE FAPESP</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ─────────────────────────── SIDEBAR ─────────────────────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sidebar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-mark em { font-weight: 400; color: var(--accent); }
+
+  .sidebar-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label {
+    padding: 22px 32px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 10px 32px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-weight: 400;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .nav-item:hover { background: var(--paper-warm); color: var(--ink); }
+
+  .nav-item.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: var(--paper-warm);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .nav-item.active .nav-num { color: var(--accent); font-weight: 600; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─────────────────────────── MAIN ─────────────────────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  .page-content {
+    padding: 80px 80px 120px;
+    max-width: 880px;
+  }
+
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+  }
+
+  .page-eyebrow .tag {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 4px 10px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .page-eyebrow .sep {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .page-title em { color: var(--accent); }
+
+  .page-deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+    max-width: 720px;
+    margin-bottom: 40px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ─── Status banner ─── */
+  .doc-status {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .doc-status-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .doc-status-value {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  /* ─── Issues banner ─── */
+  .issues-banner {
+    background: var(--warn-soft);
+    border-left: 3px solid var(--warn);
+    padding: 20px 24px;
+    margin-bottom: 48px;
+  }
+
+  .issues-banner-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warn);
+    margin-bottom: 10px;
+  }
+
+  .issues-banner-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .issues-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .issues-list li {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    padding: 6px 0 6px 22px;
+    position: relative;
+  }
+
+  .issues-list li::before {
+    content: '⚠';
+    position: absolute;
+    left: 0;
+    color: var(--warn);
+    font-size: 12px;
+    top: 7px;
+  }
+
+  .issues-list li strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ─── Header data fields ─── */
+  .header-fields {
+    border: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+
+  .header-field {
+    padding: 14px 22px;
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .header-field:last-child { border-bottom: none; }
+
+  .header-field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    min-width: 220px;
+    flex-shrink: 0;
+  }
+
+  .header-field-value {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .header-field-value.divergent {
+    background: linear-gradient(to bottom, transparent 65%, var(--warn-soft) 65%);
+  }
+
+  /* ─── Manifest title ─── */
+  .manifest-title {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 24px 20px;
+    border: 1px solid var(--ink);
+    background: var(--paper-warm);
+  }
+
+  .manifest-title-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+
+  .manifest-title-main {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  /* ─── Declaration list ─── */
+  .decl-intro {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .decl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 48px 0;
+    counter-reset: decl-counter;
+  }
+
+  .decl-list li {
+    border: 1px solid var(--rule);
+    padding: 20px 24px 20px 60px;
+    margin-bottom: 12px;
+    background: var(--paper);
+    position: relative;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    counter-increment: decl-counter;
+    scroll-margin-top: 20px;
+  }
+
+  .decl-list li::before {
+    content: counter(decl-counter, decimal-leading-zero);
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+
+  .decl-list li a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent);
+  }
+
+  .decl-list li a:hover { text-decoration: underline; }
+
+  /* ─── Signature block ─── */
+  .signature-block {
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    margin-top: 32px;
+    scroll-margin-top: 20px;
+  }
+
+  .signature-row {
+    padding: 14px 22px;
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .signature-row:last-child { border-bottom: none; }
+
+  .signature-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .signature-value {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+    flex: 1;
+  }
+
+  .signature-mark-row {
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--paper-warm);
+  }
+
+  .signature-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .signature-mark-name {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  /* ─── Footnote ─── */
+  .footnote {
+    margin-top: 48px;
+    padding: 20px 24px;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--rule);
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--ink-mute);
+  }
+
+  .footnote-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+
+  .footnote p { margin-bottom: 8px; }
+  .footnote p:last-child { margin-bottom: 0; }
+  .footnote strong { font-weight: 600; color: var(--ink); }
+
+  /* ─── Mobile topbar ─── */
+  #mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 20px;
+    z-index: 90;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #mobile-topbar .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+
+  #mobile-topbar .mobile-mark em { color: var(--accent); }
+
+  .menu-btn {
+    background: none;
+    border: 1px solid var(--ink);
+    width: 38px; height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 1024px) {
+    :root { --sidebar-w: 260px; }
+    .page-content { padding: 56px 48px 80px; }
+    .page-title { font-size: 30px; }
+  }
+
+  @media (max-width: 720px) {
+    :root { --sidebar-w: 0px; }
+    #mobile-topbar { display: flex; }
+    body { padding-top: 64px; }
+
+    .sidebar {
+      position: fixed !important;
+      width: 280px !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; width: 100%; }
+
+    .page-content { padding: 32px 20px 60px; }
+    .page-title { font-size: 26px; }
+    .page-deck { font-size: 15px; margin-bottom: 36px; }
+    .doc-status { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .header-field { flex-direction: column; gap: 4px; }
+    .header-field-label { min-width: auto; }
+    .signature-row { flex-direction: column; gap: 4px; }
+    .signature-label { min-width: auto; }
+    .manifest-title-main { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ MOBILE TOPBAR ═══════════════ -->
+<div id="mobile-topbar">
+  <div class="mobile-mark">Manifestação · <em>Rep. Legal</em></div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Manifestação · <em>Rep. Legal</em></div>
+    <div class="sidebar-sub">Empresa Sede · PIPE FAPESP</div>
+  </div>
+
+  <div class="sidebar-label">Estrutura do documento</div>
+  <a class="nav-item" href="#cabecalho"><span class="nav-num">—</span><span>Cabeçalho</span></a>
+  <a class="nav-item" href="#decl-1"><span class="nav-num">01</span><span>Ciência das necessidades</span></a>
+  <a class="nav-item" href="#decl-2"><span class="nav-num">02</span><span>Compromisso de apoio</span></a>
+  <a class="nav-item" href="#decl-3"><span class="nav-num">03</span><span>Autorizações legais</span></a>
+  <a class="nav-item" href="#decl-4"><span class="nav-num">04</span><span>Veracidade das informações</span></a>
+  <a class="nav-item" href="#assinatura"><span class="nav-num">—</span><span>Assinatura</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span class="tag">Doc 08</span>
+      <span>Manifestação do Representante Legal da Empresa Sede</span>
+      <span class="sep"></span>
+    </div>
+
+    <h1 class="page-title">Manifestação do <em>Representante Legal</em> da Empresa Sede</h1>
+    <p class="page-deck">
+      Declaração formal da Empresa Sede assumindo compromisso de prover toda a infraestrutura
+      e apoio necessário para a execução do projeto, em caso de aprovação.
+    </p>
+
+    <div class="doc-status">
+      <div class="doc-status-item">
+        <span class="doc-status-label">Versão atual</span>
+        <span class="doc-status-value">v.1 — submetida em 30/05/2025</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Arquivo SAGe</span>
+        <span class="doc-status-value">Manifestacao_Representante_PIPE.pdf</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Modelo FAPESP</span>
+        <span class="doc-status-value">Novembro/2019</span>
+      </div>
+    </div>
+
+    <!-- ──────────── CABEÇALHO ──────────── -->
+    <section id="cabecalho">
+      <div class="header-fields">
+        <div class="header-field">
+          <span class="header-field-label">Pesquisador Responsável / Beneficiário</span>
+          <span class="header-field-value">Carolina Pérez Ferrés</span>
+        </div>
+        <div class="header-field">
+          <span class="header-field-label">Título do projeto</span>
+          <span class="header-field-value">Inteligência Artificial para Automatização da Geração de Game Design Documents em Jogos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────── DECLARAÇÕES ──────────── -->
+    <div class="manifest-title">
+      <div class="manifest-title-eyebrow">Manifestação formal</div>
+      <div class="manifest-title-main">Manifestação do Representante Legal da Empresa Sede</div>
+    </div>
+
+    <p class="decl-intro">Declaro que:</p>
+
+    <ol class="decl-list">
+      <li id="decl-1">
+        Estou ciente das necessidades infraestruturais demandadas pelo projeto.
+      </li>
+      <li id="decl-2">
+        Estou ciente de que, no caso de aprovação desta proposta e durante a vigência do respectivo Termo de Outorga, o pesquisador e o grupo de pesquisadores participantes do projeto terão todo o apoio necessário à sua realização, conforme previamente acordado com o Pesquisador Responsável. Em particular, será garantido ao pesquisador e ao grupo de pesquisa participante do projeto espaço físico para a adequada instalação e operação de equipamentos, permissão de uso de todas as instalações (laboratórios, redes de computação, bases de dados etc.) e acesso a todos os serviços (técnicos de laboratórios, administrativos, de importação etc.) disponíveis na empresa e relevantes para sua execução. Se a realização do projeto vier a ser obstada ou inviabilizada por não cumprimento destes compromissos e sem prévia anuência da FAPESP, a empresa se compromete a reembolsar à FAPESP todo o investimento realizado.
+      </li>
+      <li id="decl-3">
+        Estou ciente de que é de exclusiva responsabilidade do Pesquisador Responsável e da Empresa Sede solicitar, obter, possuir e demonstrar, quando solicitado pela FAPESP, todas as autorizações legais e exigíveis para a boa execução do projeto, as quais deverão ser emitidas pelos Órgãos de Controle e Fiscalização atinentes à natureza da pesquisa, quando assim for exigido pela legislação. Os itens exigidos estão descritos em <a href="http://www.fapesp.br/4476" target="_blank">fapesp.br/4476</a>. Como estes podem ser alterados dependendo de eventuais exigências legais, recomenda-se a consulta regular à legislação atualizada.
+      </li>
+      <li id="decl-4">
+        Estou ciente de que informações incorretas aqui prestadas poderão impedir a habilitação do processo.
+      </li>
+    </ol>
+
+    <!-- ──────────── ASSINATURA ──────────── -->
+    <div class="signature-block" id="assinatura">
+      <div class="signature-row">
+        <span class="signature-label">Nome da Empresa</span>
+        <span class="signature-value">Cidade Azul Comunicação Eireli</span>
+      </div>
+      <div class="signature-row">
+        <span class="signature-label">Representante Legal</span>
+        <span class="signature-value">Carolina Pérez Ferrés</span>
+      </div>
+      <div class="signature-row">
+        <span class="signature-label">Cargo / Função</span>
+        <span class="signature-value">Sócia e Gestora</span>
+      </div>
+      <div class="signature-row">
+        <span class="signature-label">Local e data</span>
+        <span class="signature-value">São Paulo, 30 de maio de 2025</span>
+      </div>
+      <div class="signature-mark-row">
+        <div class="signature-mark">✎ Assinado</div>
+        <div class="signature-mark-name">Carolina Pérez Ferrés · Representante Legal</div>
+      </div>
+    </div>
+
+    <!-- ──────────── RODAPÉ ──────────── -->
+    <div class="footnote">
+      <div class="footnote-label">Notas do modelo FAPESP</div>
+      <p><strong>Empresa Sede</strong> é a empresa que sediará o projeto, indicada na proposta. Se a empresa não estiver constituída, este documento será solicitado oportunamente.</p>
+      <p><strong>Representante Legal</strong>: representante legal nomeado pela empresa por meio do contrato social. Nos casos de MEI e EIRELI, o representante legal será o próprio empresário individual.</p>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  function toggleSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    const isOpen = sb.classList.toggle('open');
+    ov.style.display = isOpen ? 'block' : 'none';
+  }
+
+  const sections = document.querySelectorAll('[id^="decl-"], #cabecalho, #assinatura');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  function updateActive() {
+    const scrollY = window.scrollY + 120;
+    let currentId = '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= scrollY) currentId = sec.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + currentId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 720) {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>

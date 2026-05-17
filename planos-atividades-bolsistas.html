@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planos de atividades individuais · Bolsas TT · PIPE FAPESP</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    font-feature-settings: 'ss01', 'ss02';
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ─────────────────────────── SIDEBAR ─────────────────────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sidebar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-mark em {
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .sidebar-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label {
+    padding: 22px 32px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .sidebar-label.section {
+    margin-top: 4px;
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 22px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 10px 32px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-weight: 400;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .nav-item:hover {
+    background: var(--paper-warm);
+    color: var(--ink);
+  }
+
+  .nav-item.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: var(--paper-warm);
+    font-weight: 500;
+  }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .nav-item.active .nav-num { color: var(--accent); font-weight: 600; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─────────────────────────── MAIN ─────────────────────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  .page-content {
+    padding: 80px 80px 120px;
+    max-width: 1000px;
+  }
+
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+  }
+
+  .page-eyebrow .tag {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 4px 10px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .page-eyebrow .sep {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .page-title em { color: var(--accent); }
+
+  .page-deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+    max-width: 720px;
+    margin-bottom: 40px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ─── Status banner ─── */
+  .doc-status {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin-bottom: 48px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .doc-status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .doc-status-value {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  /* ─── Plan separator ─── */
+  .plan-separator {
+    border-top: 2px solid var(--ink);
+    padding-top: 28px;
+    margin-top: 80px;
+    margin-bottom: 32px;
+    scroll-margin-top: 20px;
+  }
+
+  .plan-separator:first-of-type {
+    margin-top: 0;
+  }
+
+  .plan-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .plan-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  /* ─── Level selector (visual replica of the form checkboxes) ─── */
+  .level-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin: 24px 0 16px;
+  }
+
+  .level-cell {
+    border: 1px solid var(--rule);
+    padding: 10px 12px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    background: var(--paper);
+  }
+
+  .level-cell.selected {
+    border-color: var(--accent);
+    color: var(--paper);
+    background: var(--accent);
+    font-weight: 600;
+  }
+
+  .level-pc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  /* ─── Duration / dedication row ─── */
+  .duration-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .duration-cell {
+    border: 1px solid var(--rule);
+    padding: 14px 18px;
+    background: var(--paper);
+  }
+
+  .duration-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+
+  .duration-value {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ─── Form sections ─── */
+  .form-section {
+    margin-bottom: 36px;
+    scroll-margin-top: 20px;
+  }
+
+  .form-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+  }
+
+  .form-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+
+  .form-question {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+  }
+
+  .form-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .form-body p {
+    margin-bottom: 14px;
+  }
+
+  .form-body p:last-child { margin-bottom: 0; }
+
+  /* ─── Project data box (item 1) ─── */
+  .project-data {
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .project-data-row {
+    padding: 12px 18px;
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .project-data-row:last-child { border-bottom: none; }
+
+  .project-data-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+
+  .project-data-value {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .project-data-value.empty {
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  /* ─── Title box ─── */
+  .title-box {
+    border: 1px solid var(--rule);
+    padding: 18px 22px;
+    background: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── Cronograma horizontal ─── */
+  .cronograma-wrap {
+    margin: 20px 0 8px;
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+  }
+
+  .cronograma {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(180px, 1fr));
+    min-width: 100%;
+  }
+
+  .cronograma-month {
+    border-right: 1px solid var(--rule);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cronograma-month:last-child { border-right: none; }
+
+  .cronograma-month-head {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 10px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .cronograma-month-body {
+    padding: 16px 14px;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .cronograma-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* ─── Mobile topbar ─── */
+  #mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 20px;
+    z-index: 90;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #mobile-topbar .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+
+  #mobile-topbar .mobile-mark em { color: var(--accent); }
+
+  .menu-btn {
+    background: none;
+    border: 1px solid var(--ink);
+    width: 38px; height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+
+  /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 1024px) {
+    :root { --sidebar-w: 260px; }
+    .page-content { padding: 56px 48px 80px; }
+    .page-title { font-size: 30px; }
+    .level-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 720px) {
+    :root { --sidebar-w: 0px; }
+    #mobile-topbar { display: flex; }
+    body { padding-top: 64px; }
+
+    .sidebar {
+      position: fixed !important;
+      width: 280px !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; width: 100%; }
+
+    .page-content { padding: 32px 20px 60px; }
+    .page-title { font-size: 26px; }
+    .page-deck { font-size: 15px; margin-bottom: 36px; }
+    .plan-title { font-size: 22px; }
+    .level-grid { grid-template-columns: repeat(2, 1fr); }
+    .duration-row { grid-template-columns: 1fr; }
+    .project-data-row { flex-direction: column; gap: 4px; }
+    .project-data-label { min-width: auto; }
+    .doc-status { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .cronograma { grid-template-columns: repeat(9, 220px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ MOBILE TOPBAR ═══════════════ -->
+<div id="mobile-topbar">
+  <div class="mobile-mark">Planos · <em>TT-V e TT-IV</em></div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Planos de <em>atividades</em></div>
+    <div class="sidebar-sub">Bolsas TT · 2 planos individuais</div>
+  </div>
+
+  <div class="sidebar-label">Plano 1 — Bolsista TT-V</div>
+  <a class="nav-item" href="#ttv-1"><span class="nav-num">1</span><span>Dados do projeto</span></a>
+  <a class="nav-item" href="#ttv-2"><span class="nav-num">2</span><span>Título do plano</span></a>
+  <a class="nav-item" href="#ttv-3"><span class="nav-num">3</span><span>Resumo</span></a>
+  <a class="nav-item" href="#ttv-4"><span class="nav-num">4</span><span>Objetivos</span></a>
+  <a class="nav-item" href="#ttv-5"><span class="nav-num">5</span><span>Plano de trabalho</span></a>
+  <a class="nav-item" href="#ttv-6"><span class="nav-num">6</span><span>Justificativa do nível</span></a>
+  <a class="nav-item" href="#ttv-7"><span class="nav-num">7</span><span>Justificativa do plano</span></a>
+
+  <div class="sidebar-label section">Plano 2 — Bolsista TT-IV</div>
+  <a class="nav-item" href="#ttiv-1"><span class="nav-num">1</span><span>Dados do projeto</span></a>
+  <a class="nav-item" href="#ttiv-2"><span class="nav-num">2</span><span>Título do plano</span></a>
+  <a class="nav-item" href="#ttiv-3"><span class="nav-num">3</span><span>Resumo</span></a>
+  <a class="nav-item" href="#ttiv-4"><span class="nav-num">4</span><span>Objetivos</span></a>
+  <a class="nav-item" href="#ttiv-5"><span class="nav-num">5</span><span>Plano de trabalho</span></a>
+  <a class="nav-item" href="#ttiv-6"><span class="nav-num">6</span><span>Justificativa do nível</span></a>
+  <a class="nav-item" href="#ttiv-7"><span class="nav-num">7</span><span>Justificativa do plano</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span class="tag">Doc 05</span>
+      <span>Planos de atividades individuais para bolsas TT</span>
+      <span class="sep"></span>
+    </div>
+
+    <h1 class="page-title">Planos de atividades <em>individuais</em></h1>
+    <p class="page-deck">
+      Formulários FAPESP para Bolsa de Treinamento Técnico e Participação em Curso
+      (fapesp.br/tt). Dois planos individuais — um para o bolsista TT-V e outro para
+      o bolsista TT-IV, sem sobreposição de tarefas.
+    </p>
+
+    <div class="doc-status">
+      <div class="doc-status-item">
+        <span class="doc-status-label">Versão atual</span>
+        <span class="doc-status-value">v.2 — 16/01/2026</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Arquivo SAGe</span>
+        <span class="doc-status-value">PlanoAtividadesBolsistas.pdf</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Planos no documento</span>
+        <span class="doc-status-value">2 (TT-V · TT-IV)</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ───────────── PLANO 1 · TT-V ───────────── -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="plan-separator">
+      <div class="plan-id">Plano 1 de 2 · Bolsa TT-V</div>
+      <h2 class="plan-title">Modelagem e Implementação de Pipeline de IA Generativa Assistida e Governada (man-in-the-middle) para Geração de GDDs</h2>
+    </div>
+
+    <div class="form-section">
+      <div class="form-head">
+        <span class="form-num">—</span>
+        <span class="form-question">Nível pretendido</span>
+      </div>
+      <div class="level-grid">
+        <div class="level-cell">TT-1</div>
+        <div class="level-cell">TT-2</div>
+        <div class="level-cell">TT-3</div>
+        <div class="level-cell">TT-4</div>
+        <div class="level-cell">TT-4A</div>
+        <div class="level-cell selected">✓ TT-5</div>
+      </div>
+      <div class="level-pc-grid">
+        <div class="level-cell">PC-2</div>
+        <div class="level-cell">PC-3</div>
+        <div class="level-cell">PC-4</div>
+      </div>
+      <div class="duration-row">
+        <div class="duration-cell">
+          <div class="duration-label">Duração da bolsa</div>
+          <div class="duration-value">9 meses</div>
+        </div>
+        <div class="duration-cell">
+          <div class="duration-label">Dedicação</div>
+          <div class="duration-value">40 horas/semana</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="form-section" id="ttv-1">
+      <div class="form-head">
+        <span class="form-num">01</span>
+        <span class="form-question">Dados do projeto a que se vincula a bolsa</span>
+      </div>
+      <div class="project-data">
+        <div class="project-data-row">
+          <span class="project-data-label">Projeto</span>
+          <span class="project-data-value">Inteligência Artificial para Geração Assistida e Governada de Game Design Documents (GDDs) em Jogos Digitais</span>
+        </div>
+        <div class="project-data-row">
+          <span class="project-data-label">Nº do Processo</span>
+          <span class="project-data-value empty">— a definir na nova submissão —</span>
+        </div>
+        <div class="project-data-row">
+          <span class="project-data-label">Pesquisador Responsável</span>
+          <span class="project-data-value">Carolina Pérez Ferrés</span>
+        </div>
+        <div class="project-data-row">
+          <span class="project-data-label">Instituição / Empresa</span>
+          <span class="project-data-value">Cidade Azul Comunicação Eireli</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttv-2">
+      <div class="form-head">
+        <span class="form-num">02</span>
+        <span class="form-question">Título do plano de pesquisa e/ou desenvolvimento tecnológico</span>
+      </div>
+      <div class="title-box">
+        Modelagem e Implementação de Pipeline de IA Generativa Assistida e Governada (man-in-the-middle) para Geração de GDDs
+      </div>
+    </section>
+
+    <section class="form-section" id="ttv-3">
+      <div class="form-head">
+        <span class="form-num">03</span>
+        <span class="form-question">Resumo do trabalho a ser desenvolvido</span>
+      </div>
+      <div class="form-body">
+        <p>O bolsista TT-V atuará de forma transversal nas três fases do projeto — exploratória, de desenvolvimento e de aplicação — com foco no desenvolvimento técnico e analítico de um sistema de inteligência artificial voltado à geração assistida e governada de Game Design Documents (GDDs). Na fase exploratória, será responsável por levantar e organizar o estado da arte em aplicações de IA generativa no suporte à documentação de jogos, com ênfase em metodologias de governança humano–IA (human-in-the-loop / man-in-the-middle), validação intermediária e contenção de inconsistências, além de conduzir entrevistas com especialistas do setor e sistematizar os dados obtidos. Essa base alimentará o desenho conceitual do sistema, orientando critérios técnicos e humanos de validação e mecanismos de controle das saídas.</p>
+        <p>Nas fases de desenvolvimento e aplicação, o bolsista implementará o pipeline do agente (pesquisa, estruturação e integração lógica do GDD), fará a organização e validação dos dados de entrada, definirá categorias e critérios para consistência interna e rastreabilidade, e estruturará checkpoints de supervisão humana ao longo do processo de geração. Atuará ainda na documentação das diretrizes e processos, organização do ambiente de testes, controle de versões, execução de testes em ambiente controlado e sistematização dos resultados obtidos. O trabalho exige domínio técnico em Processamento de Linguagem Natural (PLN), integração de APIs, versionamento e avaliação de qualidade de saídas geradas por sistemas inteligentes. Sua atuação será fundamental para garantir aderência metodológica, robustez técnica e viabilidade prática do protótipo.</p>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttv-4">
+      <div class="form-head">
+        <span class="form-num">04</span>
+        <span class="form-question">Objetivos pretendidos</span>
+      </div>
+      <div class="form-body">
+        <p>O plano de trabalho do bolsista TT-V tem como principal objetivo projetar e desenvolver um sistema baseado em inteligência artificial capaz de gerar de forma assistida e governada Game Design Documents (GDDs) estruturados, a partir de descrições textuais fornecidas por usuários, com validação humana em checkpoints definidos. Para isso, o bolsista atuará na construção de um pipeline lógico parametrizável que integre padrões narrativos, mecânicas de jogo e elementos técnicos extraídos tanto da literatura especializada quanto de casos reais analisados na fase exploratória do projeto, assegurando consistência interna, rastreabilidade e flexibilidade frente a diferentes gêneros e estruturas de jogos digitais.</p>
+        <p>Além disso, o bolsista será responsável pela implementação e configuração de um ambiente de testes e validação, com definição de métricas voltadas à aferição de coerência, completude, clareza textual e aderência dos GDDs gerados aos padrões profissionais da indústria, incluindo procedimentos de revisão humana e comparação com referências. Também contribuirá diretamente para a validação funcional do protótipo por meio da execução de testes em ambiente controlado, ajustes iterativos no sistema e sistematização dos resultados em relatórios técnicos. Por fim, apoiará a elaboração dos entregáveis estratégicos do projeto, com foco na consolidação do protótipo e no avanço da maturidade tecnológica da solução proposta, contribuindo para que esta atinja o nível TRL 3 e esteja pronta para evolução em fases futuras.</p>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttv-5">
+      <div class="form-head">
+        <span class="form-num">05</span>
+        <span class="form-question">Plano de trabalho — procedimentos, métodos, ferramentas, técnicas e cronograma</span>
+      </div>
+      <div class="form-body">
+        <p>O plano de trabalho do bolsista TT-V envolve a aplicação de métodos qualitativos e técnico-analíticos voltados à estruturação e validação de um sistema de inteligência artificial para geração assistida e governada de Game Design Documents (GDDs), com checkpoints de supervisão humana ao longo do processo (man-in-the-middle). Inicialmente, serão adotados procedimentos de revisão bibliográfica e levantamento de casos de uso, com base em publicações especializadas e relatórios técnicos, para fundamentar a modelagem lógica do sistema e a definição de mecanismos de governança, rastreabilidade e contenção de inconsistências em saídas generativas. Em seguida, será conduzida uma etapa de entrevistas estruturadas com especialistas da indústria de jogos, utilizando roteiro elaborado com base nas categorias identificadas previamente e com foco em práticas profissionais de documentação, validação intermediária e critérios de qualidade de GDDs. As informações coletadas serão organizadas e analisadas com técnicas de análise de conteúdo, subsidiando a definição de parâmetros técnicos e humanos do sistema.</p>
+        <p>Durante a fase de desenvolvimento, o bolsista fará uso de técnicas de Processamento de Linguagem Natural (PLN) para estruturação semântica dos dados, decomposição do pipeline em módulos (pesquisa, estruturação e integração lógica do GDD) e definição de regras e critérios para geração assistida e governada dos documentos. A integração de APIs, o uso de bancos de dados relacionais e ferramentas de versionamento como Git serão empregados na configuração do ambiente técnico, garantindo registro de entradas, saídas e versões geradas. Por fim, na fase de aplicação, serão adotadas métricas específicas para avaliação dos GDDs (como coerência, completude e clareza textual), além de procedimentos sistemáticos de validação humana, controle de versões e consolidação de relatórios técnicos. O trabalho será desenvolvido em sinergia com a equipe do projeto, assegurando alinhamento metodológico e aderência aos objetivos propostos.</p>
+
+        <div class="cronograma-wrap">
+          <div class="cronograma">
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 1</div>
+              <div class="cronograma-month-body">Revisão bibliográfica (IA generativa, GDDs, governança humano–IA, validação e contenção de inconsistências); levantamento inicial de casos de uso e ferramentas; organização de referências e definição preliminar de categorias analíticas.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 2</div>
+              <div class="cronograma-month-body">Continuidade da revisão bibliográfica; aprofundamento do mapeamento de casos de uso; elaboração do roteiro de entrevistas; estruturação do modelo inicial de parâmetros e requisitos do sistema (componentes do GDD, critérios de qualidade e pontos de validação humana).</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 3</div>
+              <div class="cronograma-month-body">Condução das entrevistas com especialistas; análise de conteúdo e sistematização dos resultados; consolidação dos parâmetros técnicos e humanos do sistema; definição do desenho do pipeline governado (módulos do agente e checkpoints man-in-the-middle).</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 4</div>
+              <div class="cronograma-month-body">Implementação do ambiente técnico (APIs, banco de dados relacional, versionamento Git); desenvolvimento do módulo de pesquisa/organização de informações (1-IA); documentação técnica inicial do protótipo e execução de testes preliminares do módulo.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 5</div>
+              <div class="cronograma-month-body">Desenvolvimento do módulo estrutural de composição do GDD (2-IA); definição e implementação de regras/estruturas semânticas para montagem das seções; validação intermediária com revisão humana dos outputs e ajustes iterativos; registro de versões e rastreabilidade das saídas.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 6</div>
+              <div class="cronograma-month-body">Desenvolvimento do módulo lógico de integração e consistência (3-IA); geração da primeira versão do GDD com checagens de coerência entre partes; refinamento das regras de contenção de inconsistências; testes preliminares comparativos e documentação técnica contínua.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 7</div>
+              <div class="cronograma-month-body">Integração do pipeline completo (pesquisa → estruturação → lógica → GDD); definição e ajuste dos checkpoints man-in-the-middle ao longo do fluxo; controle de versões do sistema e dos documentos gerados; preparação do ambiente de testes funcionais e dos critérios de avaliação.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 8</div>
+              <div class="cronograma-month-body">Execução dos testes em ambiente controlado; aplicação de métricas de avaliação (coerência, completude e clareza textual); análise dos resultados e iteração sobre o sistema; consolidação parcial de relatórios técnicos e evidências do desempenho do protótipo.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 9</div>
+              <div class="cronograma-month-body">Rodada final de testes e validação funcional; estabilização do protótipo e fechamento do controle de versões; consolidação dos relatórios técnicos finais e documentação do pipeline; sistematização dos resultados e apoio à entrega final do projeto.</div>
+            </div>
+          </div>
+        </div>
+        <div class="cronograma-hint">↔ Role horizontalmente para ver todos os 9 meses do cronograma</div>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttv-6">
+      <div class="form-head">
+        <span class="form-num">06</span>
+        <span class="form-question">Justifique a escolha do nível para a bolsa</span>
+      </div>
+      <div class="form-body">
+        <p>O nível TT-V é o mais apropriado para este plano de trabalho considerando a complexidade técnica e a abrangência das atividades atribuídas ao bolsista. O projeto exige conhecimento avançado em desenvolvimento de sistemas inteligentes, integração de modelos de linguagem e aplicação de técnicas de Processamento de Linguagem Natural (PLN), além da implementação de mecanismos de governança humano–IA (man-in-the-middle), rastreabilidade e contenção de inconsistências em saídas generativas. O bolsista atuará na análise de dados, estruturação semântica de informações, definição de parâmetros funcionais e validação do sistema em ambiente de testes, contribuindo diretamente para a consolidação do protótipo e o avanço do nível de maturidade tecnológica da solução.</p>
+        <p>Essa atuação demanda autonomia, capacidade de resolver problemas de alto nível técnico e experiência prévia com pipelines de geração assistida e governada, integração via APIs e práticas de controle de qualidade e versionamento, o que corresponde às exigências definidas para o nível TT-V pela FAPESP — destinado a profissionais com, no mínimo, cinco anos de experiência após a graduação ou com título de doutor, em área relacionada ao projeto. A seleção desse nível assegura a compatibilidade entre o perfil do bolsista, as exigências técnicas do projeto e os objetivos propostos.</p>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttv-7">
+      <div class="form-head">
+        <span class="form-num">07</span>
+        <span class="form-question">Justifique o plano em termos dos objetivos do Programa de Bolsas de Capacitação Técnica</span>
+      </div>
+      <div class="form-body">
+        <p>O plano de atividades está diretamente alinhado aos objetivos do Programa de Bolsas de Capacitação Técnica da FAPESP, pois combina o suporte técnico essencial à execução do projeto com a formação prática avançada do bolsista em uma área estratégica. As atividades propostas contribuem tecnicamente para o desenvolvimento e validação de um sistema de inteligência artificial voltado à geração assistida e governada de Game Design Documents (GDDs), oferecendo trabalho qualificado à equipe de pesquisa em tarefas como organização e validação de dados, definição de parâmetros funcionais, implementação de checkpoints de supervisão humana (man-in-the-middle), execução de testes funcionais e documentação técnica.</p>
+        <p>Ao mesmo tempo, o bolsista será exposto a um processo intensivo de capacitação, aplicando e aprimorando competências em Processamento de Linguagem Natural (PLN), integração de modelos de linguagem via APIs, construção de pipelines de geração com rastreabilidade e controle de versões, além da avaliação de qualidade e consistência de saídas geradas por sistemas inteligentes. O trabalho possibilita vivência em um ambiente de pesquisa aplicada, com desafios reais de inovação tecnológica e validação metodológica, atendendo ao propósito da Bolsa TT-V, voltada à formação de profissionais qualificados para atuação em projetos de alta complexidade técnico-científica.</p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ───────────── PLANO 2 · TT-IV ───────────── -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="plan-separator">
+      <div class="plan-id">Plano 2 de 2 · Bolsa TT-IV</div>
+      <h2 class="plan-title">Apoio Técnico e Instrumentação de Dados para Pipeline de IA Assistida e Governada Aplicado à Geração de GDDs</h2>
+    </div>
+
+    <div class="form-section">
+      <div class="form-head">
+        <span class="form-num">—</span>
+        <span class="form-question">Nível pretendido</span>
+      </div>
+      <div class="level-grid">
+        <div class="level-cell">TT-1</div>
+        <div class="level-cell">TT-2</div>
+        <div class="level-cell">TT-3</div>
+        <div class="level-cell selected">✓ TT-4</div>
+        <div class="level-cell">TT-4A</div>
+        <div class="level-cell">TT-5</div>
+      </div>
+      <div class="level-pc-grid">
+        <div class="level-cell">PC-2</div>
+        <div class="level-cell">PC-3</div>
+        <div class="level-cell">PC-4</div>
+      </div>
+      <div class="duration-row">
+        <div class="duration-cell">
+          <div class="duration-label">Duração da bolsa</div>
+          <div class="duration-value">9 meses</div>
+        </div>
+        <div class="duration-cell">
+          <div class="duration-label">Dedicação</div>
+          <div class="duration-value">40 horas/semana</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="form-section" id="ttiv-1">
+      <div class="form-head">
+        <span class="form-num">01</span>
+        <span class="form-question">Dados do projeto a que se vincula a bolsa</span>
+      </div>
+      <div class="project-data">
+        <div class="project-data-row">
+          <span class="project-data-label">Projeto</span>
+          <span class="project-data-value">Inteligência Artificial para Geração Assistida e Governada de Game Design Documents (GDDs) em Jogos Digitais</span>
+        </div>
+        <div class="project-data-row">
+          <span class="project-data-label">Nº do Processo</span>
+          <span class="project-data-value empty">— a definir na nova submissão —</span>
+        </div>
+        <div class="project-data-row">
+          <span class="project-data-label">Pesquisador Responsável</span>
+          <span class="project-data-value">Carolina Pérez Ferrés</span>
+        </div>
+        <div class="project-data-row">
+          <span class="project-data-label">Instituição / Empresa</span>
+          <span class="project-data-value">Cidade Azul Comunicação Eireli</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttiv-2">
+      <div class="form-head">
+        <span class="form-num">02</span>
+        <span class="form-question">Título do plano de pesquisa e/ou desenvolvimento tecnológico</span>
+      </div>
+      <div class="title-box">
+        Apoio Técnico e Instrumentação de Dados para Pipeline de IA Assistida e Governada Aplicado à Geração de GDDs
+      </div>
+    </section>
+
+    <section class="form-section" id="ttiv-3">
+      <div class="form-head">
+        <span class="form-num">03</span>
+        <span class="form-question">Resumo do trabalho a ser desenvolvido</span>
+      </div>
+      <div class="form-body">
+        <p>O bolsista TT-IV atuará como apoio técnico ao longo das três fases do projeto — exploratória, de desenvolvimento e de aplicação — com foco na organização de dados, apoio metodológico e validação de insumos utilizados na construção do sistema de inteligência artificial para geração assistida e governada de Game Design Documents (GDDs). Na fase exploratória, será responsável pela busca e sistematização de referências bibliográficas sobre ferramentas de apoio ao design de jogos, com ênfase em soluções assistidas por IA e em práticas de validação humano–IA (human-in-the-loop / man-in-the-middle), bem como pela identificação e documentação de casos de uso relevantes. Também contribuirá na elaboração do roteiro de entrevistas com especialistas, apoiará a realização das entrevistas estruturadas e será responsável pela transcrição, categorização temática e organização dos dados obtidos.</p>
+        <p>Durante a fase de desenvolvimento, o bolsista dará suporte à coleta e classificação manual de GDDs reais, colaborando na análise comparativa entre os elementos presentes nos documentos e aqueles gerados pelo pipeline do sistema. Atuará também na identificação de estruturas recorrentes por gênero de jogo e no levantamento de parâmetros aplicáveis a diferentes estilos, contribuindo para a definição de critérios de completude, consistência e coerência entre seções. Já na fase de aplicação, auxiliará na definição de critérios de avaliação dos GDDs gerados, na execução de testes manuais e validações intermediárias, na inserção de parâmetros no sistema e no monitoramento do desempenho do protótipo em ambiente controlado. Será ainda responsável pela organização sistemática dos registros de testes e evidências, garantindo rastreabilidade e integridade das informações utilizadas na avaliação final da solução. Sua atuação será essencial para consolidar a base empírica do projeto e fortalecer a documentação técnica e metodológica do protótipo.</p>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttiv-4">
+      <div class="form-head">
+        <span class="form-num">04</span>
+        <span class="form-question">Objetivos pretendidos</span>
+      </div>
+      <div class="form-body">
+        <p>O plano de trabalho do bolsista TT-IV tem como objetivo oferecer suporte técnico à estruturação e validação de um sistema de inteligência artificial para geração assistida e governada de Game Design Documents (GDDs). O bolsista atuará na coleta e organização de referências, ferramentas e casos de uso, incluindo a classificação manual de GDDs reais e o apoio à realização de entrevistas com especialistas, contribuindo para a sistematização de critérios técnicos e humanos de validação.</p>
+        <p>Nas fases de desenvolvimento, contribuirá na inserção e validação de parâmetros no sistema, no monitoramento do desempenho do protótipo e na organização dos resultados obtidos, com foco na rastreabilidade e no controle de versões das saídas geradas. Também apoiará análises comparativas entre GDDs gerados e documentos de referência, identificando padrões recorrentes e inconsistências que orientem ajustes no pipeline. Ao longo do projeto, será capacitado em métodos de análise técnica e validação de sistemas de IA, contribuindo ativamente para a robustez metodológica e para a consistência da solução proposta.</p>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttiv-5">
+      <div class="form-head">
+        <span class="form-num">05</span>
+        <span class="form-question">Plano de trabalho — procedimentos, métodos, ferramentas, técnicas e cronograma</span>
+      </div>
+      <div class="form-body">
+        <p>O plano de trabalho do bolsista TT-IV envolve a aplicação de métodos exploratórios, técnico-descritivos e analíticos voltados ao apoio na estruturação e validação de um sistema de inteligência artificial para geração assistida e governada de Game Design Documents (GDDs). Na fase exploratória, serão adotados procedimentos de busca e organização de literatura especializada, análise de ferramentas assistidas por IA e levantamento de exemplos de uso em game design, por meio de publicações acadêmicas, white papers e fontes técnicas do setor. Essa base será complementada por entrevistas estruturadas com especialistas da indústria, conduzidas com base em roteiro desenvolvido com o apoio do bolsista, com foco em práticas profissionais de documentação, validação intermediária e critérios de qualidade de GDDs. As informações coletadas serão organizadas, transcritas e categorizadas, utilizando técnicas básicas de análise de conteúdo.</p>
+        <p>Durante a fase de desenvolvimento, o bolsista auxiliará na coleta e classificação manual de GDDs públicos, destacando elementos relevantes para comparação com os resultados gerados pelo sistema, incluindo estrutura, seções essenciais e padrões recorrentes. Também realizará pesquisas sobre estruturas narrativas e parâmetros técnicos comuns a diferentes gêneros de jogos, contribuindo para o refinamento da lógica do pipeline e para a definição de critérios de consistência entre componentes. Na fase de aplicação, o bolsista atuará na definição e aplicação de critérios de avaliação dos GDDs gerados, na validação intermediária de saídas e parâmetros no ambiente digital, além de apoiar o monitoramento de testes e o registro sistemático dos dados de desempenho do protótipo. O trabalho será conduzido em constante interação com a equipe do projeto, garantindo alinhamento metodológico e consistência técnica dos insumos utilizados.</p>
+
+        <div class="cronograma-wrap">
+          <div class="cronograma">
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 1</div>
+              <div class="cronograma-month-body">Apoio à revisão bibliográfica e sistematização de materiais sobre GDDs, IA generativa e governança humano–IA; organização inicial de referências e ferramentas.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 2</div>
+              <div class="cronograma-month-body">Levantamento e documentação de casos de uso; montagem de base comparativa de ferramentas e aplicações; apoio na elaboração do roteiro de entrevistas e organização dos insumos.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 3</div>
+              <div class="cronograma-month-body">Suporte à condução das entrevistas (gravação, transcrição e categorização); extração de padrões e categorias recorrentes; sistematização dos critérios de validação e qualidade.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 4</div>
+              <div class="cronograma-month-body">Coleta e classificação manual de GDDs reais/públicos; organização de elementos estruturais; apoio à definição de parâmetros e padrões por gênero; organização de evidências.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 5</div>
+              <div class="cronograma-month-body">Mapeamento de estruturas recorrentes e seções essenciais; apoio à validação intermediária de componentes gerados; registro de inconsistências e sugestões de refinamento.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 6</div>
+              <div class="cronograma-month-body">Apoio a testes manuais e comparativos entre GDDs gerados e referências; registro de outputs e controle de versões documentais; organização de dados de avaliação.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 7</div>
+              <div class="cronograma-month-body">Apoio ao monitoramento de testes do pipeline integrado; aplicação de critérios de avaliação (coerência, completude, clareza); consolidação de registros e evidências.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 8</div>
+              <div class="cronograma-month-body">Organização dos resultados obtidos; sistematização de falhas recorrentes e melhorias; apoio à documentação técnica e metodológica do protótipo.</div>
+            </div>
+            <div class="cronograma-month">
+              <div class="cronograma-month-head">Mês 9</div>
+              <div class="cronograma-month-body">Apoio à consolidação dos relatórios finais; integração e verificação de completude dos entregáveis; organização final de evidências e documentação para arquivamento.</div>
+            </div>
+          </div>
+        </div>
+        <div class="cronograma-hint">↔ Role horizontalmente para ver todos os 9 meses do cronograma</div>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttiv-6">
+      <div class="form-head">
+        <span class="form-num">06</span>
+        <span class="form-question">Justifique a escolha do nível para a bolsa</span>
+      </div>
+      <div class="form-body">
+        <p>O nível TT-IV é o mais adequado para este plano de trabalho, considerando o escopo das atividades e o perfil técnico necessário para sua execução. As tarefas atribuídas ao bolsista envolvem a organização e análise de referências bibliográficas, apoio na realização e sistematização de entrevistas, coleta e categorização manual de documentos técnicos (GDDs), bem como o acompanhamento da inserção e validação de parâmetros e saídas em ambientes digitais, incluindo validações intermediárias em um fluxo assistido e governado (man-in-the-middle). Essas atividades exigem familiaridade com metodologias de pesquisa aplicada, atenção a detalhes técnicos, capacidade de sistematização de dados e operação de ferramentas de apoio digital, sem demandar, no entanto, conhecimentos avançados de programação ou desenvolvimento de sistemas complexos.</p>
+        <p>Segundo os critérios estabelecidos pela FAPESP, a bolsa TT-IV é destinada a candidatos com nível técnico ou superior em andamento ou completo, com experiência prévia relacionada ao plano de atividades. O bolsista atuará como apoio técnico de nível intermediário, contribuindo de forma essencial para a preparação, organização e validação dos insumos que sustentam o desenvolvimento do sistema de inteligência artificial proposto. Sua participação garante a robustez da base empírica, a rastreabilidade das evidências e a integridade dos dados utilizados, desempenhando papel complementar, mas fundamental, na equipe de pesquisa.</p>
+      </div>
+    </section>
+
+    <section class="form-section" id="ttiv-7">
+      <div class="form-head">
+        <span class="form-num">07</span>
+        <span class="form-question">Justifique o plano em termos dos objetivos do Programa de Bolsas de Capacitação Técnica</span>
+      </div>
+      <div class="form-body">
+        <p>O plano de atividades está diretamente alinhado aos objetivos do Programa de Bolsas de Capacitação Técnica da FAPESP, pois combina o suporte técnico necessário à execução do projeto com a formação prática do bolsista em um contexto de pesquisa aplicada e inovação tecnológica. As atividades propostas contribuem para o desenvolvimento e validação de um sistema de inteligência artificial voltado à geração assistida e governada de Game Design Documents (GDDs), por meio de tarefas essenciais como organização e sistematização de referências, apoio à realização e análise de entrevistas, coleta e categorização manual de GDDs reais, aplicação de critérios de validação intermediária e registro de evidências obtidas durante os testes.</p>
+        <p>Ao mesmo tempo, o bolsista será capacitado em processos de análise técnica, organização de dados, documentação metodológica e avaliação de qualidade de saídas geradas por sistemas inteligentes, desenvolvendo competências relevantes para atuação em projetos de base tecnológica. O trabalho proporciona vivência em um ambiente estruturado de pesquisa aplicada, com desafios reais de consolidação de protótipos, controle de qualidade e rastreabilidade, atendendo ao propósito da Bolsa TT-IV, voltada à formação de profissionais com capacitação técnica para apoiar projetos com potencial de desenvolvimento tecnológico e inovação.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+  function toggleSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    const isOpen = sb.classList.toggle('open');
+    ov.style.display = isOpen ? 'block' : 'none';
+  }
+
+  const sections = document.querySelectorAll('.form-section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  function updateActive() {
+    const scrollY = window.scrollY + 120;
+    let currentId = '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= scrollY) currentId = sec.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + currentId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 720) {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>
