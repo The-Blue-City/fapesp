@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabulus | Metodologia</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #1a2a38;
+  --bg2:       #14202c;
+  --bg3:       #0f1820;
+  --surface:   #243344;
+  --surface3:  #2e3f52;
+  --teal:      #0c7679;
+  --teal-b:    #10999d;
+  --teal-c:    #14bbbf;
+  --teal-dim:  rgba(12,118,121,0.14);
+  --teal-glow: rgba(12,118,121,0.3);
+  --amber:     #d4883a;
+  --amber-dim: rgba(212,136,58,0.12);
+  --green:     #2eb87e;
+  --green-dim: rgba(46,184,126,0.10);
+  --purple:    #7c5cbf;
+  --purple-dim:rgba(124,92,191,0.12);
+  --border:    rgba(12,118,121,0.2);
+  --border2:   rgba(255,255,255,0.07);
+  --text:      #ffffff;
+  --text2:     rgba(255,255,255,0.7);
+  --radius:    10px;
+  --radius-lg: 16px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 272px; flex-shrink: 0;
+  background: var(--bg3);
+  border-right: 1px solid var(--border);
+  position: fixed; top: 0; left: 0;
+  height: 100vh; overflow-y: auto;
+  display: flex; flex-direction: column;
+  z-index: 50;
+}
+
+.sidebar-header { padding: 24px 22px 18px; border-bottom: 1px solid var(--border); }
+
+.logo { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; min-width: 0; }
+.logo-mark { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 12px var(--teal-glow); border: 2px solid var(--teal); }
+.logo-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.logo-name img { height: 24px; width: auto; display: block; }
+
+.logo-sub { font-size: 9px; font-weight: 600; color: var(--teal-b); letter-spacing: 0.4px; line-height: 1.4; margin-bottom: 12px; }
+.doc-badge { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-b); background: var(--teal-dim); border: 1px solid var(--teal); padding: 3px 10px; border-radius: 20px; display: inline-block; }
+
+.nav { padding: 12px 0; flex: 1; }
+.nav-group { margin-bottom: 2px; }
+
+.nav-item {
+  display: block; padding: 8px 22px;
+  cursor: pointer; font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  border-left: 2px solid transparent;
+  transition: all 0.15s; line-height: 1.4;
+}
+.nav-item:hover { color: var(--teal-c); background: var(--teal-dim); border-left-color: var(--teal); }
+.nav-item.active { color: var(--teal-c); background: var(--teal-dim); border-left-color: var(--teal-b); }
+.nav-item-sub {
+  display: flex; align-items: flex-start; gap: 7px;
+  padding: 2px 22px 2px 34px; font-size: 10px; font-weight: 400;
+  color: rgba(255,255,255,0.5); line-height: 1.45; pointer-events: none;
+}
+.nav-item-sub::before { content: '•'; color: var(--teal-b); flex-shrink: 0; font-size: 12px; }
+
+.nav-section-header {
+  padding: 14px 22px 4px;
+  font-size: 8px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: rgba(255,255,255,0.3);
+}
+
+/* ── MAIN ── */
+.content { margin-left: 272px; flex: 1; min-height: 100vh; display: flex; flex-direction: column; }
+
+.topbar {
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 0 48px; height: 56px;
+  display: flex; align-items: center; gap: 14px;
+  position: sticky; top: 0; z-index: 40;
+}
+.topbar-title { font-size: 11px; font-weight: 600; color: var(--text2); }
+.topbar-div { width: 1px; height: 18px; background: var(--border); }
+.topbar-sub { font-size: 10px; color: var(--teal-b); font-weight: 500; }
+.topbar-right { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.chip { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 12px; border-radius: 20px; }
+.chip-teal { color: var(--teal-b); background: var(--teal-dim); border: 1px solid var(--teal); }
+.chip-amber { color: var(--amber); background: var(--amber-dim); border: 1px solid rgba(212,136,58,0.3); }
+
+.main { padding: 52px 52px 100px; max-width: 860px; flex: 1; }
+
+/* ── SECTIONS ── */
+.section { display: none; animation: fadeIn 0.25s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── PAGE LAYOUT ── */
+.page-cap { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--teal-b); margin-bottom: 10px; }
+.page-title { font-size: 32px; font-weight: 800; color: var(--text); letter-spacing: -0.8px; line-height: 1.1; margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--teal) 100%);
+  border-radius: var(--radius-lg); padding: 44px 48px;
+  margin-bottom: 36px; position: relative; overflow: hidden;
+}
+.hero::before { content:''; position:absolute; top:-70px; right:-70px; width:260px; height:260px; background:rgba(255,255,255,0.04); border-radius:50%; }
+.hero-cap { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2.5px; color:rgba(255,255,255,0.55); margin-bottom:12px; }
+.hero-title { font-size:36px; font-weight:800; line-height:1.05; letter-spacing:-0.8px; color:white; margin-bottom:8px; }
+.hero-subtitle { font-size:15px; font-weight:300; font-style:normal; color:rgba(255,255,255,0.75); margin-bottom:24px; }
+.hero-meta { display:flex; gap:20px; flex-wrap:wrap; }
+.hero-meta-item { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:500; color:rgba(255,255,255,0.85); }
+.hero-meta-item::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--teal-c); flex-shrink:0; }
+
+/* ── CARDS ── */
+.info-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 20px;
+}
+.info-card-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid var(--border2); }
+.info-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.icon-teal   { background:rgba(20,187,191,0.12); border:1px solid rgba(20,187,191,0.35); }
+.icon-amber  { background:rgba(232,168,58,0.10); border:1px solid rgba(232,168,58,0.30); }
+.icon-sage   { background:rgba(46,184,126,0.10); border:1px solid rgba(46,184,126,0.30); }
+.icon-green  { background:rgba(46,184,126,0.10); border:1px solid rgba(46,184,126,0.30); }
+.icon-purple { background:rgba(124,92,191,0.15); border:1px solid rgba(124,92,191,0.3); }
+.info-card-title    { font-size:14px; font-weight:700; color:var(--text); margin-bottom:2px; }
+.info-card-subtitle { font-size:11px; color:rgba(255,255,255,0.55); font-weight:400; }
+.info-card-body { font-size:13px; color:#bee5e4; line-height:1.8; }
+.info-card-body p + p { margin-top:14px; }
+.info-card-body strong { color: inherit; font-weight: 700; }
+.info-card-body em { color: inherit; font-style: normal; }
+.info-card-body ul { list-style: none; padding: 0; margin: 8px 0; }
+.info-card-body ul li { position: relative; padding-left: 18px; margin-bottom: 6px; }
+.info-card-body ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal-b); }
+.info-card-body ol { padding-left: 22px; margin: 8px 0; }
+.info-card-body ol li { margin-bottom: 6px; }
+.etapa-body em { color: inherit; font-style: normal; }
+.etapa-body ul { list-style: none; padding: 0; margin: 8px 0; }
+.etapa-body ul li { position: relative; padding-left: 18px; margin-bottom: 6px; }
+.etapa-body ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal-b); }
+/* Neutralizar em globalmente no main */
+.main em { color: inherit; font-style: normal; }
+
+/* ── ETAPA CARDS ── */
+.etapa-card {
+  border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: 20px;
+  border: 1px solid;
+}
+.etapa-usuario { background: rgba(212,136,58,0.06); border-color: rgba(212,136,58,0.25); }
+.etapa-sistema { background: rgba(12,118,121,0.06); border-color: rgba(12,118,121,0.25); }
+.etapa-final   { background: rgba(124,92,191,0.06); border-color: rgba(124,92,191,0.25); }
+
+.etapa-header { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.etapa-num {
+  width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:800; flex-shrink:0;
+}
+.num-usuario { background: var(--amber); color: white; }
+.num-sistema { background: var(--teal); color: white; }
+.num-final   { background: var(--purple); color: white; }
+
+.etapa-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:2px; }
+.label-usuario { color: var(--amber); }
+.label-sistema { color: var(--teal-b); }
+.label-final   { color: #a07de0; }
+.etapa-name { font-size:15px; font-weight:700; color:var(--text); }
+.etapa-body { font-size:13px; color:#bee5e4; line-height:1.8; }
+
+/* ── OUTPUT BADGE ── */
+.output-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; padding: 3px 10px; border-radius: 20px; margin-bottom: 14px;
+}
+.tag-fabulus { color: var(--teal-b); background: var(--teal-dim); border: 1px solid var(--teal); }
+.tag-operador { color: var(--amber); background: var(--amber-dim); border: 1px solid rgba(212,136,58,0.3); }
+.tag-usuario  { color: #2eb87e; background: var(--green-dim); border: 1px solid rgba(46,184,126,0.3); }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: var(--text); line-height: 1.6;
+}
+.checklist li::before {
+  content: '✓'; color: var(--teal-c); font-weight: 800;
+  font-size: 11px; margin-top: 3px; flex-shrink: 0;
+}
+
+/* ── SECOES TABLE ── */
+.secoes-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+.secoes-table th {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+  padding: 0 12px 10px 0; text-align: left;
+}
+.secoes-table td {
+  font-size: 12px; color: #bee5e4;
+  padding: 8px 12px 8px 0; border-top: 1px solid var(--border2);
+  vertical-align: top;
+}
+.secoes-table td:first-child { color: var(--teal-b); font-weight: 700; white-space: nowrap; }
+.secoes-table td:last-child { color: rgba(255,255,255,0.6); font-size: 11px; }
+
+/* ── ATORES ── */
+.atores-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 4px; }
+.ator-card {
+  background: var(--surface3); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 18px 16px; text-align: center;
+}
+.ator-icon { font-size: 28px; margin-bottom: 8px; }
+.ator-name { font-size: 11px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.ator-role { font-size: 10px; color: var(--teal-b); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+.ator-desc { font-size: 11px; color: #bee5e4; line-height: 1.55; }
+
+/* ── SWIMLANE DIAGRAM ── */
+.swimlane { display: flex; gap: 0; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); margin: 20px 0; }
+.swim-col { flex: 1; }
+.swim-header {
+  padding: 10px 14px; font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; text-align: center;
+  border-bottom: 1px solid var(--border2);
+}
+.swim-header-usuario { background: rgba(212,136,58,0.15); color: var(--amber); }
+.swim-header-sistema { background: rgba(12,118,121,0.15); color: var(--teal-b); }
+.swim-header-entrega { background: rgba(46,184,126,0.1); color: var(--green); }
+.swim-body { padding: 14px 10px; display: flex; flex-direction: column; gap: 8px; min-height: 200px; }
+.swim-step {
+  border-radius: 8px; padding: 8px 10px;
+  font-size: 11px; font-weight: 600; text-align: center; line-height: 1.3;
+}
+.step-u { background: rgba(212,136,58,0.12); border: 1px solid rgba(212,136,58,0.25); color: var(--amber); }
+.step-s { background: var(--teal-dim); border: 1px solid rgba(12,118,121,0.3); color: var(--teal-c); }
+.step-p { background: rgba(124,92,191,0.12); border: 1px solid rgba(124,92,191,0.3); color: #a07de0; }
+.step-e { background: var(--green-dim); border: 1px solid rgba(46,184,126,0.3); color: var(--green); }
+.step-label { font-size: 9px; opacity: 0.7; font-weight: 400; display: block; margin-top: 2px; }
+.swim-divider { width: 1px; background: var(--border); }
+
+/* ── GDD STRUCTURE ── */
+.gdd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+.gdd-secao {
+  background: var(--surface3); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 14px 16px;
+}
+.gdd-secao-num { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal-b); margin-bottom: 4px; }
+.gdd-secao-name { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.gdd-secao-items { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+/* ── SECTION 10 HIGHLIGHT ── */
+.s10-card {
+  background: rgba(124,92,191,0.08); border: 1px solid rgba(124,92,191,0.3);
+  border-radius: var(--radius-lg); padding: 20px 24px; margin-top: 16px;
+}
+.s10-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.s10-badge { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #a07de0; background: rgba(124,92,191,0.12); border: 1px solid rgba(124,92,191,0.3); padding: 3px 10px; border-radius: 20px; }
+.s10-title { font-size: 13px; font-weight: 700; color: var(--text); }
+.s10-items { display: flex; flex-direction: column; gap: 8px; }
+.s10-item { display: flex; gap: 10px; font-size: 12px; color: #bee5e4; line-height: 1.5; }
+.s10-item-code { color: #a07de0; font-weight: 700; flex-shrink: 0; min-width: 24px; }
+
+/* ── LINKS ── */
+.link-card {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--surface3); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px;
+  text-decoration: none; transition: all 0.15s; cursor: pointer;
+}
+.link-card:hover { border-color: var(--teal); background: rgba(12,118,121,0.08); }
+.link-card-icon { font-size: 20px; flex-shrink: 0; }
+.link-card-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal-b); margin-bottom: 2px; }
+.link-card-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.link-card-url { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.link-card-arrow { margin-left: auto; color: var(--teal-b); font-size: 16px; }
+
+/* ── RASTREABILIDADE TABLE ── */
+.rastr-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.rastr-table th {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+  padding: 0 0 8px; text-align: left; border-bottom: 1px solid var(--border);
+}
+.rastr-table td {
+  font-size: 12px; color: #bee5e4;
+  padding: 10px 8px; border-bottom: 1px solid var(--border2); vertical-align: top;
+}
+.rastr-table td:first-child { color: var(--teal-b); font-weight: 700; white-space: nowrap; font-size: 11px; }
+.rastr-table td:nth-child(2) { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <div class="logo-mark"><img src="data:image/jpeg;base64,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" alt="Fabulus"></div>
+      <div class="logo-name"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDQ1MyAxNTMiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgICAgZm9udC1mYW1pbHk6IENoaWNsZS1SZWd1bGFyLCBDaGljbGU7CiAgICAgICAgZm9udC1zaXplOiAxNDEuN3B4OwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8dGV4dCBjbGFzcz0iY2xzLTEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIwLjEgMTIzKSI+PHRzcGFuIHg9IjAiIHk9IjAiPkZBQlVMVVM8L3RzcGFuPjwvdGV4dD4KPC9zdmc+" alt="FABULUS"></div>
+    </div>
+    <div class="logo-sub">Fluxo Governado de Geração de<br>Game Design Documents</div>
+    <div class="doc-badge">Metodologia</div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-section-header">Visão Geral</div>
+    <div class="nav-item active" onclick="showSection('intro')">Introdução</div>
+    <div class="nav-item" onclick="showSection('gdd')">Estrutura do GDD</div>
+    <div class="nav-item-sub">10 seções</div>
+    <div class="nav-item-sub">Seção 10 como governança</div>
+    <div class="nav-item" onclick="showSection('atores')">Atores e Papéis</div>
+    <div class="nav-item-sub">Usuário</div>
+    <div class="nav-item-sub">Operador</div>
+    <div class="nav-item-sub">Fabulus (agente)</div>
+
+    <div class="nav-section-header">Fluxo de Geração</div>
+    <div class="nav-item" onclick="showSection('e1')">Etapa 1: Formulário de Projeto</div>
+    <div class="nav-item-sub">1A Formulário input</div>
+    <div class="nav-item-sub">1B Output do Fabulus</div>
+    <div class="nav-item-sub">1C Formato do documento</div>
+    <div class="nav-item-sub">1D Ação do usuário</div>
+    <div class="nav-item" onclick="showSection('e2')">Etapa 2: Formulário de Contexto</div>
+    <div class="nav-item-sub">2A Formulário input</div>
+    <div class="nav-item-sub">2B Output do Fabulus</div>
+    <div class="nav-item-sub">2C Formato do documento</div>
+    <div class="nav-item-sub">2D Ação do usuário</div>
+    <div class="nav-item" onclick="showSection('e3')">Etapa 3: Briefing e Pesquisa</div>
+    <div class="nav-item-sub">Seções geradas: 1, 2a, 3a, 3b, 3e</div>
+    <div class="nav-item" onclick="showSection('e4')">Etapa 4: Estrutura Lógica</div>
+    <div class="nav-item-sub">Seções geradas: 6a–c, 3c, 3d</div>
+    <div class="nav-item" onclick="showSection('e5')">Etapa 5: Narrativa</div>
+    <div class="nav-item-sub">Seções geradas: 2b–f, 7a–f</div>
+    <div class="nav-item" onclick="showSection('e6')">Etapa 6: Mecânicas e Desafios</div>
+    <div class="nav-item-sub">Seções geradas: 4a–d, 5a–d, 6d</div>
+    <div class="nav-item" onclick="showSection('e7')">Etapa 7: Conteúdo Audiovisual</div>
+    <div class="nav-item-sub">Seções geradas: 8a–d, 9a–d</div>
+    <div class="nav-item" onclick="showSection('e8')">Etapa 8: Consolidação Final</div>
+    <div class="nav-item-sub">Verificação global: Seção 10</div>
+
+    <div class="nav-section-header">Prova de Conceito</div>
+    <div class="nav-item" onclick="showSection('poc')">Links e Ferramentas</div>
+    <div class="nav-item" onclick="showSection('resumo')">Mapa de Geração</div>
+  </nav>
+</aside>
+
+<div class="content">
+  <div class="topbar">
+    <span class="topbar-title">Fabulus</span>
+    <div class="topbar-div"></div>
+    <span class="topbar-sub">Fluxo Governado de Geração de Game Design Documents</span>
+    <div class="topbar-right">
+      <span class="chip chip-teal">Metodologia</span>
+      <span class="chip chip-amber">8 Etapas</span>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- ═══════════════════ INTRO ═══════════════════ -->
+    <div class="section active" id="section-intro">
+      <div class="page-cap">Fluxo Governado de Geração</div>
+      <div class="page-title">Introdução à Metodologia</div>
+
+      <div class="hero">
+        <div class="hero-cap">Fabulus | Game Design Documents</div>
+        <div class="hero-title">Fluxo Governado<br>de Geração de GDDs</div>
+        <div class="hero-subtitle">Para a indústria de jogos educacionais</div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">8 etapas sequenciais</div>
+          <div class="hero-meta-item">3 atores com papéis distintos</div>
+          <div class="hero-meta-item">10 seções de GDD</div>
+          <div class="hero-meta-item">Checkpoints automáticos + humanos</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-teal">🧭</div>
+          <div>
+            <div class="info-card-title">O que é o Fabulus</div>
+            <div class="info-card-subtitle">Princípio central do sistema</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>O Fabulus é um sistema de geração assistida de Game Design Documents estruturado em 8 etapas sequenciais com dependências explícitas: nenhuma etapa começa antes que o output da anterior esteja validado.</p>
+          <p>As duas primeiras etapas são do usuário: preenchimento e aprovação dos formulários de projeto e de contexto. A partir da Etapa 3, o controle passa para o agente e o operador, que alternam entre geração automática e validação humana especializada até a Etapa 7. A Etapa 8 é a consolidação final: verificação global do documento completo contra os cinco critérios da Seção 10.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-amber">⚙️</div>
+          <div>
+            <div class="info-card-title">Princípio da dependência sequencial</div>
+            <div class="info-card-subtitle">Por que a ordem importa</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>A ontologia das 10 seções é a infraestrutura sobre a qual o sistema foi construído. Ela define o que é um Game Design completo, em que ordem cada elemento pode ser gerado e quais dependências precisam ser respeitadas.</p>
+          <p>Os critérios da Seção 10: completude, consistência interna, aderência pedagógica, adequação ao público-alvo e rastreabilidade, são parâmetros ativos que governam cada checkpoint ao longo de todo o fluxo, garantindo que a qualidade do documento seja verificada de forma contínua e localizada, e não apenas ao final do processo.</p>
+        </div>
+      </div>
+
+      <div class="swimlane">
+        <div class="swim-col">
+          <div class="swim-header swim-header-usuario">Usuário</div>
+          <div class="swim-body">
+            <div class="swim-step step-u">Etapa 1<span class="step-label">Formulário de Projeto</span></div>
+            <div class="swim-step step-u">Etapa 2<span class="step-label">Formulário de Contexto</span></div>
+            <div style="flex:1"></div>
+          </div>
+        </div>
+        <div class="swim-divider"></div>
+        <div class="swim-col">
+          <div class="swim-header swim-header-sistema">Fabulus + Operador</div>
+          <div class="swim-body">
+            <div class="swim-step step-s">Etapa 3<span class="step-label">Briefing e Pesquisa</span></div>
+            <div class="swim-step step-s">Etapa 4<span class="step-label">Estrutura Lógica</span></div>
+            <div class="swim-step step-s">Etapa 5<span class="step-label">Narrativa</span></div>
+            <div class="swim-step step-s">Etapa 6<span class="step-label">Mecânicas e Desafios</span></div>
+            <div class="swim-step step-s">Etapa 7<span class="step-label">Conteúdo Audiovisual</span></div>
+            <div class="swim-step step-p">Etapa 8<span class="step-label">Consolidação Final</span></div>
+          </div>
+        </div>
+        <div class="swim-divider"></div>
+        <div class="swim-col">
+          <div class="swim-header swim-header-entrega">Entrega</div>
+          <div class="swim-body">
+            <div style="flex:1"></div>
+            <div class="swim-step step-e">GDD Completo<span class="step-label">Entregue ao usuário</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ GDD ═══════════════════ -->
+    <div class="section" id="section-gdd">
+      <div class="page-cap">Estrutura do documento</div>
+      <div class="page-title">Estrutura do Game Design Document</div>
+
+      <div class="gdd-grid">
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 1</div>
+          <div class="gdd-secao-name">Visão Geral</div>
+          <div class="gdd-secao-items">Título · Conceito central · Gênero narrativo · Público-alvo · Objetivos · Plataforma e formato</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 2</div>
+          <div class="gdd-secao-name">Narrativa</div>
+          <div class="gdd-secao-items">Premissa · Plot geral · Personagens · Cenas · Caminhos ramificados · Worldbuilding</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 3</div>
+          <div class="gdd-secao-name">Objetivos Pedagógicos</div>
+          <div class="gdd-secao-items">Conhecimento prévio · A adquirir · Potencial · Resultados por nível · Princípios instrucionais</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 4</div>
+          <div class="gdd-secao-name">Mecânicas de Jogo</div>
+          <div class="gdd-secao-items">Regras fundamentais · Controladores · Sistema de progressão · Curva de Flow</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 5</div>
+          <div class="gdd-secao-name">Desafios e Objetivos</div>
+          <div class="gdd-secao-items">Lista de desafios · Metas · Relação com narrativa · Vinculação pedagógica</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 6</div>
+          <div class="gdd-secao-name">Níveis</div>
+          <div class="gdd-secao-items">Estrutura e sequência · Conhecimento por nível · Ordem pedagógica · Metas e desafios</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 7</div>
+          <div class="gdd-secao-name">Elementos de Engajamento</div>
+          <div class="gdd-secao-items">Fantasy · Curiosidade · Estímulos sensoriais · Recompensas · Feedback · Motivação</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 8</div>
+          <div class="gdd-secao-name">Conteúdo Audiovisual</div>
+          <div class="gdd-secao-items">Diretrizes visuais · Diretrizes de áudio · Diálogos por cena · Cutscenes</div>
+        </div>
+        <div class="gdd-secao">
+          <div class="gdd-secao-num">Seção 9</div>
+          <div class="gdd-secao-name">Requisitos Técnicos</div>
+          <div class="gdd-secao-items">Plataforma · Ferramentas e engines · Requisitos de sistema · Arquitetura de dados</div>
+        </div>
+        <div class="gdd-secao" style="background:rgba(124,92,191,0.08);border-color:rgba(124,92,191,0.3);">
+          <div class="gdd-secao-num" style="color:#a07de0;">Seção 10</div>
+          <div class="gdd-secao-name">Critérios de Qualidade</div>
+          <div class="gdd-secao-items">Completude · Consistência interna · Aderência pedagógica · Adequação ao público · Rastreabilidade</div>
+        </div>
+      </div>
+
+      <div class="s10-card">
+        <div class="s10-header">
+          <div class="s10-badge">Governança Ativa</div>
+          <div class="s10-title">Seção 10: O contrato de qualidade do GDD</div>
+        </div>
+        <div class="s10-items">
+          <div class="s10-item"><span class="s10-item-code">10a</span><span>Completude: nenhum subitem em branco ou pendente em qualquer seção</span></div>
+          <div class="s10-item"><span class="s10-item-code">10b</span><span>Consistência interna: terminologia uniforme e ausência de decisões conflitantes entre seções</span></div>
+          <div class="s10-item"><span class="s10-item-code">10c</span><span>Aderência pedagógica: todos os resultados de 3d cobertos por níveis em 6b e desafios em 5d</span></div>
+          <div class="s10-item"><span class="s10-item-code">10d</span><span>Adequação ao público: linguagem, complexidade e estímulos consistentes com o perfil da Seção 1</span></div>
+          <div class="s10-item"><span class="s10-item-code">10e</span><span>Rastreabilidade: todas as intervenções do operador registradas com texto original, alterado e justificativa</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ATORES ═══════════════════ -->
+    <div class="section" id="section-atores">
+      <div class="page-cap">Papéis e responsabilidades</div>
+      <div class="page-title">Atores do Fluxo</div>
+
+      <div class="atores-grid">
+        <div class="ator-card">
+          <div class="ator-icon">👤</div>
+          <div class="ator-name">Usuário</div>
+          <div class="ator-role">Contratante</div>
+          <div class="ator-desc">Preenche os formulários das Etapas 1 e 2, aprova os documentos gerados e recebe o GDD completo ao final. Sua participação concentra-se na declaração de intenções e na recepção do resultado.</div>
+        </div>
+        <div class="ator-card">
+          <div class="ator-icon">🧑‍💼</div>
+          <div class="ator-name">Operador</div>
+          <div class="ator-role">Revisor especializado</div>
+          <div class="ator-desc">Pessoa interna responsável pelos checkpoints humanos nas Etapas 3 a 7. Avalia qualidade criativa, pedagógica e de jogabilidade. Pode editar campos com registro obrigatório de justificativa antes de aprovar.</div>
+        </div>
+        <div class="ator-card">
+          <div class="ator-icon">🤖</div>
+          <div class="ator-name">Fabulus</div>
+          <div class="ator-role">Agente de IA</div>
+          <div class="ator-desc">Sistema especializado que executa as gerações em cada etapa e os checkpoints automáticos de consistência lógica e estrutural: verificando dependências, terminologia e cobertura pedagógica.</div>
+        </div>
+      </div>
+
+      <div class="info-card" style="margin-top:20px;">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-teal">⚖️</div>
+          <div>
+            <div class="info-card-title">Divisão de responsabilidades</div>
+            <div class="info-card-subtitle">A precisão do sistema depende dessa separação</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>O <strong>Fabulus</strong> garante a consistência estrutural: verificando dependências, terminologia e cobertura pedagógica automaticamente antes de cada apresentação ao operador.</p>
+          <p>O <strong>operador</strong> garante a qualidade criativa e pedagógica, avaliando o que o agente não consegue verificar: adequação cultural, tom narrativo e viabilidade de jogabilidade.</p>
+          <p>O <strong>usuário</strong> define o escopo e recebe o resultado, sem precisar acompanhar o processo interno de geração.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 1 ═══════════════════ -->
+    <div class="section" id="section-e1">
+      <div class="page-cap">Etapa 1: Usuário</div>
+      <div class="page-title">Formulário de Input de Projeto</div>
+
+      <div class="etapa-card etapa-usuario">
+        <div class="etapa-header">
+          <div class="etapa-num num-usuario">1</div>
+          <div>
+            <div class="etapa-label label-usuario">1A: Ação do Usuário</div>
+            <div class="etapa-name">Preenchimento do Formulário de Projeto</div>
+          </div>
+        </div>
+        <div class="etapa-body">O usuário preenche três campos: <strong>Tema do jogo</strong> (o assunto, problema ou conteúdo que o jogo abordará), <strong>Público-alvo</strong> (faixa etária, escolaridade, contexto de uso) e <strong>Informações adicionais</strong> (qualquer informação relevante que não caiba nos campos anteriores).</div>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">1</div>
+          <div>
+            <div class="etapa-label label-sistema">1B: Output do Fabulus</div>
+            <div class="etapa-name">Documento de projeto com função técnica e comercial</div>
+          </div>
+        </div>
+        <div class="etapa-body" style="margin-bottom:14px;">O Fabulus gera um documento com dupla função: consolidar o que foi declarado (técnica) e mostrar o potencial do jogo que será criado (comercial). O usuário precisa sentir que o jogo que está prestes a criar tem valor real antes de avançar.</div>
+        <div class="output-tag tag-fabulus">📄 Campos gerados</div>
+        <ul class="checklist">
+          <li>Título do jogo: derivado do tema declarado</li>
+          <li>Quem vai jogar: perfil contextualizado, além do que o usuário escreveu</li>
+          <li>O que o Fabulus vai pesquisar: 4 dimensões: o que é, a lei, o que fazer, como medir</li>
+          <li>O que o jogador vai aprender: resultados de aprendizagem preliminares</li>
+          <li>Por que este jogo importa: relevância social, profissional ou ambiental do tema</li>
+        </ul>
+      </div>
+
+      <div class="etapa-card etapa-usuario">
+        <div class="etapa-header">
+          <div class="etapa-num num-usuario">1</div>
+          <div>
+            <div class="etapa-label label-usuario">1D: Ação do Usuário</div>
+            <div class="etapa-name">Revisão, edição e aprovação</div>
+          </div>
+        </div>
+        <div class="etapa-body">O usuário revisa o documento gerado, edita os campos que julgar necessário e aprova. O documento aprovado se torna o input definitivo para as etapas seguintes. Ao aprovar, o usuário confirma o alinhamento e autoriza o início da Etapa 2.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 2 ═══════════════════ -->
+    <div class="section" id="section-e2">
+      <div class="page-cap">Etapa 2: Usuário</div>
+      <div class="page-title">Formulário de Input de Contexto</div>
+
+      <div class="etapa-card etapa-usuario">
+        <div class="etapa-header">
+          <div class="etapa-num num-usuario">2</div>
+          <div>
+            <div class="etapa-label label-usuario">2A: Ação do Usuário</div>
+            <div class="etapa-name">Preenchimento do Formulário de Contexto</div>
+          </div>
+        </div>
+        <div class="etapa-body" style="margin-bottom:14px;">Todos os campos são opcionais. Preencha apenas o que se aplica ao contexto do projeto.</div>
+        <ul class="checklist">
+          <li>Estrutura do jogo: etapas, fases, sequência ou formato definidos, fases, sequência ou formato definidos</li>
+          <li>Sistema de pontuação e recompensas: parâmetros e como deve funcionar</li>
+          <li>Requisitos técnicos: engine, plataforma de distribuição, assets existentes</li>
+          <li>Contexto de uso: institucional, educacional ou corporativo</li>
+          <li>Tom narrativo e identidade visual: diretrizes de marca, se houver</li>
+          <li>Informações adicionais: qualquer restrição que não caiba nos campos anteriores</li>
+        </ul>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">2</div>
+          <div>
+            <div class="etapa-label label-sistema">2B: Output do Fabulus</div>
+            <div class="etapa-name">Documento de restrições com função exclusivamente técnica</div>
+          </div>
+        </div>
+        <div class="etapa-body" style="margin-bottom:14px;">O Fabulus consolida e torna explícito o que o sistema entendeu sobre as restrições e contexto declarados. Para cada campo preenchido, apresenta a interpretação em linguagem de design. Para os campos em branco, indica que o Fabulus terá liberdade de design naquele aspecto: permitindo que o usuário identifique o que não restringiu.</div>
+        <div class="output-tag tag-fabulus">🔍 Verificação incluída</div>
+        <div class="etapa-body">Compatibilidade com o projeto: verifica se as restrições declaradas são compatíveis com o tema e público-alvo aprovados na Etapa 1. Se houver incompatibilidade, sinaliza antes de permitir o avanço.</div>
+      </div>
+
+      <div class="etapa-card etapa-usuario">
+        <div class="etapa-header">
+          <div class="etapa-num num-usuario">2</div>
+          <div>
+            <div class="etapa-label label-usuario">2D: Ação do Usuário</div>
+            <div class="etapa-name">Aprovação: último ponto de contato do usuário</div>
+          </div>
+        </div>
+        <div class="etapa-body">Ao aprovar, o usuário confirma as restrições e autoriza o início da geração do GDD. A partir deste momento, o usuário não acompanha o processo: recebe uma notificação quando o Game Design Document estiver completo.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 3 ═══════════════════ -->
+    <div class="section" id="section-e3">
+      <div class="page-cap">Etapa 3: Fabulus + Operador</div>
+      <div class="page-title">Briefing e Pesquisa</div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-teal">📊</div>
+          <div>
+            <div class="info-card-title">Seções geradas nesta etapa</div>
+            <div class="info-card-subtitle">Seção 1 completa · Seção 2 parcial (2a) · Seção 3 parcial (3a, 3b, 3e)</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>A Seção 1 fica completa porque todos os seus elementos podem ser derivados diretamente dos formulários aprovados. A premissa de 2a pode ser gerada com base no tema e público-alvo. Os demais subitens de narrativa dependem da estrutura de níveis (Seção 6), que ainda não existe. 3a, 3b e 3e derivam do tema e da estrutura de etapas. 3c e 3d dependem dos níveis da Etapa 4.</p>
+        </div>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">3</div>
+          <div>
+            <div class="etapa-label label-sistema">3B: Output do Fabulus</div>
+            <div class="etapa-name">Seção 1, 2a, 3a, 3b, 3e</div>
+          </div>
+        </div>
+        <table class="secoes-table">
+          <tr><th>Elemento</th><th>Seção</th><th>Subitem</th></tr>
+          <tr><td>Título e conceito central</td><td>Seção 1</td><td>·</td></tr>
+          <tr><td>Gênero narrativo</td><td>Seção 1</td><td>·</td></tr>
+          <tr><td>Público-alvo e objetivos</td><td>Seção 1</td><td>·</td></tr>
+          <tr><td>Plataforma e formato</td><td>Seção 1</td><td>·</td></tr>
+          <tr><td>Premissa e cenário</td><td>Seção 2</td><td>2a</td></tr>
+          <tr><td>Conhecimento prévio requerido</td><td>Seção 3</td><td>3a</td></tr>
+          <tr><td>Conhecimento a ser adquirido</td><td>Seção 3</td><td>3b</td></tr>
+          <tr><td>Princípios instrucionais</td><td>Seção 3</td><td>3e</td></tr>
+        </table>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">3</div>
+          <div>
+            <div class="etapa-label label-sistema">Checkpoints</div>
+            <div class="etapa-name">Checkpoint do Fabulus + Checkpoint do Operador</div>
+          </div>
+        </div>
+        <div class="output-tag tag-fabulus">🤖 Checkpoint Automático</div>
+        <ul class="checklist" style="margin-bottom:16px;">
+          <li>Todos os elementos da Seção 1 foram gerados e a terminologia está uniforme?</li>
+          <li>A premissa de 2a contém os elementos obrigatórios: mundo, época, atmosfera?</li>
+          <li>Os princípios de 3e estão alinhados com a estrutura de etapas do input de contexto?</li>
+          <li>O conhecimento de 3b cobre as dimensões declaradas no documento da Etapa 1?</li>
+        </ul>
+        <div class="output-tag tag-operador">👤 Checkpoint Humano</div>
+        <ul class="checklist">
+          <li>O gênero narrativo é adequado ao público-alvo e aos objetivos pedagógicos?</li>
+          <li>A premissa e cenário são criativamente adequados, não apenas logicamente corretos?</li>
+          <li>O conhecimento prévio de 3a é realista para o público-alvo definido?</li>
+          <li>O conhecimento a adquirir em 3b está no nível de complexidade certo?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 4 ═══════════════════ -->
+    <div class="section" id="section-e4">
+      <div class="page-cap">Etapa 4: Fabulus + Operador</div>
+      <div class="page-title">Estrutura Lógica e Pedagógica</div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-sage">🧩</div>
+          <div>
+            <div class="info-card-title">Seções geradas nesta etapa</div>
+            <div class="info-card-subtitle">Seção 3 completa (3c, 3d) · Seção 6 parcial (6a, 6b, 6c)</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>3d (resultados por nível) é gerado antes de 6a, 6b e 6c. A ordem interna garante que os resultados pedagógicos existam antes da estrutura de níveis. Com 3d definido, 3c (conhecimento além do escopo) pode ser gerado, pois agora o sistema sabe o que está dentro do escopo. 6d (metas e desafios por nível) depende das mecânicas da Etapa 6 e permanece pendente.</p>
+        </div>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">4</div>
+          <div>
+            <div class="etapa-label label-sistema">4B: Output do Fabulus</div>
+            <div class="etapa-name">3c, 3d, 6a, 6b, 6c</div>
+          </div>
+        </div>
+        <table class="secoes-table">
+          <tr><th>Elemento</th><th>Seção</th><th>Subitem</th></tr>
+          <tr><td>Resultados de aprendizagem por nível</td><td>Seção 3</td><td>3d</td></tr>
+          <tr><td>Conhecimento potencial além do escopo</td><td>Seção 3</td><td>3c</td></tr>
+          <tr><td>Estrutura e sequência de níveis</td><td>Seção 6</td><td>6a</td></tr>
+          <tr><td>Conhecimento requerido, entregue e testado por nível</td><td>Seção 6</td><td>6b</td></tr>
+          <tr><td>Ordem pedagógica dos níveis</td><td>Seção 6</td><td>6c</td></tr>
+        </table>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">4</div>
+          <div>
+            <div class="etapa-label label-sistema">Checkpoints</div>
+            <div class="etapa-name">Checkpoint do Fabulus + Checkpoint do Operador</div>
+          </div>
+        </div>
+        <div class="output-tag tag-fabulus">🤖 Checkpoint Automático</div>
+        <ul class="checklist" style="margin-bottom:16px;">
+          <li>Cada nível de 6b tem conhecimento requerido, entregue e testado explicitamente definidos?</li>
+          <li>Nenhum nível testa conhecimento que ainda não foi entregue em nível anterior?</li>
+          <li>Os resultados de 3d cobrem integralmente os objetivos de 3b?</li>
+        </ul>
+        <div class="output-tag tag-operador">👤 Checkpoint Humano</div>
+        <ul class="checklist">
+          <li>A sequência de níveis é pedagogicamente coerente: cada nível prepara o seguinte?</li>
+          <li>O número de níveis é adequado ao público-alvo e à estrutura declarada?</li>
+          <li>Os resultados de 3d são específicos e mensuráveis o suficiente para orientar desafios?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 5 ═══════════════════ -->
+    <div class="section" id="section-e5">
+      <div class="page-cap">Etapa 5: Fabulus + Operador</div>
+      <div class="page-title">Narrativa Ancorada na Estrutura</div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-amber">📖</div>
+          <div>
+            <div class="info-card-title">Seções geradas nesta etapa</div>
+            <div class="info-card-subtitle">Seção 2 quase completa (2b–f, sem diálogos) · Seção 7 completa (7a–f)</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>2b a 2f podem ser gerados agora porque 6a, 6b e 6c estão validados. A ordem interna garante: plot antes dos personagens, personagens antes das cenas, cenas antes dos caminhos ramificados, worldbuilding consolida tudo. Os diálogos detalhados (8c) ficam para a Etapa 7: dependem das diretrizes visuais de 8a. A Seção 7 fica completa porque todos os seus elementos dependem da narrativa e dos níveis, agora disponíveis.</p>
+        </div>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">5</div>
+          <div>
+            <div class="etapa-label label-sistema">5B: Output do Fabulus</div>
+            <div class="etapa-name">2b, 2c, 2d, 2e, 2f · 7a, 7b, 7c, 7d, 7e, 7f</div>
+          </div>
+        </div>
+        <table class="secoes-table">
+          <tr><th>Elemento</th><th>Seção</th><th>Subitem</th></tr>
+          <tr><td>Plot geral</td><td>Seção 2</td><td>2b</td></tr>
+          <tr><td>Personagens principais</td><td>Seção 2</td><td>2c</td></tr>
+          <tr><td>Estrutura de cenas</td><td>Seção 2</td><td>2d</td></tr>
+          <tr><td>Caminhos ramificados</td><td>Seção 2</td><td>2e</td></tr>
+          <tr><td>Lore e worldbuilding</td><td>Seção 2</td><td>2f</td></tr>
+          <tr><td>Fantasy · Curiosidade · Estímulos sensoriais</td><td>Seção 7</td><td>7a–c</td></tr>
+          <tr><td>Recompensas · Feedback · Motivação</td><td>Seção 7</td><td>7d–f</td></tr>
+        </table>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">5</div>
+          <div>
+            <div class="etapa-label label-sistema">Checkpoints</div>
+            <div class="etapa-name">Checkpoint do Fabulus + Checkpoint do Operador</div>
+          </div>
+        </div>
+        <div class="output-tag tag-fabulus">🤖 Checkpoint Automático</div>
+        <ul class="checklist" style="margin-bottom:16px;">
+          <li>O plot de 2b está ancorado na sequência de níveis: cada ato corresponde a pelo menos um nível?</li>
+          <li>Os caminhos ramificados respeitam a ordem pedagógica: nenhum permite acesso fora de sequência?</li>
+          <li>Os elementos de 7a a 7f estão presentes em cada nível de 6a?</li>
+        </ul>
+        <div class="output-tag tag-operador">👤 Checkpoint Humano</div>
+        <ul class="checklist">
+          <li>O plot é narrativamente envolvente para o público-alvo, não apenas pedagogicamente correto?</li>
+          <li>Os personagens têm profundidade suficiente para sustentar o engajamento em todos os níveis?</li>
+          <li>Os caminhos ramificados têm peso decisório real ou são escolhas sem consequência percebida?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 6 ═══════════════════ -->
+    <div class="section" id="section-e6">
+      <div class="page-cap">Etapa 6: Fabulus + Operador</div>
+      <div class="page-title">Mecânicas e Desafios</div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-teal">⚔️</div>
+          <div>
+            <div class="info-card-title">Seções geradas nesta etapa</div>
+            <div class="info-card-subtitle">Seção 4 completa · Seção 5 completa · Seção 6 completa (6d)</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>Com narrativa e estrutura pedagógica validadas, o Fabulus gera tudo que delas depende: regras, controladores, progressão e curva de Flow (Seção 4); desafios, metas e sua relação com narrativa e aprendizagem (Seção 5); e 6d (metas e desafios por nível), que conclui a Seção 6. As Seções 8 e 9 dependem das mecânicas agora geradas, serão produzidas na Etapa 7.</p>
+        </div>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">6</div>
+          <div>
+            <div class="etapa-label label-sistema">6B: Output do Fabulus</div>
+            <div class="etapa-name">4a–d · 5a–d · 6d</div>
+          </div>
+        </div>
+        <table class="secoes-table">
+          <tr><th>Elemento</th><th>Seção</th><th>Subitem</th></tr>
+          <tr><td>Regras fundamentais</td><td>Seção 4</td><td>4a</td></tr>
+          <tr><td>Controladores e ações</td><td>Seção 4</td><td>4b</td></tr>
+          <tr><td>Sistema de progressão</td><td>Seção 4</td><td>4c</td></tr>
+          <tr><td>Curva de Flow</td><td>Seção 4</td><td>4d</td></tr>
+          <tr><td>Lista de desafios com parâmetros mensuráveis</td><td>Seção 5</td><td>5a</td></tr>
+          <tr><td>Metas que o jogador deve cumprir</td><td>Seção 5</td><td>5b</td></tr>
+          <tr><td>Relação desafios × narrativa</td><td>Seção 5</td><td>5c</td></tr>
+          <tr><td>Vinculação desafio × aprendizagem</td><td>Seção 5</td><td>5d</td></tr>
+          <tr><td>Metas e desafios por nível</td><td>Seção 6</td><td>6d</td></tr>
+        </table>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">6</div>
+          <div>
+            <div class="etapa-label label-sistema">Checkpoints</div>
+            <div class="etapa-name">Checkpoint do Fabulus + Checkpoint do Operador</div>
+          </div>
+        </div>
+        <div class="output-tag tag-fabulus">🤖 Checkpoint Automático</div>
+        <ul class="checklist" style="margin-bottom:16px;">
+          <li>As regras de 4a são consistentes com o plot de 2b e a sequência de níveis de 6a?</li>
+          <li>Cada desafio de 5a tem parâmetros mensuráveis explicitamente definidos?</li>
+          <li>Todos os resultados de aprendizagem de 3d estão cobertos por pelo menos um desafio em 5d?</li>
+        </ul>
+        <div class="output-tag tag-operador">👤 Checkpoint Humano</div>
+        <ul class="checklist">
+          <li>As mecânicas são jogáveis na prática: não apenas pedagogicamente corretas?</li>
+          <li>A curva de Flow está calibrada para o público-alvo real?</li>
+          <li>Os desafios são suficientemente variados para manter o engajamento em todos os níveis?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 7 ═══════════════════ -->
+    <div class="section" id="section-e7">
+      <div class="page-cap">Etapa 7: Fabulus + Operador</div>
+      <div class="page-title">Conteúdo Audiovisual e Requisitos Técnicos</div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-purple">🎨</div>
+          <div>
+            <div class="info-card-title">Seções geradas nesta etapa</div>
+            <div class="info-card-subtitle">Seção 8 completa (8a–d) · Seção 9 completa (9a–d) · Seção 2 finalmente completa</div>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <p>A ordem interna é crítica: 8a (visuais) antes de 8b (áudio): o tom audiovisual precisa ser coerente. 8c (diálogos) depende de 8a, pois o tom visual influencia como os personagens falam. 8d (cutscenes) depende de 8a e 2b. Na Seção 9, a arquitetura de dados (9d) é o último elemento de todo o fluxo, pois depende de mecânicas, controladores, progressão e ferramentas. Com 8c gerado, a Seção 2 fica integralmente completa pela primeira vez.</p>
+        </div>
+      </div>
+
+      <div class="etapa-card etapa-sistema">
+        <div class="etapa-header">
+          <div class="etapa-num num-sistema">7</div>
+          <div>
+            <div class="etapa-label label-sistema">7B: Output do Fabulus</div>
+            <div class="etapa-name">8a, 8b, 8c, 8d · 9a, 9b, 9c, 9d</div>
+          </div>
+        </div>
+        <table class="secoes-table">
+          <tr><th>Elemento</th><th>Seção</th><th>Depende de</th></tr>
+          <tr><td>Diretrizes visuais</td><td>8a</td><td>2a, 2f, 7c</td></tr>
+          <tr><td>Diretrizes de áudio</td><td>8b</td><td>2a, 7c, 8a</td></tr>
+          <tr><td>Diálogos detalhados por cena</td><td>8c</td><td>2c, 2d, 8a</td></tr>
+          <tr><td>Cutscenes e cinemáticas</td><td>8d</td><td>2b, 2d, 8a</td></tr>
+          <tr><td>Plataforma de desenvolvimento</td><td>9a</td><td>Seção 1</td></tr>
+          <tr><td>Ferramentas e engines</td><td>9b</td><td>9a, 4a</td></tr>
+          <tr><td>Requisitos de sistema</td><td>9c</td><td>9a, 9b</td></tr>
+          <tr><td>Arquitetura de dados</td><td>9d</td><td>4a, 4b, 4c, 9b</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ETAPA 8 ═══════════════════ -->
+    <div class="section" id="section-e8">
+      <div class="page-cap">Etapa 8: Consolidação</div>
+      <div class="page-title">Consolidação e Validação Final</div>
+
+      <div class="etapa-card etapa-final">
+        <div class="etapa-header">
+          <div class="etapa-num num-final">8</div>
+          <div>
+            <div class="etapa-label label-final">Verificação Global</div>
+            <div class="etapa-name">A Etapa 8 não gera conteúdo novo</div>
+          </div>
+        </div>
+        <div class="etapa-body">O Fabulus executa uma verificação global de consistência de todo o documento contra os cinco critérios da Seção 10 simultaneamente. Nas Etapas 3 a 7, cada checkpoint verificou a consistência local. Na Etapa 8, a verificação é global: percorrendo todas as 9 seções e todos os subitens.</div>
+      </div>
+
+      <div class="s10-card">
+        <div class="s10-header">
+          <div class="s10-badge">Seção 10 ativa</div>
+          <div class="s10-title">O que é verificado na Etapa 8</div>
+        </div>
+        <div class="s10-items">
+          <div class="s10-item"><span class="s10-item-code">10a</span><span><strong>Completude</strong>: confirma que nenhum subitem ficou em branco ou pendente. Um GDD com 8c ausente ou 6d incompleto falha imediatamente.</span></div>
+          <div class="s10-item"><span class="s10-item-code">10b</span><span><strong>Consistência interna</strong>: percorre o documento inteiro buscando inconsistências. Um personagem chamado "Alex" em 2c e "Alê" em 8c falha em 10b.</span></div>
+          <div class="s10-item"><span class="s10-item-code">10c</span><span><strong>Aderência pedagógica</strong>: gera uma matriz de rastreabilidade: resultado de 3d → nível de 6b → desafio de 5d. Um resultado sem desafio correspondente falha.</span></div>
+          <div class="s10-item"><span class="s10-item-code">10d</span><span><strong>Adequação ao público</strong>: verifica se linguagem, complexidade e estímulos são consistentes com o público da Seção 1 em todo o documento.</span></div>
+          <div class="s10-item"><span class="s10-item-code">10e</span><span><strong>Rastreabilidade</strong>: confirma que todas as intervenções do operador nos Checkpoints das Etapas 3 a 7 estão registradas com texto original, alterado e justificativa.</span></div>
+        </div>
+      </div>
+
+      <div class="etapa-card etapa-final" style="margin-top:20px;">
+        <div class="etapa-header">
+          <div class="etapa-num num-final">8</div>
+          <div>
+            <div class="etapa-label label-final">Checkpoint Final do Operador</div>
+            <div class="etapa-name">Aprovação da entrega</div>
+          </div>
+        </div>
+        <div class="etapa-body">O operador revisa o relatório de verificação e aprova a entrega do GDD ao usuário. Se o Fabulus identificou falhas em qualquer critério da Seção 10, o operador decide se corrige antes da entrega ou registra como pendência com justificativa.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ POC ═══════════════════ -->
+    <div class="section" id="section-poc">
+      <div class="page-cap">Prova de Conceito</div>
+      <div class="page-title">Links e Ferramentas</div>
+
+      <div class="info-card" style="margin-bottom:24px;">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-green">🔗</div>
+          <div>
+            <div class="info-card-title">Ferramentas disponíveis</div>
+            <div class="info-card-subtitle">Demonstração funcional do fluxo completo</div>
+          </div>
+        </div>
+        <div class="info-card-body">Três arquivos HTML autocontidos implementam as interfaces do fluxo Fabulus para demonstração do sistema.</div>
+      </div>
+
+      <a class="link-card" href="https://the-blue-city.github.io/fabulus/01-fabulus_formulario_usuario.html" target="_blank">
+        <div class="link-card-icon">📝</div>
+        <div>
+          <div class="link-card-label">Etapas 1 e 2: Usuário</div>
+          <div class="link-card-name">Formulário de Input de Projeto e Contexto</div>
+          <div class="link-card-url">01-fabulus_formulario_usuario.html</div>
+        </div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+
+      <a class="link-card" href="https://the-blue-city.github.io/fabulus/02-fabulus_etapa_operador.html" target="_blank">
+        <div class="link-card-icon">⚙️</div>
+        <div>
+          <div class="link-card-label">Etapas 3 a 7: Operador</div>
+          <div class="link-card-name">Interface de Geração com Checkpoints Humanos</div>
+          <div class="link-card-url">02-fabulus_etapa_operador.html</div>
+        </div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+
+      <a class="link-card" href="https://the-blue-city.github.io/fabulus/03-fabulus_gdd_apresentacao.html" target="_blank">
+        <div class="link-card-icon">📄</div>
+        <div>
+          <div class="link-card-label">Etapa 8: GDD Final</div>
+          <div class="link-card-name">Apresentação do Game Design Document</div>
+          <div class="link-card-url">03-fabulus_gdd_apresentacao.html</div>
+        </div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+
+      <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.3);margin:28px 0 10px;">Modelo Aplicado</div>
+
+      <a class="link-card" href="https://the-blue-city.github.io/fabulus/03-fabulus_gdd_apresentacao_termometro.html" target="_blank">
+        <div class="link-card-icon">🌡️</div>
+        <div>
+          <div class="link-card-label">GDD: Exemplo de aplicação</div>
+          <div class="link-card-name">Termômetro Zero: Redução de Emissão de GEE</div>
+          <div class="link-card-url">03-fabulus_gdd_apresentacao_termometro.html</div>
+        </div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+    </div>
+
+    <!-- ═══════════════════ RESUMO ═══════════════════ -->
+    <div class="section" id="section-resumo">
+      <div class="page-cap">Mapa de Geração</div>
+      <div class="page-title">Em que etapa cada seção é gerada</div>
+
+      <div class="info-card">
+        <div class="info-card-header">
+          <div class="info-card-icon icon-teal">🗺️</div>
+          <div>
+            <div class="info-card-title">Rastreabilidade completa</div>
+            <div class="info-card-subtitle">Seção do GDD × Etapa de geração</div>
+          </div>
+        </div>
+        <table class="rastr-table">
+          <tr><th>Seção</th><th>Subitem</th><th>Etapa</th></tr>
+          <tr><td>Seção 1: Visão Geral</td><td>Todos os subitens</td><td>Etapa 3</td></tr>
+          <tr><td>Seção 2: Narrativa</td><td>2a Premissa e cenário</td><td>Etapa 3</td></tr>
+          <tr><td></td><td>2b–f Plot, personagens, cenas, caminhos, worldbuilding</td><td>Etapa 5</td></tr>
+          <tr><td></td><td>Diálogos detalhados (8c)</td><td>Etapa 7</td></tr>
+          <tr><td>Seção 3: Pedagógico</td><td>3a, 3b, 3e</td><td>Etapa 3</td></tr>
+          <tr><td></td><td>3c, 3d</td><td>Etapa 4</td></tr>
+          <tr><td>Seção 4: Mecânicas</td><td>4a, 4b, 4c, 4d</td><td>Etapa 6</td></tr>
+          <tr><td>Seção 5: Desafios</td><td>5a, 5b, 5c, 5d</td><td>Etapa 6</td></tr>
+          <tr><td>Seção 6: Níveis</td><td>6a, 6b, 6c</td><td>Etapa 4</td></tr>
+          <tr><td></td><td>6d Metas e desafios por nível</td><td>Etapa 6</td></tr>
+          <tr><td>Seção 7: Engajamento</td><td>7a–f</td><td>Etapa 5</td></tr>
+          <tr><td>Seção 8: Audiovisual</td><td>8a, 8b, 8c, 8d</td><td>Etapa 7</td></tr>
+          <tr><td>Seção 9: Técnico</td><td>9a, 9b, 9c, 9d</td><td>Etapa 7</td></tr>
+          <tr><td>Seção 10: Qualidade</td><td>10a–e</td><td>Etapa 8</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /content -->
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const sec = document.getElementById('section-' + id);
+  if (sec) sec.classList.add('active');
+  event.currentTarget.classList.add('active');
+  document.querySelector('.main').scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
