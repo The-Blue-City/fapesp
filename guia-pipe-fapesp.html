@@ -89,7 +89,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-faint);
   }
@@ -147,7 +147,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--ink-faint);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     line-height: 1.7;
   }
 
@@ -231,7 +231,7 @@
     color: var(--ink-soft);
     max-width: 720px;
     margin-bottom: 64px;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 
   .intro-grid {
@@ -273,7 +273,7 @@
     margin-top: 64px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--ink-faint);
     display: flex;
     justify-content: space-between;
@@ -336,7 +336,7 @@
     color: var(--ink-mute);
     max-width: 720px;
     margin-bottom: 56px;
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
   }
 
   /* ─── Sections within a page ─── */
@@ -403,7 +403,7 @@
     font-weight: 600;
     font-size: 14px;
     color: var(--ink);
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
   }
 
   .field-meta {
@@ -450,12 +450,12 @@
   .field-value.filled {
     color: var(--ink);
     border-left-color: var(--accent);
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Fraunces', serif;
   }
 
   .field-value::before {
     content: '⌁  a preencher';
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Fraunces', serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -501,6 +501,23 @@
   }
   .field-action:hover .arrow {
     transform: translateX(3px);
+  }
+
+  .field-actions-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .field-action.alt {
+    background: var(--accent);
+    color: var(--paper);
+    border-color: var(--accent);
+  }
+  .field-action.alt:hover {
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
   }
 
   .date-warning {
@@ -659,7 +676,7 @@
     font-family: 'Fraunces', serif;
     font-weight: 600;
     font-size: 16px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   #mobile-topbar .mobile-mark em { font-style: normal; color: var(--accent); }
@@ -1366,9 +1383,14 @@
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Arquivo PDF — documento principal da proposta</div>
-          <a class="field-action" href="projeto-de-pesquisa.html" target="_blank">
-            Abrir documento <span class="arrow">→</span>
-          </a>
+          <div class="field-actions-row">
+            <a class="field-action" href="projeto-de-pesquisa.html" target="_blank">
+              Abrir versão enviada <span class="arrow">→</span>
+            </a>
+            <a class="field-action alt" href="projeto-de-pesquisa-v2.html" target="_blank">
+              Abrir nova versão <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
 
         <div class="field">
