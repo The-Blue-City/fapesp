@@ -318,6 +318,19 @@
   .doc-table .check { text-align: center; font-weight: 600; color: var(--accent); }
   .doc-table .nocheck { text-align: center; color: var(--ink-faint); }
 
+  /* MARCAÇÃO TEMPORÁRIA - remover antes da submissão final */
+  .checar-fonte {
+    background: #f8e3da;
+    border-bottom: 2px dotted #8a3a1f;
+    padding: 0 2px;
+    cursor: help;
+  }
+  .checar-fonte::after {
+    content: " ⚑";
+    color: #8a3a1f;
+    font-weight: 700;
+  }
+
   .doc-caption {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -525,7 +538,7 @@
       <span class="sep"></span>
     </div>
 
-    <h1 class="page-title">Inteligência Artificial para <em>Geração Governada</em> de Game Design Documents em Jogos</h1>
+    <h1 class="page-title">Sistema de Geração de Game Design Documents com <em>Governança Humana</em> e Inteligência Artificial</h1>
     <p class="page-deck">
       Documento principal da proposta. Conteúdo atual conforme submetido em 16/01/2026.
       Será revisado à luz dos pareceres recebidos antes da nova submissão.
@@ -568,7 +581,7 @@
         <h2 class="doc-section-title">Título</h2>
       </div>
       <div class="doc-content">
-        <p>Inteligência Artificial para Geração Governada de Game Design Documents em Jogos</p>
+        <p>Sistema de Geração de Game Design Documents com Governança Humana e Inteligência Artificial</p>
       </div>
     </section>
 
@@ -579,16 +592,16 @@
         <h2 class="doc-section-title">Resumo</h2>
       </div>
       <div class="doc-content">
-        <p>A gamificação consolidou-se como estratégia para transformar conteúdos em experiências de aprendizagem envolventes, mas a etapa que sustenta a coerência e o impacto de um jogo – a elaboração do Game Design Document (GDD) – permanece um gargalo de tempo e custo. Produzir um GDD completo e válido é hoje, na prática, um trabalho de consultoria especializada da ordem de um mês, o que pesa especialmente sobre quem opera com equipes reduzidas e orçamentos limitados: segundo a Pesquisa da Indústria Brasileira de Games (Abragames e ApexBrasil, 2022), cerca de 60% dos estúdios de desenvolvimento de jogos no Brasil são independentes, e tempo e custo de pré-produção andam juntos como uma mesma barreira. O recurso a um modelo de linguagem genérico não resolve esse gargalo: na produção do GDD "Termômetro Zero", para a plataforma Missão Cidade Azul, o tempo manteve-se nessa ordem de grandeza mesmo com o apoio de IA, porque o modelo genérico não governa as dependências entre as seções do documento nem contém suas inconsistências, obrigando à reconstrução iterativa a cada ajuste.</p>
+        <p>A gamificação consolidou-se como estratégia para transformar conteúdos em experiências de aprendizagem envolventes, mas a etapa que sustenta a coerência e o impacto de um jogo – a elaboração do Game Design Document (GDD) – permanece um gargalo de tempo e custo. Produzir um GDD completo e válido é hoje, na prática, um trabalho de consultoria especializada da ordem de um mês, o que pesa especialmente sobre quem opera com equipes reduzidas e orçamentos limitados: segundo a Pesquisa da Indústria Brasileira de Games <span class="checar-fonte" title="Verificar: dado de 60% de estudios independentes e o ano">(Abragames e ApexBrasil, 2022)</span>, cerca de 60% dos estúdios de desenvolvimento de jogos no Brasil são independentes. Essa predominância de desenvolvedores independentes reflete a criatividade e a resiliência do setor, mas também evidencia desafios estruturais, como o acesso a financiamento, a limitação de recursos técnicos especializados e a obtenção de visibilidade nos mercados nacional e global. Ainda de acordo com a pesquisa, a baixa oferta de tecnologias que otimizem a jornada de desenvolvimento de jogos afeta diretamente equipes pequenas ou projetos com prazos reduzidos, especialmente aqueles voltados a empresas e organizações que desejam utilizar jogos como ferramenta de aprendizado e engajamento. O recurso a um modelo de linguagem genérico não resolve esse gargalo: na produção do GDD "Termômetro Zero", para a plataforma The Blue City, o tempo manteve-se nessa ordem de grandeza mesmo com o apoio de IA, porque o modelo genérico não governa as dependências entre as seções do documento nem contém suas inconsistências, obrigando à reconstrução iterativa a cada ajuste.</p>
 
-        <p>Diante desse contexto, este projeto propõe não uma IA que gere GDDs, mas um método de geração governada – o Fabulus – cuja inovação está na forma de produzir o documento, não na capacidade generativa em si. O método estrutura a geração em um fluxo de etapas sequenciais com dependências explícitas, no qual nenhuma etapa começa antes que o resultado da anterior esteja validado. Cada etapa é submetida a dois controles complementares: um checkpoint automático, que verifica a consistência lógica e estrutural do que foi gerado, e um checkpoint humano especializado, no qual um operador avalia a qualidade criativa e pedagógica e edita o conteúdo com registro obrigatório de justificativa. O artefato produzido ancora-se no modelo conceitual de dez seções para jogos educativos proposto por Roungas (2016), cujos cinco critérios de qualidade – completude, consistência interna, aderência aos resultados de aprendizagem, adequação ao público-alvo e rastreabilidade – operam como parâmetros ativos de governança* em cada checkpoint e se consolidam em uma verificação global ao final do fluxo. A IA generativa atua, nesse arranjo, como componente de execução, justificada pela velocidade com que estrutura um documento complexo e interdependente; a validade do resultado é assegurada pela governança humana, não pela geração automática.</p>
+        <p>Diante desse contexto, este projeto propõe um método de geração governada de Game Design Documents – o Fabulus –, concebido para atuar como ferramenta de apoio ao processo criativo e técnico de desenvolvimento de jogos. O método estrutura a geração em um fluxo de etapas sequenciais com dependências explícitas, no qual cada etapa combina geração automática e validação humana especializada antes de avançar. O artefato produzido ancora-se no modelo conceitual de dez seções para jogos educativos proposto por Roungas (2016), cujos cinco critérios de qualidade – completude, consistência interna, aderência aos resultados de aprendizagem, adequação ao público-alvo e rastreabilidade – operam como parâmetros ativos de governança* ao longo do fluxo. A IA generativa atua, nesse arranjo, como componente de execução, justificada pela velocidade com que estrutura um documento complexo e interdependente; a validade do resultado é assegurada pela governança humana.</p>
 
-        <p>A hipótese central da Fase 1 é que esse método reduz o tempo de produção de um GDD completo e válido de cerca de um mês para aproximadamente cinco dias, preservando a validade do documento – garantida pelo processo de governança, cujo registro de decisões assegura a rastreabilidade de cada intervenção. O ganho verifica-se já no cenário mais conservador, o de um único profissional produzindo seus próprios documentos; mas o método não se limita a uma ferramenta de produtividade individual: por ser estruturado e replicável, é transferível a qualquer operador, e é nessa transferência que reside seu alcance – ampliar o acesso a práticas profissionais de documentação e reduzir o tempo e o custo de pré-produção para estúdios independentes, escolas, empresas e iniciativas que utilizam jogos como recurso de aprendizagem e engajamento.</p>
+        <p>A hipótese central do projeto é que esse método reduz o tempo de produção de um GDD completo e válido de cerca de um mês para aproximadamente cinco dias, preservando a validade do documento – garantida pelo processo de governança, cujo registro de decisões assegura a rastreabilidade de cada intervenção. O ganho verifica-se já no cenário mais conservador, o de um único profissional produzindo seus próprios documentos; mas o método não se limita a uma ferramenta de produtividade individual: por ser estruturado e replicável, é transferível a qualquer operador, e é nessa transferência que reside seu alcance – ampliar o acesso a práticas profissionais de documentação e reduzir o tempo e o custo de pré-produção para estúdios independentes, empresas e organizações que utilizam jogos como recurso de aprendizagem e engajamento. Trata-se de um campo ainda pouco explorado, com potencial para apoiar ecossistemas criativos emergentes, em especial pequenas empresas e profissionais independentes, e para atender públicos correlatos, como agências de marketing, empresas, consultorias e áreas de inovação.</p>
 
         <p>Ao final do projeto PIPE - Fase 1, pretende-se entregar um protótipo funcional testado em ambiente relevante. A aplicação ocorrerá através de um caso real, com a geração de um GDD em condições práticas de uso, permitindo avaliar a redução de tempo obtida, a validade dos documentos produzidos sob o fluxo governado e a adequação do método aos processos de trabalho existentes, estabelecendo a base para a evolução em níveis superiores de maturidade tecnológica.</p>
 
         <div class="footnote">
-          * Aplicação governada de IA refere-se ao uso de modelos de inteligência artificial em um fluxo de trabalho com critérios explícitos de controle, validação e rastreabilidade, no qual a geração automática é mediada por supervisão humana e por checkpoints de qualidade, assegurando a consistência de conteúdos estruturados.
+          * Aplicação governada de IA refere-se ao uso de modelos de inteligência artificial em um fluxo de trabalho com critérios explícitos de controle, validação e rastreabilidade, no qual a geração automática é mediada por supervisão humana e por <i>checkpoints</i> de qualidade, assegurando a consistência de conteúdos estruturados.
         </div>
       </div>
     </section>
@@ -600,23 +613,21 @@
         <h2 class="doc-section-title">Objetivos e maturidade tecnológica pretendida (TRL)</h2>
       </div>
       <div class="doc-content">
-        <p>O objetivo geral do projeto é desenvolver uma tecnologia baseada em IA para apoiar, de forma assistida e governada, a roteirização de jogos digitais com a geração estruturada de GDDs. A ferramenta busca transformar a etapa de criação de roteiros – atualmente complexa, lenta e custosa – em um processo mais ágil, acessível e escalável, sem substituir o papel decisório e criativo dos profissionais envolvidos.</p>
+        <p>O objetivo geral do projeto é desenvolver e validar um método de geração governada de Game Design Documents (GDDs), no qual a produção do documento é estruturada em etapas com dependências explícitas, cada uma submetida a um <i>checkpoint</i> automático de consistência e a um <i>checkpoint</i> humano especializado. O método busca transformar a elaboração do GDD – atualmente um trabalho de consultoria especializada, lento e custoso – em um processo mais ágil e acessível, reduzindo de forma mensurável o tempo de produção sem transferir à automação o papel decisório e criativo, que permanece sob responsabilidade humana.</p>
 
-        <p>A proposta parte do entendimento de que o GDD constitui o primeiro e mais estratégico passo da produção de jogos e experiências interativas, uma vez que concentra a roteirização e a estrutura conceitual que sustentam a coerência e o impacto narrativo do produto final. Como destaca J. Schell (2008), o design de um jogo deve começar com uma ideia clara do que o jogador deve vivenciar, e essa ideia precisa ser formalizada e comunicada com documentação precisa, compartilhável e colaborativa. Exemplos amplamente reconhecidos reforçam essa centralidade: em God of War (2018), a fase de roteirização estendeu-se por aproximadamente dois anos antes do início da produção principal (Barlog, 2019), em The Last of Us (2013) mais de um ano foi dedicado à estrutura narrativa antes da prototipação (Druckmann, 2014). Esses casos ilustram o papel determinante do GDD na qualidade final do jogo, uma vez que nele são definidos elementos como narrativa, objetivos do jogador, lógica de progressão e integração entre desafios e recompensas.</p>
+        <p>O GDD reúne e formaliza os elementos que sustentam a coerência de um jogo – narrativa, objetivos de aprendizagem, mecânicas, lógica de progressão e integração entre desafios e recompensas. Diferentes contextos de produção posicionam esse documento em momentos distintos do fluxo de trabalho: em estúdios de grande porte ele costuma anteceder a produção, ao passo que em equipes pequenas e independentes a prototipação rápida frequentemente vem antes, e o GDD consolida posteriormente o que foi testado. O método proposto é concebido para consolidar o design de forma estruturada e válida, podendo ser empregado antes, depois ou em paralelo à prototipação. O que o método assegura, em qualquer posição do fluxo, é que o documento resultante seja completo, internamente consistente e aderente aos objetivos de aprendizagem – propriedades verificáveis independentemente do estágio em que o GDD é produzido.</p>
 
-        <p>Considerando essa importância, o presente projeto propõe aplicar técnicas de inteligência artificial generativa e Processamento de Linguagem Natural (NLP) para auxiliar a organização, estruturação e formalização de roteiros e documentos de design de jogos. O modelo proposto atuará a partir de insumos fornecidos pelos usuários – como tema, público-alvo e objetivos – convertendo essas informações em GDDs parametrizados e alinhados a padrões profissionais, em um fluxo híbrido no qual a geração automática é continuamente validada e ajustada por intervenção humana.</p>
+        <p>Para isso, o projeto aplica técnicas de inteligência artificial generativa e Processamento de Linguagem Natural como componentes de execução, subordinados a um fluxo de validação humana. O sistema atua a partir de insumos fornecidos pelo usuário – tema, público-alvo, restrições e decisões de design já tomadas – convertendo-os em um GDD estruturado segundo o modelo de dez seções para jogos educativos de Roungas (2016), em um fluxo no qual cada saída automática é verificada quanto à consistência e validada por um operador antes de avançar.</p>
 
-        <p>Os principais desafios científicos e tecnológicos do projeto concentram-se, primeiramente, na definição de uma ontologia flexível para GDDs, capaz de acomodar diferentes gêneros, finalidades e estilos de jogos. A ausência de modelos formais consolidados para a representação de conhecimento em jogos é apontada como um dos principais entraves à automação de processos nessa área (Yannakakis & Togelius, 2018). A construção de estruturas ontológicas adaptáveis a múltiplos estilos de jogo pode demandar períodos prolongados em ambientes acadêmicos e experimentais, especialmente quando há diversidade de gêneros e objetivos.</p>
+        <p>O principal desafio do projeto não é a geração de texto em si – capacidade já demonstrada pelos modelos de linguagem atuais –, mas a contenção de suas limitações em um domínio que exige consistência interna, precisão conceitual e aderência pedagógica. Estudos demonstram que modelos de linguagem geram conteúdo coerente a partir de poucos exemplos (Brown et al., 2020), mas também evidenciam que parcela relevante das saídas não está pronta para uso sem revisão: no sistema AtDELFI, apenas cerca de 60% dos textos gerados foram considerados adequados ao contexto de design de jogos <span class="checar-fonte" title="Verificar: paper AtDELFI e o numero de 60% das saidas adequadas">(Green et al., 2018)</span>. O desafio central é, portanto, projetar um método que torne essas limitações administráveis através de <i>checkpoints</i> estruturais e validação humana sistemática, de modo que o ganho de velocidade não comprometa a confiabilidade do documento.</p>
 
-        <p>Outro desafio relevante refere-se ao uso de modelos de linguagem em domínios criativos especializados. Estudos fundacionais como o de Brown et al. (2020) demonstraram que modelos de linguagem de larga escala são capazes de gerar instruções técnicas coerentes a partir de poucos exemplos (few-shot learning), estabelecendo bases importantes para aplicações assistidas em documentação e organização de conteúdo. Ao mesmo tempo, esses estudos evidenciam limitações em domínios que exigem precisão técnica, consistência interna e controle semântico, indicando a necessidade de abordagens mediadas e governadas. Resultados empíricos como os apresentados por Green et al. (2018), no sistema AtDELFI, mostram que apenas cerca de 60% dos textos gerados automaticamente foram considerados prontos para uso em contextos de design de jogos, reforçando a importância de modelos especializados e de validação humana integrada ao processo.</p>
+        <p>Soma-se a isso o desafio de orientar usuários sem formação em game design na formalização de seu conceito de jogo. Pesquisa da <span class="checar-fonte" title="Verificar: dado de 74% - numero preciso, precisa fonte rastreavel">Unity Technologies (2022)</span> indica que 74% dos desenvolvedores independentes relatam dificuldade em traduzir ideias iniciais em documentação técnica, e ferramentas existentes ainda pressupõem conhecimento prévio de design. Um método que conduz o usuário etapa a etapa, com validação especializada realizada por um operador ao longo do fluxo, pode reduzir essa barreira e ampliar o acesso a práticas profissionais de documentação.</p>
 
-        <p>Há ainda o desafio de construir um sistema interativo que integre Processamento de Linguagem Natural e design de interação de forma a orientar o usuário na formalização progressiva do conceito de jogo. Pesquisa conduzida pela Unity Technologies (2022) indica que 74% dos desenvolvedores independentes relatam dificuldades na tradução de ideias iniciais em documentação técnica. Embora ferramentas como Articy Draft tenham buscado mitigar esse problema, elas ainda pressupõem conhecimento prévio em design. Um sistema assistido por IA e mediado por humanos, como o proposto neste projeto, pode reduzir essa barreira, promovendo maior inclusão e eficiência no processo de documentação.</p>
+        <p>Por fim, o projeto enfrenta o desafio de estabelecer critérios verificáveis de qualidade do GDD. O método adota os cinco critérios do modelo de Roungas (2016) – completude, consistência interna, aderência aos resultados de aprendizagem, adequação ao público-alvo e rastreabilidade das decisões – que operam como parâmetros ativos de validação ao longo de todo o fluxo e se consolidam em uma verificação global final, permitindo aferir a qualidade do documento.</p>
 
-        <p>Por fim, destaca-se a necessidade de estabelecer métricas e métodos de validação capazes de avaliar a qualidade dos GDDs produzidos, considerando critérios como completude, clareza, usabilidade e aderência a padrões reconhecidos pela indústria. Conforme argumenta Schell (2008), um bom GDD deve comunicar de forma clara os objetivos do jogo a todas as áreas envolvidas. Estudos do Nielsen Norman Group (2021) indicam que a adoção de métricas de clareza semântica, consistência e completude pode aumentar significativamente a produtividade de equipes que trabalham com documentação técnica.</p>
+        <p>A maturidade tecnológica atual do projeto situa-se no TRL 2. A empresa já conduziu projetos de jogos educativos implantados em escolas e em iniciativas corporativas de ESG, através de uma plataforma comercialmente validada, o que proporcionou compreensão concreta das necessidades dos usuários e dos desafios de produção. O método já conta com uma prova de conceito documentada – a formalização de um GDD completo e protótipos de interface que demonstram o fluxo de etapas e <i>checkpoints</i> –, ainda sem validação funcional sistemática. <span class="checar-fonte" title="INSERIR URL do indice Fabulus aqui (metodologia detalhada + formularios 1, 2 e 3). Repetir o mesmo link na Secao 6.">[inserir link do índice Fabulus: metodologia detalhada e protótipos de interface]</span></p>
 
-        <p>A maturidade tecnológica atual do projeto pode ser classificada como STRL 2. A proponente já liderou projetos de desenvolvimento de jogos implantados em escolas públicas, programas de capacitação profissional e iniciativas de engajamento em ESG, conduzidos através de uma plataforma comercialmente validada. Essas experiências proporcionaram compreensão concreta das necessidades dos usuários finais e dos desafios de mercado, embora ainda não exista uma integração sistemática de GDDs governados por IA nos fluxos atuais de produção.</p>
-
-        <p>A tecnologia encontra-se, portanto, em fase conceitual, com funções essenciais e algoritmos base identificados, mas ainda sem validação funcional do modelo assistido proposto. Ao final do projeto, espera-se alcançar o STRL 3, com a entrega de um protótipo funcional testado em ambiente relevante. A solução será aplicada em contexto real, utilizando a plataforma já em operação no mercado de jogos, permitindo avaliar a coerência dos documentos gerados, a adequação do fluxo assistido aos processos de trabalho existentes e a viabilidade técnica do modelo. Essa validação estabelecerá uma base consistente para a evolução futura da tecnologia em níveis superiores de maturidade (STRL 4, 5 e 6).</p>
+        <p>Ao final do projeto, espera-se alcançar o TRL 3, com a entrega de um protótipo funcional testado em ambiente relevante. A solução será aplicada em contexto real, sobre a plataforma já em operação, permitindo avaliar a redução de tempo de produção, a validade dos GDDs gerados sob o fluxo governado e a adequação do método aos processos de trabalho existentes – estabelecendo base para a evolução em níveis superiores de maturidade (TRL 4, 5 e 6).</p>
       </div>
     </section>
 
@@ -627,27 +638,27 @@
         <h2 class="doc-section-title">Revisão da Evolução Científica-Tecnológica Relacionada ao projeto</h2>
       </div>
       <div class="doc-content">
-        <p>A elaboração de GDDs constitui uma etapa essencial no desenvolvimento de jogos digitais, pois organiza e formaliza conceitos fundamentais como mecânicas, narrativa, personagens e fluxos de interação. Tradicionalmente, essa produção é realizada de forma manual e colaborativa, demandando tempo, conhecimento técnico especializado e múltiplas interações entre equipes. Nos últimos anos, entretanto, avanços em inteligência artificial – especialmente no campo dos modelos de linguagem de larga escala (Large Language Models – LLMs), do Processamento de Linguagem Natural (PLN), da Geração Procedural de Conteúdo (Procedural Content Generation – PCG) e da modelagem de conhecimento – passaram a oferecer novas possibilidades para apoiar e estruturar esse processo (Vaswani et al., 2017; Brown et al., 2020).</p>
+        <p>A elaboração de GDDs constitui uma etapa essencial no desenvolvimento de jogos digitais, pois organiza e formaliza conceitos fundamentais como mecânicas, narrativa, personagens e fluxos de interação. Tradicionalmente, essa produção é realizada por trabalho especializado – frequentemente via consultoria –, demandando tempo, conhecimento técnico e múltiplas interações de refinamento; mesmo quando apoiada por modelos de linguagem de uso geral, a ausência de uma camada de governança mantém o processo custoso e sujeito a inconsistências. Nos últimos anos, avanços em inteligência artificial – especialmente no campo dos modelos de linguagem de larga escala (Large Language Models – LLMs), do Processamento de Linguagem Natural (PLN) e da modelagem formal de conhecimento – passaram a oferecer novas possibilidades para apoiar e estruturar esse processo (Vaswani et al., 2017; Zhao et al., 2023).</p>
 
-        <p>Dados apresentados em guias de prática da indústria indicam que a fase de pré-produção – que inclui atividades como planejamento conceitual, documentação técnica e definição de Game Design Documents (GDDs) – pode representar uma parcela relevante do ciclo de desenvolvimento de jogos, com estimativas típicas em torno de 20% do tempo total em projetos gerais. Em jogos narrativos ou com forte componente conceitual, essa proporção tende a crescer, pois a etapa de roteirização e documentação exige ciclos adicionais de alinhamento, refinamento e validação antes da produção principal (RocketBrush, 2024). Paralelamente, a evolução recente dos modelos de linguagem demonstrou a capacidade desses sistemas de gerar textos longos e semanticamente coerentes a partir de descrições iniciais relativamente simples. Esses avanços evidenciam a viabilidade técnica de utilizar modelos generativos como ferramentas de apoio à estruturação de documentos complexos, desde que inseridos em fluxos controlados e mediadores.</p>
+        <p>Dados de mercado indicam que a fase de pré-produção – que inclui atividades como planejamento conceitual, documentação técnica e definição de Game Design Documents (GDDs) – pode representar uma parcela relevante do ciclo de desenvolvimento de jogos, com estimativas em torno de 20% do tempo total em projetos gerais; em jogos narrativos ou com forte componente conceitual, essa proporção tende a crescer, pois a etapa de roteirização e documentação exige ciclos adicionais de alinhamento, refinamento e validação antes da produção principal <span class="checar-fonte" title="Verificar fonte: dado de 20% do ciclo; fonte fraca (blog de estudio)">(RocketBrush, 2024)</span>. Paralelamente, a evolução recente dos modelos de linguagem demonstrou a capacidade desses sistemas de gerar textos longos e semanticamente coerentes a partir de descrições iniciais relativamente simples. Esses avanços evidenciam a viabilidade técnica de utilizar modelos generativos como ferramentas de apoio à estruturação de documentos complexos, desde que inseridos em fluxos controlados e mediadores.</p>
 
-        <p>A literatura científica aponta que modelos de linguagem de larga escala são capazes de produzir instruções técnicas coerentes a partir de poucos exemplos (few-shot learning), estabelecendo uma base relevante para aplicações assistidas em documentação e organização de conteúdo (Brown et al., 2020). Ao mesmo tempo, esses estudos evidenciam limitações importantes em domínios especializados, nos quais a consistência interna, a precisão conceitual e o controle semântico são fundamentais. Esses fatores reforçam a necessidade de abordagens governadas, nas quais a geração automática seja acompanhada de validação humana e mecanismos de contenção de erros.</p>
+        <p>A literatura científica aponta que modelos de linguagem de larga escala são capazes de produzir instruções técnicas coerentes a partir de poucos exemplos (<i>few-shot learning</i>), estabelecendo uma base relevante para aplicações assistidas em documentação e organização de conteúdo (Brown et al., 2020). Ao mesmo tempo, esses estudos evidenciam limitações importantes em domínios especializados, nos quais a consistência interna, a precisão conceitual e o controle semântico são fundamentais. Esses fatores reforçam a necessidade de abordagens governadas, nas quais a geração automática seja acompanhada de validação humana e mecanismos de contenção de erros.</p>
 
-        <p>Em paralelo, a pesquisa em Geração Procedural de Conteúdo (PCG) avançou de forma consistente na criação automática de níveis, desafios, estruturas espaciais e elementos narrativos em jogos (Shaker, Togelius & Nelson, 2016). A aplicação de PCG em ambientes comerciais demonstra ganhos expressivos de eficiência, permitindo a criação de múltiplas variações de conteúdo a partir de parâmetros bem definidos. Quando combinada à documentação de design, essa abordagem possibilita a geração de descrições técnicas, roteiros e mapas conceituais de forma mais ágil e consistente, desde que ancorada em modelos conceituais adequados.</p>
+        <p>Diante dessas limitações, torna-se central a camada de governança humana sobre a geração automática. A literatura de <i>human-in-the-loop</i> sistematiza estratégias para combinar inteligência humana e automática em sistemas de IA, distinguindo, entre outras abordagens, a construção de sistemas nos quais a intervenção humana é parte estrutural do fluxo de processamento, e não um ajuste posterior (Wu et al., 2021). Aplicada à geração de documentos técnicos, essa abordagem implica submeter cada saída automática a <i>checkpoints</i> de validação especializada antes de avançar, com registro sistemático das intervenções e justificativas. É essa camada que converte uma geração probabilística, por natureza falível, em um processo controlado, auditável e rastreável – condição para que o conteúdo gerado seja confiável em domínios que exigem consistência e precisão.</p>
 
-        <p>Nesse contexto, ontologias e sistemas formais de representação de conhecimento desempenham papel central. Conforme discutido por Yannakakis e Togelius (2018), a modelagem conceitual permite estruturar regras, objetivos, mecânicas e relações internas de jogos de maneira explícita, criando uma base lógica que pode ser explorada por sistemas computacionais. Projetos experimentais nessa linha demonstram que a organização ontológica de elementos de design facilita a reutilização, a consistência e a automação parcial de processos documentais, funcionando como elo entre geração textual e estrutura formal.</p>
+        <p>Sustentando ambas as camadas anteriores, ontologias e sistemas formais de representação de conhecimento desempenham papel central. Uma modelagem conceitual capaz de estruturar de forma explícita as regras, objetivos, mecânicas e relações internas de um jogo cria a base lógica sobre a qual sistemas computacionais podem operar; sua ausência, contudo, é apontada por Yannakakis e Togelius (2018) como um dos principais entraves à automação de processos de design – falta, na área, um modelo conceitual consolidado para representar o que constitui um jogo. É precisamente essa lacuna que o modelo de Roungas (2016) preenche no domínio dos jogos educativos: a partir de uma avaliação com especialistas em <i>serious games</i>, Roungas propõe um modelo orientado a conhecimento que organiza os elementos de um GDD em uma estrutura de seções inter-relacionadas, articulando dimensões de entretenimento e de aprendizagem. Esse modelo constitui a base ontológica sobre a qual o presente projeto é construído, definindo o que é um GDD completo e quais dependências precisam ser respeitadas ao longo da geração.</p>
 
-        <p>Esses avanços indicam que os principais componentes tecnológicos necessários à geração assistida de GDDs – modelos generativos, algoritmos procedurais e estruturas formais de conhecimento — já estão disponíveis e em contínua evolução. LLMs oferecem capacidade de síntese textual e adaptação a partir de poucos exemplos, enquanto técnicas de PCG permitem variar e parametrizar elementos de design. A modelagem de conhecimento atua como estrutura de sustentação, garantindo coerência e integridade conceitual ao material gerado.</p>
+        <p>Esses avanços indicam que os principais componentes necessários à geração governada de GDDs – modelos generativos, mecanismos de validação <i>human-in-the-loop</i> e estruturas formais de conhecimento – já estão disponíveis e em contínua evolução. LLMs oferecem capacidade de síntese textual e adaptação a partir de poucos exemplos, enquanto a governança humana fornece os mecanismos de contenção de erro e validação especializada. A modelagem ontológica atua como estrutura de sustentação, garantindo coerência e integridade conceitual ao material gerado e definindo as dependências que organizam todo o processo.</p>
 
         <p>Apesar disso, as soluções atualmente disponíveis tendem a atuar de forma fragmentada. Ferramentas de apoio à roteirização e organização de ideias exigem conhecimento prévio de design e não operam de maneira integrada a partir de linguagem natural, tampouco incorporam mecanismos sistemáticos de validação e governança. Essa lacuna evidencia a ausência de sistemas que combinem geração automática, organização formal e mediação humana em um fluxo único.</p>
 
-        <p>Do ponto de vista de mercado e inovação, estudos recentes indicam que a adoção de inteligência artificial generativa em processos criativos pode reduzir significativamente tempo e custos de pré-produção, além de ampliar o acesso a práticas profissionais em contextos com recursos limitados. Ao mesmo tempo, o crescimento do número de registros de propriedade intelectual relacionados à aplicação de IA no design de jogos sinaliza interesse crescente na automação assistida de processos criativos, ainda que predominantemente em iniciativas experimentais.</p>
+        <p>Do ponto de vista de mercado e inovação, o relatório da Accenture (2023) indica que soluções baseadas em inteligência artificial generativa podem impactar até 40% das horas de trabalho em atividades baseadas em linguagem, sinalizando potencial significativo de redução de tempo e custos em processos criativos e de ampliação do acesso a práticas profissionais em contextos com recursos limitados. Ao mesmo tempo, o registro de patentes por grandes empresas de tecnologia – como Microsoft e Electronic Arts – em torno da aplicação de IA ao desenvolvimento de jogos sinaliza interesse crescente do setor na automação assistida de processos criativos, ainda que predominantemente em iniciativas experimentais e voltadas a outras etapas do desenvolvimento.</p>
 
         <p>No cenário acadêmico e industrial, centros internacionais de pesquisa vêm contribuindo para o avanço da IA aplicada a jogos, enquanto no Brasil a produção científica e experimental nessa área permanece concentrada em iniciativas pontuais. Considerando que a indústria nacional de jogos é majoritariamente composta por estúdios independentes, há uma demanda latente por soluções acessíveis que reduzam barreiras técnicas e ampliem a competitividade desses agentes.</p>
 
-        <p>Diante desse panorama, a presente proposta busca desenvolver um sistema de geração assistida e governada de Game Design Documents, integrando inteligência artificial generativa, estruturas formais de conhecimento e critérios técnicos de validação. O sistema será concebido para operar em modo colaborativo, permitindo que o usuário intervenha, ajuste e valide as saídas ao longo do processo, combinando o potencial de automação com supervisão e decisão humana.</p>
+        <p>Diante desse panorama, a presente proposta busca desenvolver um método de geração governada de Game Design Documents, articulando inteligência artificial generativa, uma estrutura ontológica de conhecimento e validação humana especializada em um fluxo único. O sistema será concebido para operar em modo governado, no qual o operador intervém, ajusta e valida as saídas ao longo do processo, subordinando o potencial de automação à supervisão e à decisão humana.</p>
 
-        <p>Em síntese, a integração dessas tecnologias em um novo arranjo funcional representa um avanço técnico relevante para a produção de jogos digitais. Ao articular capacidades já consolidadas em um fluxo governado e orientado ao uso profissional, o projeto busca responder a uma demanda concreta do setor, promovendo eficiência, acessibilidade e maior controle sobre processos criativos mediados por inteligência artificial.</p>
+        <p>Em síntese, a articulação desses fundamentos em um novo arranjo funcional representa um avanço técnico relevante para a produção de jogos digitais. Ao organizar capacidades já consolidadas – modelo ontológico, geração assistida e validação humana – em um método governado e orientado ao uso profissional, o projeto busca responder a uma demanda concreta do setor, promovendo eficiência, acessibilidade e controle humano sobre a qualidade do documento produzido.</p>
       </div>
     </section>
 
@@ -660,7 +671,7 @@
       <div class="doc-content">
         <p>Atualmente, foram identificadas três empresas internacionais que oferecem produtos ou processos parcialmente relacionados à proposta apresentada neste projeto. No entanto, nenhuma das soluções analisadas entrega, de forma integrada e governada, o conjunto de funcionalidades pretendidas, nem atua especificamente na fase de estruturação documental assistida do desenvolvimento de jogos. As soluções existentes concentram-se em pontos isolados da jornada de criação, sem cobrir de maneira contínua e mediada as necessidades de desenvolvedores – em especial equipes independentes ou voltadas a jogos educativos.</p>
 
-        <p>Para contextualizar esse cenário competitivo, é importante considerar a jornada típica de um desenvolvedor ou de uma equipe reduzida. Essa jornada inicia-se com a ideação e a concepção do jogo, passa pela roteirização e formalização técnica (fase em que se produz o GDDs), avança para a prototipação e, posteriormente, para etapas de balanceamento, produção e lançamento. As maiores dificuldades tendem a concentrar-se justamente nas fases iniciais, quando ideias ainda abstratas precisam ser traduzidas em documentação clara, reutilizável e compartilhável.</p>
+        <p>Para contextualizar esse cenário competitivo, é importante considerar a jornada típica de um desenvolvedor ou de uma equipe reduzida. Essa jornada inicia-se com a ideação e a concepção do jogo, passa pela roteirização e formalização técnica (fase em que se produz o GDD), avança para a prototipação e, posteriormente, para etapas de balanceamento, produção e lançamento. As maiores dificuldades tendem a concentrar-se justamente nas fases iniciais, quando ideias ainda abstratas precisam ser traduzidas em documentação clara, reutilizável e compartilhável.</p>
 
         <p>Nesse estágio inicial, desenvolvedores sem formação formal em game design frequentemente enfrentam barreiras para estruturar suas ideias de maneira técnica. A plataforma Ludo.ai, sediada nos Estados Unidos, busca mitigar parte desse problema ao oferecer sugestões automáticas de ideias, personagens e conceitos visuais a partir de descrições fornecidas pelo usuário, além de informações sobre tendências de mercado. Contudo, sua atuação está restrita à ideação e ao brainstorming, não avança para a geração ou organização de documentos técnicos estruturados, tampouco oferece mecanismos de validação ou formalização do conteúdo gerado. A plataforma auxilia na inspiração, mas não resolve a etapa crítica de roteirização e documentação técnica.</p>
 
@@ -675,46 +686,60 @@
               <th>Ludo.ai</th>
               <th>Wayline</th>
               <th>Machinations.io</th>
+              <th>Proposta</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Geração automática de GDD</td>
-              <td class="check">Sim</td>
-              <td class="check">Sim</td>
+              <td>Geração de GDD estruturado a partir de linguagem natural</td>
               <td class="nocheck">Não</td>
-            </tr>
-            <tr>
-              <td>Balanceamento de mecânicas</td>
               <td class="nocheck">Não</td>
               <td class="nocheck">Não</td>
               <td class="check">Sim</td>
             </tr>
             <tr>
-              <td>Análise de mercado integrada</td>
-              <td class="check">Sim</td>
+              <td>Base ontológica de seções inter-relacionadas</td>
+              <td class="nocheck">Não</td>
               <td class="nocheck">Parcial</td>
               <td class="nocheck">Não</td>
+              <td class="check">Sim</td>
             </tr>
             <tr>
-              <td>Localização em português (BR)</td>
+              <td>Governança humana com <i>checkpoints</i> e rastreabilidade</td>
               <td class="nocheck">Não</td>
               <td class="nocheck">Não</td>
               <td class="nocheck">Não</td>
+              <td class="check">Sim</td>
+            </tr>
+            <tr>
+              <td>Aderência pedagógica (jogos educativos)</td>
+              <td class="nocheck">Não</td>
+              <td class="nocheck">Não</td>
+              <td class="nocheck">Não</td>
+              <td class="check">Sim</td>
+            </tr>
+            <tr>
+              <td>Operação em português (BR)</td>
+              <td class="nocheck">Não</td>
+              <td class="nocheck">Não</td>
+              <td class="nocheck">Não</td>
+              <td class="check">Sim</td>
             </tr>
           </tbody>
         </table>
-        <div class="doc-caption">Quadro 1. Análise das Empresas Internacionais. Elaboração Própria (2025)</div>
+        <div class="doc-caption">Quadro 1. Análise comparativa com soluções internacionais. Elaboração própria (2025)</div>
 
-        <p>O projeto proposto diferencia-se ao investigar e estruturar um fluxo assistido e governado de geração de GDDs, integrando apoio à formalização técnica, organização conceitual e mediação humana em um único sistema. O diferencial não reside apenas na utilização de IA, mas na forma como essa tecnologia é integrada ao processo de documentação, com critérios explícitos de validação, controle e intervenção do usuário ao longo da geração. Além disso, o sistema será concebido considerando o contexto do mercado brasileiro, incluindo operação em língua portuguesa, o que amplia sua acessibilidade e potencial de adoção por desenvolvedores locais.</p>
+        <p>O projeto proposto diferencia-se ao estruturar um fluxo governado de geração de GDDs, no qual a geração por IA opera subordinada a uma base ontológica de seções inter-relacionadas e a <i>checkpoints</i> de validação humana. O diferencial não reside no uso de IA em si – hoje amplamente disponível –, mas na forma como essa tecnologia é contida e governada: cada saída é verificada quanto à consistência estrutural e validada por um operador, com registro das decisões. Além disso, o sistema é concebido para o contexto brasileiro, com operação em língua portuguesa, o que amplia sua acessibilidade e potencial de adoção por desenvolvedores locais.</p>
 
-        <p>No que se refere à propriedade intelectual, foi realizada pesquisa nas bases do Google Patents e do Instituto Nacional da Propriedade Industrial (INPI), identificando registros que tangenciam o uso de inteligência artificial no desenvolvimento de jogos. Destaca-se a patente pendente "Game Development via Generative AI" (2024, EUA), de titularidade da Microsoft, que aborda a geração automatizada de conteúdos visuais e narrativos. Entretanto, seu escopo concentra-se na criação de assets e elementos de jogo, não tratando da estruturação nem da geração assistida de GDDs.</p>
+        <p>Além das três soluções analisadas em detalhe, há um conjunto crescente de ferramentas de IA aplicadas ao desenvolvimento de jogos – entre elas Promethean AI, Leonardo AI, Meshy AI, InWorld AI, Charisma AI e os recursos de IA da Unity –, além de modelos de linguagem de uso geral como GPT, Gemini e Claude. Nenhuma dessas soluções, isoladamente, oferece um fluxo que articule geração por IA, estrutura ontológica e governança humana voltado especificamente à produção de documentação de design de jogos. Os modelos de linguagem de uso geral, em particular, são capazes de gerar trechos de GDD, mas sem a estrutura que assegure consistência entre seções, sem <i>checkpoints</i> de validação e sem rastreabilidade das decisões – exatamente as limitações que o método proposto endereça.</p>
 
-        <p>Outras patentes analisadas incluem registros relacionados a ajuste dinâmico de dificuldade e geração narrativa em tempo de execução (runtime), como a patente US10286323B2 da Electronic Arts (2019), voltada ao balanceamento adaptativo durante o gameplay, e a patente US9576009B1 da Microsoft (2017), relacionada à geração automática de narrativas a partir de dados contextuais. Essas tecnologias atuam predominantemente na fase de execução do jogo, e não na etapa de pré-produção e documentação técnica, foco do presente projeto.</p>
+        <p>No que se refere à propriedade intelectual, foi realizada pesquisa nas bases do Google Patents e do Instituto Nacional da Propriedade Industrial (INPI), identificando registros que tangenciam o uso de inteligência artificial no desenvolvimento de jogos. Destaca-se a patente pendente "<span class="checar-fonte" title="Verificar patente Microsoft 2024 - existencia e numero">Game Development via Generative AI</span>" (2024, EUA), de titularidade da Microsoft, que aborda a geração automatizada de conteúdos visuais e narrativos. Entretanto, seu escopo concentra-se na criação de assets e elementos de jogo, não tratando da estruturação nem da geração assistida de GDDs.</p>
 
-        <p>Essa distinção de escopo elimina sobreposição direta com as soluções patenteadas analisadas e assegura liberdade de operação para o desenvolvimento da tecnologia proposta. Não foram identificadas patentes concedidas que combinem, em uma única solução, geração e governada de GDDs, organização formal de conteúdo e integração com critérios técnicos de validação.</p>
+        <p>Outras patentes analisadas incluem registros relacionados a ajuste dinâmico de dificuldade e geração narrativa em tempo de execução (<i>runtime</i>), como a patente <span class="checar-fonte" title="Verificar numero da patente EA 2019">US10286323B2</span> da Electronic Arts (2019), voltada ao balanceamento adaptativo durante o gameplay, e a patente <span class="checar-fonte" title="Verificar numero da patente US9576009B1 (2017) e DIVERGENCIA DE TITULAR: corpo diz Microsoft, bibliografia diz Narrative Science Inc.">US9576009B1</span> da Microsoft (2017), relacionada à geração automática de narrativas a partir de dados contextuais. Essas tecnologias atuam predominantemente na fase de execução do jogo, e não na etapa de pré-produção e documentação técnica, foco do presente projeto.</p>
 
-        <p>Conclui-se, portanto, que há liberdade operacional relevante para a execução do projeto, bem como oportunidades futuras de proteção da inovação por meio de instrumentos adequados de propriedade intelectual, como patente ou segredo industrial. Essa condição fortalece o potencial de escalabilidade da solução, sua inserção em mercados educacionais e corporativos e sua atratividade para parcerias estratégicas e investimentos em fases subsequentes.</p>
+        <p>Essa distinção de escopo elimina sobreposição direta com as soluções patenteadas analisadas e assegura liberdade de operação para o desenvolvimento da tecnologia proposta. Não foram identificadas patentes concedidas que combinem, em uma única solução, geração governada de GDDs, organização formal de conteúdo e integração com critérios técnicos de validação.</p>
+
+        <p>Conclui-se, portanto, que há liberdade operacional relevante para a execução do projeto, bem como oportunidades futuras de proteção da inovação através de instrumentos adequados de propriedade intelectual, como patente ou segredo industrial. Essa condição fortalece o potencial de escalabilidade da solução, sua inserção em mercados educacionais e corporativos e sua atratividade para parcerias estratégicas e investimentos em fases subsequentes.</p>
       </div>
     </section>
 
@@ -727,51 +752,159 @@
       <div class="doc-content">
         <p><strong>6.1. Descrição dos procedimentos metodológicos:</strong></p>
 
-        <p>O plano de pesquisa propõe o desenvolvimento de um sistema baseado em Inteligência Artificial para a geração automatizada assistida e governada de GDDs, com o objetivo de apoiar desenvolvedores, estúdios e demais profissionais do setor criativo na elaboração de projetos de jogos digitais. A proposta combina métodos de PLN, aprendizado de máquina e design de interação para construir um protótipo capaz de estruturar, organizar e articular descrições fornecidas por humanos em documentos técnicos alinhados a padrões reconhecidos na indústria de games, operando em um fluxo híbrido humano–IA. Considerando a natureza probabilística de modelos de linguagem e a produção de saídas com variabilidade, o planejamento estabelece desde a origem um modelo metodológico explícito de governança da geração, estruturado como um fluxo híbrido humano–IA (man in the middle como mediação técnica contínua). Nesse arranjo, a geração ocorre em camadas e cada componente do GDD (estrutura macro, narrativa, mecânicas, progressão e objetivos) é produzido como saída parcial, submetida a checkpoints formais de validação por especialistas humanos, com registro sistemático das intervenções, justificativas de decisão, ajustes de parâmetros e consolidação incremental do documento. A metodologia organiza, assim, um mecanismo de detecção e contenção de erros ao longo do processo (classificação de ocorrências por tipo, validação semântica e estrutural, verificação de consistência interna e adequação ao briefing), garantindo que o GDD final resulte de um procedimento governado, rastreável e tecnicamente controlado.</p>
-
-        <p>Considerando que, embora os modelos de linguagem operem a partir de princípios probabilísticos consolidados, sua evolução recente envolve avanços significativos em arquiteturas, estratégias de treinamento, alinhamento e integração em sistemas compostos, o projeto adotará uma abordagem metodológica que trata a IA generativa como componente estocástico controlado, exigindo mecanismos explícitos de validação, contenção de erros e governança humana contínua.</p>
+        <p>O plano de pesquisa propõe o desenvolvimento de um método de geração governada de GDDs, no qual a geração por inteligência artificial opera subordinada a uma estrutura formal de validação humana. A abordagem parte de uma distinção prática entre três modos de produzir documentação de design: o preenchimento por substituição de variáveis, que gera texto genérico e previsível; a geração por modelo de linguagem de uso geral, que produz conteúdo com profundidade, mas sem garantir consistência entre seções nem conter alucinações; e a geração governada proposta neste projeto, que preserva a profundidade do modelo generativo enquanto a submete a condicionamento estrutural e a <i>checkpoints</i> humanos. Nesse arranjo, cada componente do GDD (estrutura macro, narrativa, mecânicas, progressão e objetivos) é produzido como saída parcial, condicionado pela base ontológica de dez seções de Roungas (2016), submetido a um <i>checkpoint</i> automático de consistência e a um <i>checkpoint</i> humano de validação especializada, com registro sistemático das intervenções e justificativas. É essa camada de governança que assegura a profundidade do conteúdo sem alucinação e organiza um processo rastreável e tecnicamente controlado.</p>
 
         <p>Este projeto prevê a execução de três fases principais, cada qual com três etapas de desenvolvimento orientadas por esse modelo de governança humano–IA:</p>
 
-        <p><strong>Fase 1:</strong> dedicada à construção das bases conceituais e empíricas para o desenvolvimento do sistema, incluindo a investigação do estado da arte, o levantamento de práticas de documentação de jogos e entrevistas com profissionais do setor, para traduzir esse conhecimento em diretrizes operacionais e critérios de validação humana aplicáveis ao pipeline de geração.</p>
+        <p><strong>Fase 1:</strong> construção das bases conceituais e empíricas do método, incluindo a investigação do estado da arte, o levantamento de práticas de documentação de jogos e entrevistas com profissionais do setor, traduzindo esse conhecimento em diretrizes operacionais e critérios de validação humana aplicáveis ao fluxo de geração.</p>
 
-        <p><strong>Fase 2:</strong> concentra os esforços na criação e avaliação do modelo de geração de GDDs, utilizando técnicas avançadas de PLN e aprendizado de máquina para transformar temas propostos em documentos estruturados, operando em módulos e versões intermediárias, com checkpoints humanos recorrentes que orientam, refinam e consolidam as saídas.</p>
+        <p><strong>Fase 2:</strong> desenvolvimento e avaliação do sistema de geração governada, levando o método do estágio de prova de conceito a um protótipo funcional, com a base ontológica de seções operando como estrutura de condicionamento e os <i>checkpoints</i> humanos integrados ao fluxo.</p>
 
-        <p><strong>Fase 3:</strong> consiste na validação do protótipo em ambiente real, com aplicação em contexto de uso, coleta de métricas e evidências de desempenho do modelo híbrido (qualidade do GDD e desempenho do processo de mediação), com indicadores de contenção e resolução de ocorrências ao longo das iterações, e consolidação dos resultados em relatório, com rastreabilidade das intervenções e recomendações para evolução do sistema.</p>
+        <p><strong>Fase 3:</strong> validação do protótipo em ambiente real, com aplicação em contexto de uso e coleta da métrica central do projeto – o tempo de produção de um GDD completo e válido sob o fluxo governado, comparado ao <i>baseline</i> de geração sem governança –, consolidando os resultados em relatório com rastreabilidade das intervenções e recomendações de evolução.</p>
 
-        <p>A Fase 1 irá construir as bases conceituais e empíricas para o desenvolvimento de um sistema de inteligência artificial voltado à geração automatizada de GDDs, considerando explicitamente as características probabilísticas da IA generativa e os riscos associados à produção automática de conteúdo estruturado. Nessa fase, será realizada uma investigação sobre o estado da arte científico-tecnológico e sobre as práticas profissionais no desenvolvimento de Game Design Documents, com ênfase em tecnologias emergentes, metodologias adotadas por estúdios e ferramentas utilizadas em contextos reais de criação de jogos. Essa fase exploratória terá orientação aplicada: o conhecimento reunido será sistematizado e traduzido em diretrizes operacionais, critérios técnicos e parâmetros humanos de validação que orientarão o desenho do modelo de IA e dos mecanismos de controle e governança da geração nas fases seguintes.</p>
+        <p>A <strong>Fase 1</strong> constrói as bases conceituais e empíricas do método, investigando o estado da arte científico-tecnológico e as práticas profissionais de elaboração de GDDs, com ênfase em tecnologias emergentes, metodologias de estúdios e ferramentas usadas em contextos reais. O conhecimento reunido será sistematizado em diretrizes operacionais, critérios técnicos e parâmetros humanos de validação que orientarão o desenho do método e dos mecanismos de governança nas fases seguintes.</p>
 
-        <p>A primeira etapa (Etapa 1) desta Fase 1 consiste em uma revisão sistemática da literatura especializada, com foco no uso de IA generativa e nas metodologias, frameworks e abordagens científico-tecnológicas voltadas à governança de sistemas generativos, à mediação humano–IA e à contenção de erros em processos automatizados. A busca será realizada em bases acadêmicas como IEEE Xplore, ACM Digital Library, Scopus e Google Scholar, abrangendo publicações sobre Processamento de Linguagem Natural, sistemas interativos, inteligência artificial centrada no humano (human-centered AI), human-in-the-loop / man-in-the-middle systems, alinhamento e validação de modelos generativos, bem como estudos sobre confiabilidade, rastreabilidade e controle de saídas estocásticas.</p>
+        <p>A primeira etapa (Etapa 1) consiste em uma revisão sistemática da literatura especializada, com foco no uso de IA generativa e nas metodologias, frameworks e abordagens voltadas à governança de sistemas generativos, à mediação humano–IA (<i>human-in-the-loop</i>) e à validação de saídas em processos automatizados. A busca será realizada em bases acadêmicas como IEEE Xplore, ACM Digital Library, Scopus e Google Scholar, abrangendo Processamento de Linguagem Natural, sistemas interativos, inteligência artificial centrada no humano (<i>human-centered AI</i>), modelos formais de representação de conhecimento e documentação de jogos, bem como estudos sobre tempo e produtividade na produção de documentação técnica – dimensão central da hipótese do projeto.</p>
 
         <p>Serão também consideradas fontes não acadêmicas de alto valor técnico, como estudos apresentados em conferências e fóruns profissionais relevantes, incluindo Game Developers Conference (GDC) e SIGGRAPH, com ênfase em práticas industriais de uso assistido de IA, validação humana em pipelines criativos e integração de ferramentas generativas em fluxos profissionais. Essa diversidade de fontes permitirá mapear tanto o estado da arte acadêmico quanto as práticas correntes da indústria no que se refere à construção de sistemas criativos híbridos.</p>
 
-        <p>O resultado dessa etapa será um relatório consolidado que sistematiza abordagens metodológicas, modelos de governança, mecanismos de validação e contenção de erros, limitações observadas e oportunidades de inovação. Esse material subsidiará diretamente a definição dos critérios técnicos, dos parâmetros de validação humana e dos mecanismos de controle que orientarão o desenho do modelo de geração assistida e governada a ser desenvolvido nas fases seguintes do projeto.</p>
+        <p>O resultado dessa etapa será um relatório consolidado que sistematiza abordagens metodológicas, modelos de governança humano–IA, mecanismos de validação, achados sobre tempo e produtividade na documentação, limitações observadas e oportunidades de inovação. Esse material subsidiará a definição dos critérios técnicos, dos parâmetros de validação humana e dos mecanismos de governança que orientarão o desenho do método nas fases seguintes.</p>
 
-        <p>Na segunda etapa (Etapa 2 – Fase 1), será realizado o levantamento e a análise de casos de uso que demonstrem a aplicação de IA no desenvolvimento de jogos, especialmente na fase de concepção, roteirização e estruturação de ideias. Serão examinados em profundidade exemplos como o uso de modelos generativos para criação de narrativas, ferramentas colaborativas para organização de conceitos e a aplicação de IA em processos de design procedural. Além de mapear funcionalidades e resultados, essa análise terá como foco identificar padrões de uso da tecnologia, limitações observadas, desafios enfrentados por equipes de diferentes portes e, de forma específica, os mecanismos adotados para supervisão humana, validação intermediária e controle de qualidade das saídas geradas. Esses elementos servirão de base para a definição de práticas metodológicas e soluções técnicas passíveis de adaptação ao projeto proposto.</p>
+        <p>Na segunda etapa (Etapa 2 – <strong>Fase 1</strong>), será realizado o levantamento e a análise de casos de uso que demonstrem a aplicação de IA no desenvolvimento de jogos, especialmente na concepção, roteirização e estruturação de documentos. Serão examinados exemplos como o uso de modelos generativos para criação de narrativas, ferramentas de organização de conceitos e iniciativas de geração assistida de documentação de design. Além de mapear funcionalidades e resultados, a análise terá como foco os mecanismos adotados para supervisão humana, validação intermediária e controle de qualidade das saídas, bem como o tempo e o esforço envolvidos na produção – elementos diretamente relacionados ao método de governança e à hipótese de redução de tempo do projeto. Esses achados servirão de base para as soluções técnicas a serem incorporadas na construção do sistema.</p>
 
-        <p>A terceira etapa (Etapa 3 – Fase 1) consistirá na realização de entrevistas qualitativas com profissionais atuantes no setor de desenvolvimento de jogos, abrangendo grandes estúdios, desenvolvedores independentes, pesquisadores acadêmicos e criadores de ferramentas. As entrevistas serão estruturadas para explorar as necessidades dos profissionais na criação de Game Design Documents, as dificuldades enfrentadas ao longo do processo e o potencial percebido no uso de tecnologias automatizadas, incluindo expectativas quanto à intervenção humana, critérios de validação e confiabilidade das saídas geradas por IA. As entrevistas serão realizadas, transcritas e analisadas utilizando técnicas da Grounded Theory, conforme a metodologia proposta por Glaser e Strauss em The Discovery of Grounded Theory (1967), e pela abordagem construtivista de Charmaz em Constructing Grounded Theory (2006).</p>
+        <p>A terceira etapa (Etapa 3 – <strong>Fase 1</strong>) consistirá na realização de entrevistas qualitativas com profissionais atuantes no setor de desenvolvimento de jogos, abrangendo grandes estúdios, desenvolvedores independentes, pesquisadores acadêmicos e criadores de ferramentas. As entrevistas serão estruturadas para explorar as necessidades dos profissionais na criação de Game Design Documents, as dificuldades e os gargalos de tempo enfrentados ao longo do processo e o potencial percebido no uso de geração assistida, incluindo expectativas quanto à intervenção humana e aos critérios de validação. As entrevistas serão realizadas, transcritas e analisadas utilizando técnicas da Grounded Theory, conforme a metodologia proposta por Glaser e Strauss em The Discovery of Grounded Theory (1967), e pela abordagem construtivista de Charmaz em Constructing Grounded Theory (2006).</p>
 
-        <p>Ao final da Fase 1, espera-se obter um panorama detalhado das práticas atuais de design de jogos, das tecnologias utilizadas e dos principais gargalos enfrentados na geração de GDDs. Esse conjunto de informações subsidiará a definição de critérios técnicos, funcionais e de validação humana que orientarão a construção do modelo de IA e fluxo de geração governado na fase seguinte do projeto.</p>
+        <p>Ao final da <strong>Fase 1</strong>, espera-se um panorama das práticas atuais de design de jogos, das tecnologias utilizadas e dos gargalos de tempo e qualidade na produção de GDDs, subsidiando os critérios técnicos e de validação humana que orientarão a construção do método na fase seguinte.</p>
 
-        <p>A Fase 2 será dedicada à criação e avaliação do modelo de geração automatizada governada de GDDs, a partir de temas propostos, utilizando técnicas de inteligência artificial em consonância com as diretrizes conceituais, empíricas e metodológicas definidas na Fase 1. Essa fase será dividida em três etapas principais: desenvolvimento do protótipo funcional (Etapa 4 – Fase 2), construção do sistema de geração governada (Etapa 5 – Fase 2) e validação funcional do modelo (Etapa 6 – Fase 2), todas orientadas pela experimentação e consolidação do fluxo híbrido humano–IA. Ao longo dessa fase, a geração de GDDs será concebida como um processo estruturado em módulos, no qual componentes do documento são produzidos de forma incremental e controlada, permitindo a análise, validação e ajuste de versões intermediárias antes da consolidação do resultado final. Essa abordagem visa garantir maior controle sobre a qualidade, a consistência e a adequação das saídas geradas, em consonância com os mecanismos de governança humano – IA definidos no projeto.</p>
+        <p>A <strong>Fase 2</strong> é dedicada ao desenvolvimento e à avaliação do sistema de geração governada de GDDs, levando o método do estágio atual de prova de conceito a um protótipo funcional, em consonância com as diretrizes definidas na <strong>Fase 1</strong>. Divide-se em três etapas: desenvolvimento do protótipo funcional (Etapa 4), construção do sistema de geração governada (Etapa 5) e validação funcional do modelo (Etapa 6). Ao longo da fase, a geração é estruturada em módulos correspondentes às seções do GDD, produzidos de forma incremental e condicionada pela base ontológica, permitindo validação e ajuste de versões intermediárias antes da consolidação do documento.</p>
 
-        <p>A quarta etapa do projeto (Etapa 4 – Fase 2) consiste no desenvolvimento do protótipo funcional, utilizando arquiteturas modernas de Processamento de Linguagem Natural e aprendizado de máquina, com foco em transformar descrições textuais fornecidas e validadas por humanos em estruturas técnicas progressivamente organizadas. Para isso, serão utilizadas ferramentas como APIs de modelos de linguagem, motores de busca semântica (ElasticSearch, Weaviate) e orquestradores de agentes como LangChain, compondo um ambiente experimental capaz de receber temas específicos e gerar componentes estruturados de um GDD, operando sempre em consonância com os mecanismos de validação e governança humano–IA definidos no projeto. O objetivo é criar um sistema capaz de produzir documentos com clareza, coerência e aderência a padrões profissionais da indústria de games, respeitando a estrutura formal do GDD. A arquitetura prototípica será composta por módulos interconectados responsáveis pela geração textual, categorização semântica e organização lógica dos conteúdos. Durante essa etapa, serão realizados testes para verificar a coerência interna das versões geradas, a interpretação dos prompts iniciais e a necessidade de ajustes nas saídas intermediárias antes da consolidação dos documentos.</p>
+        <p>A quarta etapa (Etapa 4 – <strong>Fase 2</strong>) consiste no desenvolvimento do protótipo funcional, a partir da arquitetura que caracteriza o método: um modelo de linguagem de uso geral, consumido via API, atua como motor generativo, enquanto uma camada própria de condicionamento e governança – desenvolvida e ajustada no projeto – estrutura os <i>prompts</i>, aplica a base ontológica de seções e encadeia as etapas com suas dependências. Para isso, serão utilizadas ferramentas como APIs de modelos de linguagem, motores de busca semântica (<i>ElasticSearch</i>, <i>Weaviate</i>) e orquestradores como <i>LangChain</i>, compondo um ambiente capaz de receber um tema e gerar componentes estruturados de um GDD, sempre subordinados aos mecanismos de validação humana. A arquitetura será composta por módulos interconectados responsáveis pela geração textual, pela organização lógica segundo o modelo de Roungas (2016) e pelo registro das intervenções. Nesta etapa, serão realizados testes iniciais de coerência interna das versões geradas e de interpretação dos insumos fornecidos.</p>
 
-        <p>Na quinta etapa (Etapa 5 – Fase 2), o foco estará na construção do sistema completo de geração automatizada, integrando os componentes desenvolvidos no protótipo e refinando os módulos conforme os critérios definidos na Fase 1. Essa etapa envolve a criação de módulos, baseados em inteligência artificial generativa, voltados à produção de roteiros, estruturas narrativas e demais componentes do GDD, e na incorporação de mecanismos destinados a assegurar consistência, fluidez e controle das saídas produzidas ao longo do processo. Para garantir precisão e adaptabilidade, o sistema será submetido a um conjunto de casos de uso simulados, representando diferentes tipos de jogos, gêneros narrativos e níveis de complexidade, com análise sistemática das versões intermediárias geradas. Essa fase incluirá também a otimização dos algoritmos para lidar com entradas textuais de variados tamanhos, estilos e graus de detalhamento.</p>
+        <p>Na quinta etapa (Etapa 5 – <strong>Fase 2</strong>), o foco estará na construção do sistema completo de geração governada, integrando os componentes desenvolvidos no protótipo e refinando os módulos conforme os critérios definidos na <strong>Fase 1</strong>. Essa etapa envolve a criação de módulos voltados à produção das seções do GDD – condicionados pela base ontológica e articulados aos <i>checkpoints</i> humanos – e a incorporação de mecanismos que assegurem consistência e integridade ao documento ao longo do processo. Para verificar adaptabilidade, o sistema será submetido a um conjunto de casos de uso simulados, representando diferentes tipos de jogos, gêneros narrativos e níveis de complexidade, com análise sistemática das versões intermediárias geradas.</p>
 
-        <p>Na sexta etapa (Etapa 6 – Fase 2), será realizada a validação funcional do modelo, envolvendo testes práticos com desenvolvedores e especialistas do setor de jogos. O sistema será aplicado a cenários simulados, para verificar sua capacidade de gerar documentos completos, estruturados e consistentes. A partir das interações realizadas e do feedback obtido, serão conduzidos ajustes no modelo, com refinamento das regras de geração, dos pontos de controle e da organização estrutural dos documentos. Serão adotadas métricas de avaliação como coerência textual, completude do documento, clareza das seções e adequação ao público-alvo, complementadas por análises qualitativas voltadas à identificação de oportunidades de melhoria. A validação incluirá a verificação da adaptabilidade do modelo a diferentes gêneros de jogos e contextos de uso.</p>
+        <p>Na sexta etapa (Etapa 6 – <strong>Fase 2</strong>), será realizada a validação funcional do sistema, com testes em cenários simulados para verificar sua capacidade de gerar GDDs completos, estruturados e consistentes sob o fluxo governado. A partir das interações e do retorno de desenvolvedores e especialistas, serão conduzidos ajustes no condicionamento, nos <i>checkpoints</i> e na organização das seções. A avaliação nesta etapa é de funcionamento – completude, coerência e aderência ao modelo de Roungas (2016) e ao público-alvo –, deixando a medição de tempo de produção para a validação em ambiente real da <strong>Fase 3</strong>. Verifica-se também a adaptabilidade do sistema a diferentes gêneros de jogos e contextos de uso.</p>
 
-        <p>Ao final da Fase 2, espera-se que o protótipo esteja plenamente funcional e validado em contexto controlado, com o fluxo de geração estruturado, testado e alinhado aos critérios técnicos e de validação definidos anteriormente. Essa fase garantirá que o modelo desenvolvido esteja tecnicamente consistente e preparado para enfrentar desafios práticos do desenvolvimento de jogos, estando apto para integração e aplicação em ambiente real nas etapas subsequentes da Fase 3.</p>
+        <p>Ao final da <strong>Fase 2</strong>, espera-se que o protótipo esteja funcional e validado em contexto controlado, com o fluxo de geração governada estruturado e alinhado aos critérios técnicos definidos, apto para aplicação em ambiente real na <strong>Fase 3</strong>.</p>
 
-        <p>A Fase 3 será dedicada à validação do modelo de geração de GDDs em ambientes reais controlados (casos de uso), com o objetivo de testar sua eficácia, aplicabilidade e estabilidade no contexto prático de criação de jogos educativos. Essa fase será dividida em três etapas principais: implantação piloto (Etapa 7 – Fase 3), avaliação em ambiente real (Etapa 8 – Fase 3) e análise dos resultados obtidos (Etapa 9 – Fase 3). Nessa fase, o modelo será avaliado já com os mecanismos de controle e mediação incorporados, permitindo observar o desempenho em condições reais de uso.</p>
+        <p>A Figura 1 sintetiza o funcionamento do método a ser desenvolvido na <strong>Fase 2</strong>: o fluxo governado de geração, organizado em oito etapas sequenciais com dependências explícitas. As Etapas 1 e 2 são de input do usuário; nas Etapas 3 a 7, o agente gera cada componente do GDD e o operador valida; a Etapa 8 consolida o documento e o verifica globalmente contra os cinco critérios da Seção 10, que permanecem ativos como parâmetros de governança ao longo de todo o fluxo.</p>
 
-        <p>A sétima etapa do projeto (Etapa 7 – Fase 3) consiste na implantação piloto do modelo desenvolvido na fase anterior (Fase 2). O sistema será integrado à plataforma educacional já operante, possibilitando sua aplicação direta no desenvolvimento de jogos educativos. Durante a implantação, o protótipo será utilizado por desenvolvedores, estúdios independentes e profissionais do setor criativo para a geração de GDDs em situações reais de projeto. A coleta de dados será realizada registrando o desempenho da ferramenta, as interações realizadas ao longo do processo de geração e os ajustes efetuados em diferentes contextos e tipos de jogos. O objetivo desta etapa é verificar a integração do sistema com a plataforma existente e avaliar sua eficiência no apoio ao desenvolvimento de roteiros e estruturas narrativas para jogos educativos.</p>
+        <figure style="margin:28px 0;text-align:center;">
+          <div style="max-width:560px;margin:0 auto;">
+            <svg width="680" height="540" viewBox="0 0 680 540" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#6b8ba0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
 
-        <p>A oitava etapa (Etapa 8 – Fase 3) será dedicada à avaliação prática do modelo, para medir a precisão, a consistência e a adaptabilidade da ferramenta em contextos reais de uso. Essa avaliação será conduzida com a participação de profissionais do setor, que utilizarão a ferramenta em projetos específicos, analisando a qualidade dos GDDs gerados ao longo do processo. Serão adotadas métricas quantitativas e qualitativas para avaliar a eficácia do modelo, incluindo completude do documento, clareza textual, coerência narrativa e aderência aos padrões da indústria, como indicadores relacionados à estabilidade das versões geradas e métricas associadas ao processo de mediação humano–IA. Além disso, serão coletados feedbacks dos desenvolvedores, registrando ajustes realizados, pontos de melhoria identificados e necessidades de refinamento do fluxo de geração. Essa análise permitirá verificar a capacidade do modelo de responder a demandas variadas e manter resultados consistentes em diferentes cenários de criação de jogos.</p>
+  <!-- Background branco -->
+  <rect width="680" height="540" fill="#ffffff"/>
 
-        <p>A nona etapa (Etapa 9 – Fase 3) consistirá na análise dos resultados obtidos durante a implantação e a avaliação do sistema. Os dados coletados serão sistematizados em um relatório técnico, reunindo métricas de desempenho, observações qualitativas dos especialistas e recomendações de aprimoramento, incluindo a análise do desempenho do fluxo governado humano–IA e dos mecanismos de controle adotados ao longo do processo de geração. Com base nessa análise, poderão ser propostas modificações no sistema para correção de inconsistências, ajuste dos mecanismos de controle e otimização dos processos de geração. A consolidação desses resultados será essencial para avaliar a maturidade tecnológica alcançada e orientar os próximos passos de evolução do modelo. O relatório final apresentará as conclusões da fase de validação, destacando os avanços obtidos e os aspectos que demandam desenvolvimento adicional.</p>
+  <!-- Actor labels -->
+  <text x="88" y="26" text-anchor="middle" fill="#7a91a3" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" letter-spacing="0.5">USUÁRIO</text>
+  <text x="340" y="26" text-anchor="middle" fill="#7a91a3" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" letter-spacing="0.5">AGENTE + OPERADOR</text>
+  <text x="592" y="26" text-anchor="middle" fill="#7a91a3" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" letter-spacing="0.5">USUÁRIO</text>
 
-        <p>Ao final da Fase 3, espera-se que o sistema esteja validado em contexto de uso real, demonstrando sua capacidade de gerar GDDs aplicáveis às necessidades de profissionais da indústria de jogos educativos. A conclusão dessa fase indicará que a solução alcançou um nível de maturidade adequado para aplicação prática, ampliando seu potencial de impacto e sua atratividade para uso em escala.</p>
+  <!-- Swimlane dividers -->
+  <line x1="196" y1="38" x2="196" y2="520" stroke="#c9d4dc" stroke-width="0.75" stroke-dasharray="4 4"/>
+  <line x1="484" y1="38" x2="484" y2="520" stroke="#c9d4dc" stroke-width="0.75" stroke-dasharray="4 4"/>
+
+  <!-- ── ETAPA 1 ── (alinhada ao topo do fluxo, y=50) -->
+  <rect x="16" y="50" width="144" height="44" rx="8" fill="#e8eff6" stroke="#1f3a5f" stroke-width="1"/>
+  <text x="88" y="68" text-anchor="middle" fill="#1f3a5f" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 1</text>
+  <text x="88" y="84" text-anchor="middle" fill="#3f5a78" font-family="'Inter Tight', sans-serif" font-size="10">Input de projeto</text>
+
+  <line x1="88" y1="94" x2="88" y2="106" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── ETAPA 2 ── -->
+  <rect x="16" y="108" width="144" height="44" rx="8" fill="#e8eff6" stroke="#1f3a5f" stroke-width="1"/>
+  <text x="88" y="126" text-anchor="middle" fill="#1f3a5f" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 2</text>
+  <text x="88" y="142" text-anchor="middle" fill="#3f5a78" font-family="'Inter Tight', sans-serif" font-size="10">Input de contexto</text>
+
+  <!-- Arrow E2 → E3 -->
+  <path d="M160 130 L188 130 L188 72 L216 72" fill="none" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── ETAPA 3 ── (y=50, alinhada com Etapa 1) -->
+  <rect x="218" y="50" width="244" height="44" rx="8" fill="#e0efea" stroke="#0f6e56" stroke-width="1"/>
+  <text x="340" y="68" text-anchor="middle" fill="#0b4a3a" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 3 — Briefing e pesquisa</text>
+  <text x="340" y="84" text-anchor="middle" fill="#2c7d65" font-family="'Inter Tight', sans-serif" font-size="10">Agente gera · Operador valida</text>
+
+  <line x1="340" y1="94" x2="340" y2="116" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── ETAPA 4 ── -->
+  <rect x="218" y="118" width="244" height="44" rx="8" fill="#e0efea" stroke="#0f6e56" stroke-width="1"/>
+  <text x="340" y="136" text-anchor="middle" fill="#0b4a3a" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 4 — Estrutura pedagógica</text>
+  <text x="340" y="152" text-anchor="middle" fill="#2c7d65" font-family="'Inter Tight', sans-serif" font-size="10">Agente gera · Operador valida</text>
+
+  <line x1="340" y1="162" x2="340" y2="184" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── ETAPA 5 ── -->
+  <rect x="218" y="186" width="244" height="44" rx="8" fill="#e0efea" stroke="#0f6e56" stroke-width="1"/>
+  <text x="340" y="204" text-anchor="middle" fill="#0b4a3a" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 5 — Narrativa</text>
+  <text x="340" y="220" text-anchor="middle" fill="#2c7d65" font-family="'Inter Tight', sans-serif" font-size="10">Agente gera · Operador valida</text>
+
+  <line x1="340" y1="230" x2="340" y2="252" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── ETAPA 6 ── -->
+  <rect x="218" y="254" width="244" height="44" rx="8" fill="#e0efea" stroke="#0f6e56" stroke-width="1"/>
+  <text x="340" y="272" text-anchor="middle" fill="#0b4a3a" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 6 — Mecânicas e desafios</text>
+  <text x="340" y="288" text-anchor="middle" fill="#2c7d65" font-family="'Inter Tight', sans-serif" font-size="10">Agente gera · Operador valida</text>
+
+  <line x1="340" y1="298" x2="340" y2="320" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── ETAPA 7 ── -->
+  <rect x="218" y="322" width="244" height="44" rx="8" fill="#e0efea" stroke="#0f6e56" stroke-width="1"/>
+  <text x="340" y="340" text-anchor="middle" fill="#0b4a3a" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 7 — Audiovisual e técnico</text>
+  <text x="340" y="356" text-anchor="middle" fill="#2c7d65" font-family="'Inter Tight', sans-serif" font-size="10">Agente gera · Operador valida</text>
+
+  <line x1="340" y1="366" x2="340" y2="388" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── ETAPA 8 ── -->
+  <rect x="218" y="390" width="244" height="44" rx="8" fill="#ebe9f7" stroke="#3c3489" stroke-width="1"/>
+  <text x="340" y="408" text-anchor="middle" fill="#2a2566" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Etapa 8 — Validação final</text>
+  <text x="340" y="424" text-anchor="middle" fill="#5048a0" font-family="'Inter Tight', sans-serif" font-size="10">Agente verifica contra Seção 10</text>
+
+  <!-- Arrow E8 → GDD HTML -->
+  <path d="M462 412 L508 412 L508 72 L524 72" fill="none" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── GDD HTML ── (y=50, alinhada com Etapas 1 e 3) -->
+  <rect x="526" y="50" width="138" height="44" rx="8" fill="#e0efea" stroke="#0f6e56" stroke-width="1"/>
+  <text x="595" y="68" text-anchor="middle" fill="#0b4a3a" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">GDD em HTML</text>
+  <text x="595" y="84" text-anchor="middle" fill="#2c7d65" font-family="'Inter Tight', sans-serif" font-size="10">Usuário revisa</text>
+
+  <line x1="595" y1="94" x2="595" y2="116" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── GERAR PDF ── -->
+  <rect x="526" y="118" width="138" height="44" rx="8" fill="#e8eff6" stroke="#1f3a5f" stroke-width="1"/>
+  <text x="595" y="136" text-anchor="middle" fill="#1f3a5f" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">Gerar PDF final</text>
+  <text x="595" y="152" text-anchor="middle" fill="#3f5a78" font-family="'Inter Tight', sans-serif" font-size="10">Ação do usuário</text>
+
+  <line x1="595" y1="162" x2="595" y2="184" stroke="#6b8ba0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ── PDF ENTREGUE ── -->
+  <rect x="526" y="186" width="138" height="44" rx="8" fill="#e0efea" stroke="#0f6e56" stroke-width="1"/>
+  <text x="595" y="204" text-anchor="middle" fill="#0b4a3a" font-family="'Inter Tight', sans-serif" font-size="11" font-weight="700">PDF gerado</text>
+  <text x="595" y="220" text-anchor="middle" fill="#2c7d65" font-family="'Inter Tight', sans-serif" font-size="10">Download automático</text>
+
+  <!-- Seção 10 badge -->
+  <rect x="218" y="462" width="244" height="32" rx="8" fill="none" stroke="#8a3a1f" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="340" y="482" text-anchor="middle" fill="#8a3a1f" font-family="'Inter Tight', sans-serif" font-size="10">Seção 10 ativa em cada etapa — Etapas 3 a 8</text>
+</svg>
+          </div>
+          <div class="doc-caption">Figura 1. Fluxo governado de geração de GDD do método Fabulus. Elaboração própria (2026).</div>
+        </figure>
+
+        <p><span class="checar-fonte" title="INSERIR URL do indice Fabulus aqui (metodologia detalhada + formularios 1, 2 e 3). Mesmo link da Secao 3.">[inserir link do índice Fabulus: metodologia detalhada e protótipos de interface das etapas]</span></p>
+
+        <p>A <strong>Fase 3</strong> é dedicada à validação do método em ambiente real controlado (caso de uso), com o objetivo de testar sua eficácia e aplicabilidade na produção de GDDs para jogos educativos. Divide-se em três etapas: implantação piloto (Etapa 7), avaliação em ambiente real (Etapa 8) e análise dos resultados (Etapa 9). Nessa fase, o sistema é avaliado já com os <i>checkpoints</i> de governança incorporados, permitindo medir, em condições reais de uso, a métrica central do projeto: o tempo de produção de um GDD completo e válido.</p>
+
+        <p>A sétima etapa (Etapa 7 – <strong>Fase 3</strong>) consiste na implantação piloto do sistema desenvolvido na <strong>Fase 2</strong>, integrado à plataforma educacional já operante. Durante a implantação, o protótipo será utilizado para a geração de GDDs em situações reais de projeto, registrando-se as interações ao longo do fluxo governado, as intervenções do operador e o tempo despendido em cada produção. O objetivo é verificar a integração do sistema com a plataforma existente e estabelecer as condições de coleta para a medição de tempo conduzida na etapa seguinte.</p>
+
+        <p>A oitava etapa (Etapa 8 – <strong>Fase 3</strong>) é dedicada à medição da métrica central do projeto: o tempo de produção de um GDD completo e válido. O tempo obtido sob o fluxo governado será comparado ao <i>baseline</i> de produção sem governança – a geração com modelo de linguagem de uso geral, sem condicionamento estrutural nem <i>checkpoints</i>, registrada na produção do GDD "Termômetro Zero" –, permitindo aferir a hipótese de redução do tempo de cerca de um mês para aproximadamente cinco dias. Em paralelo ao tempo, a validade dos GDDs gerados será verificada de forma documental contra os cinco critérios do modelo de Roungas (2016) – completude, consistência interna, aderência aos resultados de aprendizagem, adequação ao público-alvo e rastreabilidade –, assegurando que o ganho de tempo não se faça às custas da qualidade. A quantificação da intervenção humana como medida de qualidade do conteúdo, embora viabilizada pelo registro de decisões, não integra o escopo desta fase e fica indicada como desdobramento de etapas futuras.</p>
+
+        <p>A nona etapa (Etapa 9 – <strong>Fase 3</strong>) consiste na análise dos resultados obtidos durante a implantação e a avaliação. Os dados serão sistematizados em relatório técnico reunindo a medição de tempo, a verificação de validade dos GDDs contra os critérios de Roungas (2016), observações qualitativas dos especialistas e o desempenho do fluxo governado humano–IA. Com base nessa análise, poderão ser propostos refinamentos no condicionamento, nos <i>checkpoints</i> e na organização do fluxo. A consolidação desses resultados será essencial para avaliar a maturidade tecnológica alcançada e orientar os próximos passos de evolução do método.</p>
+
+        <p>Ao final da <strong>Fase 3</strong>, espera-se que o método esteja validado em uso real, com evidência da redução de tempo de produção e da validade dos GDDs gerados, indicando maturidade adequada para aplicação prática e evolução em escala.</p>
 
         <table class="doc-table">
           <thead>
@@ -784,29 +917,29 @@
           <tbody>
             <tr>
               <td><strong>Fase 1</strong><br>Construção das Bases Conceituais e Empíricas</td>
-              <td>Construir bases conceituais, empíricas e diretrizes de validação para o sistema de IA.</td>
+              <td>Construir bases conceituais, empíricas e diretrizes de validação humana para o método de geração governada.</td>
               <td>
                 <strong>Etapa 1:</strong> Revisão sistemática da literatura (IA generativa, governança humano–IA).<br>
-                <strong>Etapa 2:</strong> Levantamento e análise de casos de uso de IA no desenvolvimento de jogos.<br>
+                <strong>Etapa 2:</strong> Levantamento e análise de casos de uso de IA no desenvolvimento de jogos, com foco em supervisão humana, validação e tempo de produção.<br>
                 <strong>Etapa 3:</strong> Entrevistas qualitativas com profissionais do setor (necessidades, dificuldades, critérios de validação).
               </td>
             </tr>
             <tr>
-              <td><strong>Fase 2</strong><br>Criação e Avaliação do Modelo de Geração Automatizada Governada de GDDs</td>
-              <td>Desenvolver e validar o protótipo funcional em contexto controlado, alinhando-o às diretrizes da Fase 1, em fluxo híbrido humano–IA.</td>
+              <td><strong>Fase 2</strong><br>Desenvolvimento e Avaliação do Sistema de Geração Governada de GDDs</td>
+              <td>Levar o método da prova de conceito ao protótipo funcional e validá-lo em contexto controlado, com a base ontológica condicionando a geração e os <i>checkpoints</i> humanos integrados ao fluxo.</td>
               <td>
-                <strong>Etapa 4:</strong> Desenvolvimento do Protótipo Funcional: arquitetura prototípica (PLN, aprendizado de máquina, módulos interconectados) para gerar componentes estruturados do GDD.<br>
+                <strong>Etapa 4:</strong> Desenvolvimento do Protótipo Funcional: LLM via API como motor generativo e camada própria de condicionamento e governança, com módulos para gerar os componentes estruturados do GDD.<br>
                 <strong>Etapa 5:</strong> Construção do Sistema Completo: integração dos componentes, refinamento dos módulos e incorporação de mecanismos de consistência, submetendo a casos de uso simulados.<br>
-                <strong>Etapa 6:</strong> Validação Funcional do Modelo: testes práticos com desenvolvedores e especialistas em cenários simulados, com métricas de coerência, completude e clareza.
+                <strong>Etapa 6:</strong> Validação Funcional do Sistema: testes em cenários simulados, verificando completude, coerência e aderência ao modelo de Roungas (2016); a medição de tempo fica para a Fase 3.
               </td>
             </tr>
             <tr>
               <td><strong>Fase 3</strong><br>Validação em Ambiente Real Controlado (Casos de Uso)</td>
-              <td>Testar a eficácia, aplicabilidade e estabilidade do modelo de geração de GDDs em contexto prático de criação de jogos educativos.</td>
+              <td>Validar o método em uso real, medindo o tempo de produção do GDD sob o fluxo governado e verificando a validade dos documentos gerados.</td>
               <td>
-                <strong>Etapa 7:</strong> Implantação Piloto: uso do protótipo na plataforma educacional operante para geração de GDDs em projetos reais, com coleta de dados de desempenho.<br>
-                <strong>Etapa 8:</strong> Avaliação em Ambiente Real: medição da precisão, consistência e adaptabilidade da ferramenta em uso real com profissionais.<br>
-                <strong>Etapa 9:</strong> Análise dos Resultados: sistematização em relatório técnico com análise do desempenho do fluxo governado humano–IA, propostas de modificações e consolidação para evolução do modelo.
+                <strong>Etapa 7:</strong> Implantação Piloto: uso do protótipo na plataforma educacional operante para geração de GDDs em projetos reais, com coleta de dados de uso.<br>
+                <strong>Etapa 8:</strong> Avaliação em Ambiente Real: medição do tempo de produção sob o fluxo governado, comparado ao <i>baseline</i> sem governança, e verificação da validade contra os critérios de Roungas (2016).<br>
+                <strong>Etapa 9:</strong> Análise dos Resultados: relatório técnico consolidando tempo, validade e desempenho do fluxo governado humano–IA, com recomendações de evolução.
               </td>
             </tr>
           </tbody>
@@ -823,40 +956,40 @@
           </thead>
           <tbody>
             <tr>
-              <td>Revisão sistemática da literatura — IA generativa, GDDs, governança humano–IA. Consolidação do escopo.</td>
+              <td><strong>Fase 1 ·</strong> Etapa 1 — Revisão sistemática da literatura (governança humano–IA, modelos de GDD, tempo de produção).</td>
               <td class="check">×</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <td>Continuidade da revisão. Levantamento e análise de casos de uso de IA em desenvolvimento de jogos.</td>
-              <td></td><td class="check">×</td><td class="check">×</td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td><strong>Fase 1 ·</strong> Etapa 2 — Levantamento e análise de casos de uso de IA no desenvolvimento de jogos.</td>
+              <td></td><td class="check">×</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <td>Entrevistas com especialistas. Definição de critérios técnicos, checkpoints e parâmetros de contenção de erros.</td>
-              <td></td><td></td><td class="check">×</td><td class="check">×</td><td></td><td></td><td></td><td></td><td></td>
+              <td><strong>Fase 1 ·</strong> Etapa 3 — Entrevistas com profissionais e consolidação dos critérios de validação e dos parâmetros do método.</td>
+              <td></td><td></td><td class="check">×</td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <td>Desenvolvimento do protótipo funcional — sistema de pesquisa (1-IA) com validação humana.</td>
+              <td><strong>Fase 2 ·</strong> Etapa 4 — Desenvolvimento do protótipo funcional: LLM via API e camada própria de condicionamento e governança.</td>
               <td></td><td></td><td></td><td class="check">×</td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <td>Construção do sistema estrutural (2-IA) — organização de informações validadas em componentes do GDD.</td>
-              <td></td><td></td><td></td><td></td><td class="check">×</td><td class="check">×</td><td></td><td></td><td></td>
+              <td><strong>Fase 2 ·</strong> Etapa 5 — Construção do sistema de geração governada, com a base ontológica condicionando o fluxo e os <i>checkpoints</i> humanos integrados.</td>
+              <td></td><td></td><td></td><td></td><td class="check">×</td><td></td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <td>Desenvolvimento do sistema lógico (3-IA) — articulação de componentes e primeira versão do GDD.</td>
-              <td></td><td></td><td></td><td></td><td></td><td class="check">×</td><td class="check">×</td><td></td><td></td>
+              <td><strong>Fase 2 ·</strong> Etapa 6 — Validação funcional em cenários simulados (completude, coerência e aderência ao modelo de Roungas).</td>
+              <td></td><td></td><td></td><td></td><td></td><td class="check">×</td><td></td><td></td><td></td>
             </tr>
             <tr>
-              <td>Integração do fluxo completo (pesquisa → estruturação → lógica → GDD). Preparação para testes.</td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td class="check">×</td><td class="check">×</td><td></td>
+              <td><strong>Fase 3 ·</strong> Etapa 7 — Implantação piloto na plataforma operante; preparação da coleta de tempo.</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td class="check">×</td><td></td><td></td>
             </tr>
             <tr>
-              <td>Execução dos testes do fluxo completo. Avaliação de qualidade e ajustes do pipeline.</td>
+              <td><strong>Fase 3 ·</strong> Etapa 8 — Medição do tempo de produção sob o fluxo governado vs. <i>baseline</i> e verificação de validade.</td>
               <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="check">×</td><td></td>
             </tr>
             <tr>
-              <td>Execução final dos testes. Documentação do protótipo e relatório de conclusão.</td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="check">×</td><td class="check">×</td>
+              <td><strong>Fase 3 ·</strong> Etapa 9 — Análise dos resultados, relatório técnico e recomendações de evolução.</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="check">×</td>
             </tr>
           </tbody>
         </table>
@@ -871,15 +1004,15 @@
         <h2 class="doc-section-title">Potencial Comercial da Inovação</h2>
       </div>
       <div class="doc-content">
-        <p>A inovação proposta neste projeto tem potencial para transformar significativamente a forma como jogos educativos são concebidos, ao automatizar com IA a geração de documentos de design de jogos (GDDs). O impacto esperado está diretamente ligado à eliminação de um dos principais gargalos da indústria de jogos educativos: a etapa de roteirização, que atualmente demanda consultorias especializadas e terceirizadas, tempo elevado e custos elevados. Com a solução desenvolvida, será possível transformar prompts simples em GDDs completos, estruturados e aderentes aos padrões da indústria em questão de minutos.</p>
+        <p>A inovação proposta tem potencial para transformar a forma como jogos educativos são concebidos, ao oferecer um método governado de geração de Game Design Documents (GDDs) que reduz o tempo de produção sem abrir mão da qualidade. O impacto esperado liga-se diretamente a um dos principais gargalos da indústria de jogos educativos: a etapa de roteirização e documentação, que hoje demanda trabalho especializado, tempo elevado e custos elevados. Com o método desenvolvido, a produção de um GDD completo e válido passa de um trabalho da ordem de um mês para aproximadamente cinco dias, preservando a profundidade do conteúdo através da governança humana sobre a geração.</p>
 
         <p>A automatização dessa etapa tem potencial para reduzir significativamente os custos e acelerar a pré-produção, especialmente em projetos de menor escala. De acordo com o relatório da Accenture (2023), soluções baseadas em IA generativa podem impactar até 40% das horas de trabalho em atividades baseadas em linguagem, promovendo ganhos de eficiência expressivos em setores criativos. Aplicada ao contexto de jogos educativos, essa abordagem pode representar uma transformação profunda na forma como pequenos times e profissionais independentes estruturam seus projetos, permitindo a entrega de experiências gamificadas de maneira ágil, acessível e escalável.</p>
 
         <p>A ferramenta, ao ser aplicada em uma plataforma já existente e validada comercialmente, será testada em contexto real de uso, o que fortalece sua viabilidade prática e acelera seu caminho para níveis mais altos de maturidade tecnológica. Espera-se que a solução gere valor imediato tanto para produtoras de jogos em operação quanto para novos entrantes interessados em adotar jogos como ferramenta estratégica de engajamento e aprendizagem. Além disso, embora o foco inicial esteja no segmento de jogos educativos, a tecnologia desenvolvida possui potencial de expansão para outros gêneros de jogos, como entretenimento, treinamento corporativo, onboarding de colaboradores, simulações e advergames, ampliando significativamente seu mercado-alvo e o escopo de aplicações possíveis.</p>
 
-        <p>O modelo de negócio vislumbrado para esta inovação é inicialmente baseado na oferta de um software como serviço (SaaS), com foco tanto no mercado B2B. A ferramenta será comercializada por meio de assinaturas mensais e pacotes pré-pagos, permitindo que plataformas de educação digital, agências de gamificação, escolas, secretarias de educação e empresas com programas de formação e sustentabilidade incorporem a geração automatizada de GDDs em seus fluxos de trabalho. Além disso, está prevista a possibilidade de licenciamento da tecnologia em modelo white-label para grandes plataformas e organizações. A escalabilidade da solução, combinada à sua aplicabilidade prática, posiciona a empresa como pioneira em um novo nicho de mercado dentro da interseção entre inteligência artificial e design de jogos. Com essa tecnologia, a empresa amplia seu diferencial competitivo e fortalece sua presença em mercados estratégicos como EdTech, ESG e transformação digital na educação, com perspectiva concreta de escala nacional e internacional.</p>
+        <p>O modelo de negócio vislumbrado para esta inovação é inicialmente baseado na oferta de um software como serviço (SaaS), com foco tanto no mercado B2B. A ferramenta será comercializada através de assinaturas mensais e pacotes pré-pagos, permitindo que plataformas de educação digital, agências de gamificação, escolas, secretarias de educação e empresas com programas de formação e sustentabilidade incorporem a geração governada de GDDs em seus fluxos de trabalho. Além disso, está prevista a possibilidade de licenciamento da tecnologia em modelo white-label para grandes plataformas e organizações. A escalabilidade da solução, combinada à sua aplicabilidade prática, posiciona a empresa como pioneira em um novo nicho de mercado dentro da interseção entre inteligência artificial e design de jogos. Com essa tecnologia, a empresa amplia seu diferencial competitivo e fortalece sua presença em mercados estratégicos como EdTech, ESG e transformação digital na educação, com perspectiva concreta de escala nacional e internacional.</p>
 
-        <p>Em termos de tamanho de mercado endereçável da solução proposta neste projeto, parte-se da premissa de que a receita do mercado global de jogos deverá atingir US$ 522,46 bilhões no final do ano 2025 (Statista, 2025), representando um TAM (Total Addressable Market), que em moeda nacional equivale a R$ 2.868.305.400.000,00. O faturamento da indústria de desenvolvimento de games do Brasil foi de US$ 251,6 milhões (Brasil 2025; Abragames, 2024), que indica o SAM (Serviceable Available Market) de R$ 1.381.284.000,00, uma participação de 0,05% do faturamento global nessa indústria. Considerando que a busca de fornecedores por serviços relativos à construção e design subiu para 32% no mercado nacional (Brasil 2025; Abragames, 2024), o SOM (Serviceable Obtainable Market) pode ser estimado em R$ 442.010.880,00.</p>
+        <p>Em termos de tamanho de mercado endereçável da solução proposta neste projeto, parte-se da premissa de que a receita do mercado global de jogos deverá atingir <span class="checar-fonte" title="Verificar: cifra Statista 2025 (US$ 522,46 bi) e a conversao para R$ 2,868 tri">US$ 522,46 bilhões no final do ano 2025 (Statista, 2025)</span>, representando um <span class="checar-fonte" title="REVISAR ENQUADRAMENTO: TAM usa o mercado global de jogos inteiro - superestimativa. O produto endereca o mercado de design/documentacao de jogos, fatia menor. Criar TAM mais defensavel depois.">TAM (Total Addressable Market), que em moeda nacional equivale a R$ 2.868.305.400.000,00</span>. O faturamento da indústria de desenvolvimento de games do Brasil foi de <span class="checar-fonte" title="Verificar: faturamento US$ 251,6 mi (Abragames 2024) e o calculo do SAM R$ 1.381.284.000">US$ 251,6 milhões (Brasil 2025; Abragames, 2024)</span>, que indica o SAM (Serviceable Available Market) de R$ 1.381.284.000,00, uma participação de 0,05% do faturamento global nessa indústria. Considerando que <span class="checar-fonte" title="Verificar: dado de 32% de busca por servicos de construcao e design e o calculo do SOM R$ 442.010.880">a busca de fornecedores por serviços relativos à construção e design subiu para 32% no mercado nacional (Brasil 2025; Abragames, 2024)</span>, o SOM (Serviceable Obtainable Market) pode ser estimado em R$ 442.010.880,00.</p>
       </div>
     </section>
 
@@ -908,14 +1041,14 @@
               <td>40h/sem</td>
               <td>R$ 11.070,00</td>
               <td>R$ 99.630,00</td>
-              <td>Coordenação geral e condução metodológica do projeto; definição dos critérios de governança e validação humano–IA (man-in-the-middle); supervisão do desenvolvimento do protótipo e das etapas de validação; condução de entrevistas e consolidação dos resultados técnicos.</td>
+              <td>Coordenação geral e condução metodológica do projeto; definição dos critérios de governança e validação humana; supervisão do desenvolvimento do protótipo e das etapas de validação; condução de entrevistas e consolidação dos resultados técnicos.</td>
             </tr>
             <tr>
               <td><strong>TT-V</strong></td>
               <td>40h/sem</td>
               <td>R$ 9.760,00</td>
               <td>R$ 87.840,00</td>
-              <td>Desenvolvimento e implementação do pipeline de geração automatizada e governada de GDDs; integração dos componentes técnicos do sistema; implementação de mecanismos de controle, rastreabilidade e contenção de erros; execução de testes funcionais e ajustes do protótipo.</td>
+              <td>Desenvolvimento e implementação do fluxo de geração governada de GDDs; construção da camada de condicionamento e governança sobre o LLM; integração dos componentes técnicos do sistema; implementação dos mecanismos de validação e rastreabilidade; execução de testes funcionais e ajustes do protótipo.</td>
             </tr>
             <tr>
               <td><strong>TT-IV</strong></td>
@@ -925,8 +1058,19 @@
               <td>Apoio às atividades de pesquisa e validação: organização de dados e documentação; suporte às entrevistas com especialistas; execução de testes comparativos de saídas geradas; registro, sistematização e apoio à análise de evidências do projeto.</td>
             </tr>
             <tr>
-              <td colspan="3"><strong>Total em Bolsas</strong></td>
+              <td colspan="3"><strong>Subtotal em Bolsas</strong></td>
               <td colspan="2"><strong>R$ 228.150,00</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Capital e Custeio + Reserva Técnica</strong></td>
+              <td>—</td>
+              <td>—</td>
+              <td>R$ 12.000,00</td>
+              <td><span class="checar-fonte" title="PREENCHER: descrever no que os R$ 12.000 de Capital e Custeio + Reserva Tecnica - Beneficios Complementares sao aplicados (ex.: software, servicos, equipamento). Definir com a Caro.">Capital e Custeio e Reserva Técnica – Benefícios Complementares (descrição a preencher).</span></td>
+            </tr>
+            <tr>
+              <td colspan="3"><strong>Total geral</strong></td>
+              <td colspan="2"><strong>R$ 240.150,00</strong></td>
             </tr>
           </tbody>
         </table>
@@ -934,7 +1078,7 @@
 
         <p>A distribuição das bolsas considera dedicação integral (40h semanais) para os bolsistas TT-IV e TT-V, assegurando envolvimento contínuo nas atividades técnicas. A pesquisadora responsável atuará com dedicação de 40 horas semanais, conforme os parâmetros da FAPESP para a Bolsa PE-III.</p>
 
-        <p>Este orçamento garante uma equipe enxuta, mas qualificada, com perfis complementares que cobrem os pilares essenciais do projeto: coordenação e integração estratégica (PE-III), desenvolvimento técnico de ponta (TT-V) e design aplicado com foco no usuário final (TT-IV). Ao longo dos nove meses, essas bolsas viabilizarão o desenvolvimento do protótipo funcional, seu teste em ambiente relevante e a preparação para avanço aos níveis seguintes de maturidade tecnológica (STRL 4 e 5), conforme estabelecido nos objetivos da pesquisa.</p>
+        <p>Este orçamento garante uma equipe enxuta, mas qualificada, com perfis complementares que cobrem os pilares essenciais do projeto: coordenação e integração estratégica (PE-III), desenvolvimento técnico de ponta (TT-V) e design aplicado com foco no usuário final (TT-IV). Ao longo dos nove meses, essas bolsas viabilizarão o desenvolvimento do protótipo funcional, seu teste em ambiente relevante e a preparação para avanço aos níveis seguintes de maturidade tecnológica (TRL 4 e 5), conforme estabelecido nos objetivos da pesquisa.</p>
       </div>
     </section>
 
@@ -945,19 +1089,19 @@
         <h2 class="doc-section-title">Informações sobre a empresa</h2>
       </div>
       <div class="doc-content">
-        <p>A The Blue City é uma empresa brasileira de base tecnológica focada em inovação educacional, ESG e sustentabilidade corporativa. Com sede em São Paulo, atua sob a razão social Cidade Azul Comunicação Eireli ME, sendo liderada por sua fundadora e CEO, Carolina Ferrés. A empresa integra a rede do Cubo Itaú, hub de inovação do Itaú Unibanco, e conta com uma equipe fixa e rede de parceiros técnicos.</p>
+        <p>A Cidade Azul Comunicação é uma empresa brasileira de base tecnológica focada em inovação educacional, ESG e sustentabilidade corporativa. Com sede em São Paulo, é liderada por sua fundadora e CEO, Carolina Ferrés. A empresa integra a rede do Cubo Itaú, hub de inovação do Itaú Unibanco, e conta com uma equipe fixa e rede de parceiros técnicos.</p>
 
-        <p>Seu principal ativo é a plataforma "Missão Cidade Azul", ambiente digital que combina narrativa, gamificação e audiovisual para engajar públicos diversos – jovens e colaboradores de empresas – em desafios socioambientais. A plataforma já foi implementada em dezenas de escolas públicas brasileiras e, mais recentemente, em empresas como BASF, Valgroup e Aegea, promovendo estratégias de sustentabilidade empresarial. A proposta é transformar o engajamento com a sustentabilidade por meio de experiências digitais com propósito.</p>
+        <p>Seu principal ativo é a plataforma The Blue City, ambiente digital que combina narrativa, gamificação e audiovisual para engajar públicos diversos – jovens e colaboradores de empresas – em desafios socioambientais. A plataforma já foi implementada em dezenas de escolas públicas brasileiras e, mais recentemente, em empresas como BASF, Valgroup e Aegea, promovendo estratégias de sustentabilidade empresarial. A proposta é transformar o engajamento com a sustentabilidade através de experiências digitais com propósito.</p>
 
-        <p>Com base nessa expertise, a empresa vem expandindo sua atuação para o desenvolvimento de tecnologias voltadas à criação de jogos e experiências educacionais. O projeto submetido à FAPESP surge como desdobramento natural desse foco: o desenvolvimento de um sistema baseado em inteligência artificial para geração automatizada de Game Design Documents (GDDs). O objetivo é reduzir o tempo e o custo da roteirização, permitindo que profissionais independentes, escolas, empresas e estúdios pequenos possam criar experiências educativas de forma ágil e estruturada. Futuramente, a tecnologia será integrada à própria plataforma Missão Cidade Azul, viabilizando sua validação em contexto real e evidenciando o potencial de escalabilidade da solução.</p>
+        <p>Com base nessa expertise, a empresa vem expandindo sua atuação para o desenvolvimento de tecnologias voltadas à criação de jogos e experiências educacionais. O projeto submetido à FAPESP surge como desdobramento natural desse foco: o desenvolvimento de um método governado de geração de Game Design Documents (GDDs), que combina inteligência artificial generativa e validação humana especializada. O objetivo é reduzir o tempo e o custo da roteirização sem abrir mão da qualidade, permitindo que profissionais independentes, escolas, empresas e estúdios pequenos possam criar experiências educativas de forma ágil e estruturada. Futuramente, a tecnologia será integrada à própria plataforma The Blue City, viabilizando sua validação em contexto real e evidenciando o potencial de escalabilidade da solução.</p>
 
-        <p>Além da aplicação interna, a The Blue City também pretende estruturar um modelo de negócios independente para a ferramenta de IA, oferecendo-a como serviço (SaaS) ou via API. A solução poderá atender estúdios de jogos, desenvolvedores independentes, equipes criativas e educadores, ampliando seu alcance e posicionando-se como ferramenta para a indústria criativa e educacional.</p>
+        <p>Além da aplicação interna, a empresa também pretende estruturar um modelo de negócios independente para a ferramenta, oferecendo-a como serviço (SaaS) ou via API. A solução poderá atender estúdios de jogos, desenvolvedores independentes, equipes criativas e educadores, ampliando seu alcance e posicionando-se como ferramenta para a indústria criativa e educacional.</p>
 
-        <p>No campo de pesquisa e desenvolvimento, a empresa já investiu, com receitas próprias, na concepção e validação de sua base tecnológica. Isso inclui a criação de narrativas, fluxos gamificados, audiovisual original e o desenvolvimento da plataforma. Adota-se uma metodologia baseada em ciclos de prototipagem e validação com usuários reais, garantindo alta responsividade às demandas práticas. A empresa também mantém softwares e bases de dados próprios, relatórios técnicos e sistemas de versionamento e proteção digital. A proteção da nova tecnologia de IA, inclusive como software e fluxo de estruturação de dados, está prevista já na Fase 1 do projeto.</p>
+        <p>No campo de pesquisa e desenvolvimento, a empresa já investiu, com receitas próprias, na concepção e validação de sua base tecnológica. Isso inclui a criação de narrativas, fluxos gamificados, audiovisual original e o desenvolvimento da plataforma. Adota-se uma metodologia baseada em ciclos de prototipagem e validação com usuários reais, garantindo alta responsividade às demandas práticas. A empresa também mantém softwares e bases de dados próprios, relatórios técnicos e sistemas de versionamento e proteção digital. A proteção da nova tecnologia, inclusive como software e fluxo de estruturação de dados, está prevista já na Fase 1 do projeto.</p>
 
-        <p>Como contrapartida, a The Blue City disponibilizará a dedicação integral da pesquisadora responsável (40h semanais), infraestrutura, base de usuários reais e suporte técnico de seus parceiros estratégicos. Também está em curso a mobilização de recursos adicionais por chamadas corporativas com empresas como Suzano e Mercado Livre, além da articulação com fundos de inovação de educação e ESG. A expectativa é que, ao final da Fase 1, o projeto esteja apto a captar novos aportes e avançar rumo à comercialização da solução em escala nacional e internacional.</p>
+        <p>Como contrapartida, a Cidade Azul Comunicação disponibilizará a dedicação integral da pesquisadora responsável (40h semanais), infraestrutura, base de usuários reais e suporte técnico de seus parceiros estratégicos. A expectativa é que, ao final da Fase 1, o projeto esteja apto a captar novos aportes e avançar rumo à comercialização da solução em escala nacional e internacional.</p>
 
-        <p>A empresa vê a automatização de GDDs com IA como uma inovação disruptiva no setor de jogos educacionais e ferramentas de engajamento ESG. Sua integração à plataforma existente fortalece a proposta submetida à FAPESP e reforça o potencial de impacto prático e mercadológico do projeto. Com equipe experiente, validação já realizada e canais estruturados, a The Blue City está preparada para transformar essa inovação em um produto relevante para o Brasil e para o mundo.</p>
+        <p>A empresa vê o método governado de geração de GDDs como uma inovação relevante no setor de jogos educacionais e ferramentas de engajamento ESG. Sua integração à plataforma existente fortalece a proposta submetida à FAPESP e reforça o potencial de impacto prático e mercadológico do projeto. Com equipe experiente, validação já realizada e canais estruturados, a empresa está preparada para transformar essa inovação em um produto relevante para o Brasil e para o mundo.</p>
       </div>
     </section>
 
