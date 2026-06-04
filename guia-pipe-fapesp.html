@@ -822,6 +822,10 @@
   <div class="sidebar-label section">Fechamento</div>
   <div class="nav-item" onclick="goTo(7)">
     <span class="nav-num">07</span>
+    <span class="nav-text">Informações Adicionais</span>
+  </div>
+  <div class="nav-item" onclick="goTo(8)">
+    <span class="nav-num">08</span>
     <span class="nav-text">Checklist final</span>
   </div>
 
@@ -983,7 +987,7 @@
 
       <div class="page-nav">
         <button class="nav-btn" onclick="goTo(0)">← Apresentação</button>
-        <span class="page-indicator">01 / 07</span>
+        <span class="page-indicator">01 / 08</span>
         <button class="nav-btn primary" onclick="goTo(2)">Tela 02 →</button>
       </div>
     </div>
@@ -1206,7 +1210,7 @@
 
       <div class="page-nav">
         <button class="nav-btn" onclick="goTo(1)">← Tela 01</button>
-        <span class="page-indicator">02 / 07</span>
+        <span class="page-indicator">02 / 08</span>
         <button class="nav-btn primary" onclick="goTo(3)">Tela 03 →</button>
       </div>
     </div>
@@ -1362,7 +1366,7 @@
 
       <div class="page-nav">
         <button class="nav-btn" onclick="goTo(2)">← Tela 02</button>
-        <span class="page-indicator">03 / 07</span>
+        <span class="page-indicator">03 / 08</span>
         <button class="nav-btn primary" onclick="goTo(4)">Tela 04 →</button>
       </div>
     </div>
@@ -1493,9 +1497,14 @@
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Arquivo: Canvas_TheBlueCity.pdf · Lean Canvas em 12 blocos · referenciado nos pareceres da Seção 3 (Viabilidade)</div>
-          <a class="field-action" href="modelo-negocios-canvas.html" target="_blank">
-            Abrir documento <span class="arrow">→</span>
-          </a>
+          <div class="field-actions-row">
+            <a class="field-action" href="modelo-negocios-canvas.html" target="_blank">
+              Abrir versão enviada <span class="arrow">→</span>
+            </a>
+            <a class="field-action alt" href="modelo-negocios-canvas-v2.html" target="_blank">
+              Abrir nova versão <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -1682,7 +1691,7 @@
 
       <div class="page-nav">
         <button class="nav-btn" onclick="goTo(3)">← Tela 03</button>
-        <span class="page-indicator">04 / 07</span>
+        <span class="page-indicator">04 / 08</span>
         <button class="nav-btn primary" onclick="goTo(5)">Tela 05 →</button>
       </div>
     </div>
@@ -1714,14 +1723,14 @@
             <span class="field-name">Observação</span>
             <div class="field-meta"><span class="pill optional">Texto livre</span></div>
           </div>
-          <div class="field-value"></div>
-          <div class="field-hint">Texto livre dirigido ao Comitê de Avaliação · pode acompanhar carta complementar anexada na Tela 04</div>
+          <div class="field-value filled">Nota sobre o histórico do processo e o endereçamento dos pareceres&nbsp;·&nbsp;<span style="cursor:pointer; color:var(--accent); border-bottom:1px solid var(--accent);" onclick="goTo(7)">ver conteúdo no item 07 →</span></div>
+          <div class="field-hint">Texto livre dirigido ao Comitê de Avaliação · pode acompanhar carta complementar anexada na Tela 04 · conteúdo redigido no item 07 deste guia</div>
         </div>
       </div>
 
       <div class="page-nav">
         <button class="nav-btn" onclick="goTo(4)">← Tela 04</button>
-        <span class="page-indicator">05 / 07</span>
+        <span class="page-indicator">05 / 08</span>
         <button class="nav-btn primary" onclick="goTo(6)">Tela 06 →</button>
       </div>
     </div>
@@ -1760,14 +1769,14 @@
 
       <div class="page-nav">
         <button class="nav-btn" onclick="goTo(5)">← Tela 05</button>
-        <span class="page-indicator">06 / 07</span>
-        <button class="nav-btn primary" onclick="goTo(7)">Fechamento →</button>
+        <span class="page-indicator">06 / 08</span>
+        <button class="nav-btn primary" onclick="goTo(7)">Informações Adicionais →</button>
       </div>
     </div>
   </section>
 
   <!-- ──────────── PAGE 7 · CHECKLIST FINAL ──────────── -->
-  <section class="page" id="page-7">
+  <section class="page" id="page-8">
     <div class="page-content">
       <div class="page-eyebrow">
         <span class="tag">Fechamento</span>
@@ -1783,7 +1792,7 @@
 
       <div class="section">
         <div class="section-head">
-          <span class="section-num">7.1</span>
+          <span class="section-num">8.1</span>
           <span class="section-title">Verificação por tela</span>
         </div>
 
@@ -1842,7 +1851,7 @@
 
       <div class="section">
         <div class="section-head">
-          <span class="section-num">7.2</span>
+          <span class="section-num">8.2</span>
           <span class="section-title">Envio da proposta</span>
         </div>
 
@@ -1857,9 +1866,70 @@
       </div>
 
       <div class="page-nav">
-        <button class="nav-btn" onclick="goTo(6)">← Tela 06</button>
-        <span class="page-indicator">07 / 07</span>
+        <button class="nav-btn" onclick="goTo(7)">← Informações Adicionais</button>
+        <span class="page-indicator">08 / 08</span>
         <button class="nav-btn primary" onclick="goTo(0)">↺ Voltar ao início</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────── PAGE 8 · INFORMAÇÕES ADICIONAIS ──────────── -->
+  <section class="page" id="page-7">
+    <div class="page-content">
+      <div class="page-eyebrow">
+        <span class="tag">Informações Adicionais</span>
+        <span>Conteúdo para o campo Observação · Tela 05</span>
+        <span class="sep"></span>
+      </div>
+
+      <h1 class="page-title">Histórico do processo e <em>endereçamento dos pareceres</em></h1>
+      <p class="page-deck">
+        Texto a inserir no campo Observação da Tela 05, dirigido ao Comitê de Avaliação:
+        contexto das denegações, síntese de como cada crítica foi endereçada na nova versão
+        e registro das divergências entre os pareceres.
+      </p>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">7.1</span>
+          <span class="section-title">Contexto</span>
+        </div>
+        <div class="section-body">
+          <p>A presente proposta corresponde à reestruturação integral do projeto submetido sob o processo 2025/12980-7, cuja proposta inicial foi denegada em 17/11/2025 e cujo pedido de reconsideração foi denegado em 16/03/2026. Em vez de novo pedido de reconsideração, a proponente optou por reescrever o Projeto de Pesquisa e seus anexos, tratando cada apontamento das Assessorias e do Colegiado como requisito de projeto. Esta nota sintetiza como as críticas foram endereçadas e registra, ao final, divergências entre os pareceres que orientaram as escolhas da nova versão.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">7.2</span>
+          <span class="section-title">Endereçamento das críticas</span>
+        </div>
+        <div class="section-body">
+          <p><strong>Contenção de erros e governança humana.</strong> A principal objeção da primeira rodada – a ausência de "um modelo de detecção e contenção dos erros gerados pela inteligência artificial gerativa", do tipo "man in the middle" – tornou-se a tese central da proposta. A arquitetura de governança humana, presente desde a concepção do método, foi reposicionada como objeto científico do projeto e tornada imediatamente legível: cada etapa de geração é submetida a um checkpoint automático de consistência e a um checkpoint humano com justificativa registrada, fundamentados na literatura de human-in-the-loop (Seções 3, 4 e 6.1).</p>
+          <p><strong>Prova de Conceito.</strong> A Assessoria #1, no despacho de reconsideração, indicou como caminho o desenvolvimento de uma Prova de Conceito com cinco elementos: documento concreto de exemplo, fases de desenvolvimento detalhadas, pontos críticos expostos, metodologia demonstrada na prática e inserção das ferramentas simulada através de protótipos de interface. A nova versão atende aos cinco: o GDD "Termômetro Zero" constitui o baseline empírico documentado; o fluxo de oito etapas está especificado e ilustrado (Figura 1); e a metodologia completa, com os protótipos de interface, está publicamente disponível (Seção 3, TRL 2 com prova de conceito documentada).</p>
+          <p><strong>Premissa do GDD.</strong> A afirmação contestada pela Assessoria #2 – o GDD como "primeiro e mais estratégico passo" – foi removida. A nova versão reconhece explicitamente que diferentes contextos posicionam o documento em momentos distintos do fluxo, e define o método como aplicável antes, depois ou em paralelo à prototipação (Seção 3).</p>
+          <p><strong>Métricas e critérios de validade.</strong> A métrica anterior foi substituída: a hipótese passa a ser a redução do tempo de produção de um GDD completo e válido de cerca de dois meses para aproximadamente cinco dias, com "completo e válido" definido operacionalmente pelos cinco critérios do modelo de Roungas (2016). O Lean Canvas foi atualizado na mesma direção.</p>
+          <p><strong>Detalhamento metodológico.</strong> Foram incorporados: protocolo de entrevistas com recrutamento por amostragem intencional, mitigação de viés e submissão a Comitê de Ética em Pesquisa através da Plataforma Brasil (Etapa 3); ferramentas e arquitetura da Fase 2 nomeadas, com tratamento dos custos de API, da propriedade intelectual frente a fornecedores e da LGPD (Etapa 4); e justificativa da abordagem de validação documental em estudo de caso único, compatível com o TRL 3 pretendido (Etapa 8).</p>
+          <p><strong>Concorrência, PI e mercado.</strong> A análise comparativa foi ampliada (Quadro 1), incluindo nominalmente as soluções citadas pela Assessoria #2 – Promethean AI, Leonardo AI, InWorld AI, Charisma AI, Meshy AI, Unity AI e LLMs de uso geral –, além da análise de patentes com verificação de liberdade de operação. A demanda de mercado foi ancorada em dados setoriais e dimensionada em TAM, SAM e SOM com fontes (Seções 5 e 7).</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">7.3</span>
+          <span class="section-title">Divergências entre os pareceres</span>
+        </div>
+        <div class="section-body">
+          <p>Registra-se, com respeito ao trabalho das Assessorias, que os pareceres apresentaram divergências relevantes entre si, que dificultaram a definição de um caminho único de revisão: (i) a Assessoria #1 avaliou os objetivos como "Muito Bom" no despacho inicial e como não claramente apresentados na reconsideração – versão que ela própria reconhece "melhor apresentada que a anterior"; (ii) a mesma Assessoria #1 considerou, no despacho inicial, que "os planos estão bem detalhados e demonstram o domínio da área", enquanto o Colegiado do mesmo despacho concluiu "plano de trabalho incipiente"; (iii) na reconsideração, a Assessoria #1 avaliou que "os perfis indicados são adequados" e que "o orçamento está bem dimensionado", enquanto a Assessoria #2, na mesma rodada, considerou a equipe "subdimensionada"; (iv) as duas Assessorias indicaram direções opostas – a #2 sugeriu abandonar os LLMs por uma ferramenta de orquestração; a #1 admitiu o caminho dos LLMs condicionado à Prova de Conceito. A nova versão seguiu a indicação mais concreta e verificável, a da Assessoria #1, integralmente atendida.</p>
+          <p>Por fim, quanto à experiência da Pesquisadora Responsável: o item 2.a do próprio formulário de análise estabelece que "a titulação acadêmica não é um requisito essencial para o pesquisador PIPE; a experiência profissional e capacitação técnica são primordiais". A trajetória da proponente atende precisamente a esse critério: concepção e operação de uma plataforma de jogos educativos comercialmente validada, implantada em escolas públicas e em empresas como BASF, Valgroup e Aegea, e a produção documentada da prova de conceito que fundamenta este projeto – na nova versão, com a competência em IA generativa estruturada no fluxo de governança e nas responsabilidades técnicas da equipe.</p>
+        </div>
+      </div>
+
+      <div class="page-nav">
+        <button class="nav-btn" onclick="goTo(6)">← Tela 06</button>
+        <span class="page-indicator">07 / 08</span>
+        <button class="nav-btn primary" onclick="goTo(8)">Checklist final →</button>
       </div>
     </div>
   </section>
@@ -1867,7 +1937,7 @@
 </main>
 
 <script>
-  const totalPages = 8;
+  const totalPages = 9;
   let current = 0;
 
   function goTo(index) {
