@@ -441,6 +441,7 @@
   }
 
   .pill.required { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+  .pill.done     { color: #2e6b4f; border-color: #2e6b4f; background: #e9f2ec; }
   .pill.optional { color: var(--ink-faint); }
   .pill.fixed    { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
 
@@ -767,6 +768,37 @@
     .page-nav > * { width: 100%; text-align: center; }
     .subtabs { gap: 0; overflow-x: auto; flex-wrap: nowrap; }
   }
+  /* ─── Botão Google Docs ─── */
+  .gdocs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin-bottom: 36px;
+    background: var(--paper);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .gdocs-link:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .gdocs-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+  }
+
 </style>
 </head>
 <body>
@@ -1396,7 +1428,7 @@
         <div class="field">
           <div class="field-head">
             <span class="field-name">Projeto de Pesquisa (PIPE)</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Arquivo PDF — documento principal da proposta</div>
@@ -1413,13 +1445,18 @@
         <div class="field">
           <div class="field-head">
             <span class="field-name">Súmula curricular do beneficiário</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Pesquisador Responsável — formato FAPESP</div>
-          <a class="field-action" href="sumula-beneficiario.html" target="_blank">
-            Abrir documento <span class="arrow">→</span>
-          </a>
+          <div class="field-actions-row">
+            <a class="field-action" href="sumula-beneficiario.html" target="_blank">
+              Abrir versão enviada <span class="arrow">→</span>
+            </a>
+            <a class="field-action alt" href="sumula-beneficiario-v2.html" target="_blank">
+              Abrir nova versão <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
 
         <div class="field">
@@ -1457,35 +1494,61 @@
         <div class="field">
           <div class="field-head">
             <span class="field-name">Descrição das responsabilidades da equipe</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Arquivo: ResumoPlanoPesquisador.pdf · descreve PE-III</div>
-          <a class="field-action" href="responsabilidades-equipe.html" target="_blank">
-            Abrir documento <span class="arrow">→</span>
-          </a>
+          <div class="field-actions-row">
+            <a class="field-action" href="responsabilidades-equipe.html" target="_blank">
+              Abrir versão enviada <span class="arrow">→</span>
+            </a>
+            <a class="field-action alt" href="responsabilidades-equipe-v2.html" target="_blank">
+              Abrir nova versão <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Descrição das atividades desenvolvidas pela equipe</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Arquivo: ResumoPlanoBolsistas.pdf · descreve TT-V e TT-IV</div>
-          <a class="field-action" href="atividades-equipe.html" target="_blank">
-            Abrir documento <span class="arrow">→</span>
-          </a>
+          <div class="field-actions-row">
+            <a class="field-action" href="atividades-equipe.html" target="_blank">
+              Abrir versão enviada <span class="arrow">→</span>
+            </a>
+            <a class="field-action alt" href="atividades-equipe-v2.html" target="_blank">
+              Abrir nova versão <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Planos de atividades individuais para bolsas TT / participação em cursos</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Arquivo: PlanoAtividadesBolsistas.pdf · um plano por bolsista solicitado (TT-V e TT-IV)</div>
-          <a class="field-action" href="planos-atividades-bolsistas.html" target="_blank">
+          <div class="field-actions-row">
+            <a class="field-action" href="planos-atividades-bolsistas.html" target="_blank">
+              Abrir versão enviada <span class="arrow">→</span>
+            </a>
+            <a class="field-action alt" href="planos-atividades-bolsistas-v2.html" target="_blank">
+              Abrir nova versão <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-head">
+            <span class="field-name">Apresentação das Bolsas TT</span>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
+          </div>
+          <div class="field-value filled">Como as Bolsas TT-V e TT-IV se inter-relacionam e se complementam, sem sobreposição de tarefas</div>
+          <div class="field-hint">Exigido pelo item 8.3 do formulário de Plano de Atividades quando há mais de uma Bolsa TT</div>
+          <a class="field-action" href="apresentacao-bolsas-tt.html" target="_blank">
             Abrir documento <span class="arrow">→</span>
           </a>
         </div>
@@ -1493,7 +1556,7 @@
         <div class="field">
           <div class="field-head">
             <span class="field-name">Modelo de Negócios (Canvas)</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
           <div class="field-value"></div>
           <div class="field-hint">Arquivo: Canvas_TheBlueCity.pdf · Lean Canvas em 12 blocos · referenciado nos pareceres da Seção 3 (Viabilidade)</div>
@@ -1541,7 +1604,7 @@
         <div class="field">
           <div class="field-head">
             <span class="field-name">Contrato social da empresa</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
           <div class="field-value filled">CidadeAzul_ContratoSocial.pdf</div>
           <a class="field-action" href="https://the-blue-city.github.io/content/CidadeAzul_ContratoSocial.pdf" target="_blank">
@@ -1682,10 +1745,13 @@
         <div class="field">
           <div class="field-head">
             <span class="field-name">Carta ao Comitê / Anexo I</span>
-            <div class="field-meta"><span class="pill optional">Opcional</span></div>
+            <div class="field-meta"><span class="pill done">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">Carta ao Comitê de Avaliação – texto pronto na página Informações Adicionais</div>
           <div class="field-hint">Carta de apresentação ou resposta às diligências</div>
+          <a class="field-action" href="#" onclick="goTo(7); return false;">
+            Ver carta ao Comitê <span class="arrow">→</span>
+          </a>
         </div>
       </div>
 
@@ -1883,46 +1949,41 @@
         <span class="sep"></span>
       </div>
 
-      <h1 class="page-title">Histórico do processo e <em>endereçamento dos pareceres</em></h1>
+      <h1 class="page-title">Carta ao <em>Comitê de Avaliação</em></h1>
       <p class="page-deck">
-        Texto a inserir no campo Observação da Tela 05, dirigido ao Comitê de Avaliação:
-        contexto das denegações, síntese de como cada crítica foi endereçada na nova versão
-        e registro das divergências entre os pareceres.
+        Texto a inserir no campo Observação da Tela 05, em formato de carta:
+        contexto da nova submissão, como as contribuições dos pareceres foram
+        incorporadas e as escolhas feitas onde as orientações apontaram caminhos distintos.
       </p>
+
+      <a class="gdocs-link" href="https://docs.google.com/document/d/1k00uV6a8j-TpdK0EE9H00x7rGy9dR5gh6BedC4SOgDk/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3h-9a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/>
+          <path d="M21 3h-6m6 0v6m0-6L10 14"/>
+        </svg>
+        Editar no Google Docs
+      </a>
 
       <div class="section">
         <div class="section-head">
           <span class="section-num">7.1</span>
-          <span class="section-title">Contexto</span>
+          <span class="section-title">Texto da carta</span>
         </div>
         <div class="section-body">
-          <p>A presente proposta corresponde à reestruturação integral do projeto submetido sob o processo 2025/12980-7, cuja proposta inicial foi denegada em 17/11/2025 e cujo pedido de reconsideração foi denegado em 16/03/2026. Em vez de novo pedido de reconsideração, a proponente optou por reescrever o Projeto de Pesquisa e seus anexos, tratando cada apontamento das Assessorias e do Colegiado como requisito de projeto. Esta nota sintetiza como as críticas foram endereçadas e registra, ao final, divergências entre os pareceres que orientaram as escolhas da nova versão.</p>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-head">
-          <span class="section-num">7.2</span>
-          <span class="section-title">Endereçamento das críticas</span>
-        </div>
-        <div class="section-body">
-          <p><strong>Contenção de erros e governança humana.</strong> A principal objeção da primeira rodada – a ausência de "um modelo de detecção e contenção dos erros gerados pela inteligência artificial gerativa", do tipo "man in the middle" – tornou-se a tese central da proposta. A arquitetura de governança humana, presente desde a concepção do método, foi reposicionada como objeto científico do projeto e tornada imediatamente legível: cada etapa de geração é submetida a um checkpoint automático de consistência e a um checkpoint humano com justificativa registrada, fundamentados na literatura de human-in-the-loop (Seções 3, 4 e 6.1).</p>
+          <p>Ao Comitê de Avaliação do Programa FAPESP PIPE</p>
+          <p>Prezadas Assessoras, prezados Assessores e membros do Colegiado,</p>
+          <p>Esta proposta corresponde à reestruturação integral do projeto submetido sob o processo 2025/12980-7, denegado em 17/11/2025, com pedido de reconsideração denegado em 16/03/2026. Esgotada a via recursal, apresento esta nova submissão como o caminho regimental para dar continuidade à pesquisa – e o faço com gratidão pelo trabalho criterioso das Assessorias e do Colegiado: cada apontamento dos pareceres foi tratado como requisito de projeto, e a versão que ora submeto é substancialmente melhor graças a eles. Esta carta sintetiza como as contribuições foram incorporadas.</p>
+          <p><strong>Contenção de erros e governança humana.</strong> A principal contribuição dos pareceres – a necessidade de "um modelo de detecção e contenção dos erros gerados pela inteligência artificial gerativa", com o humano no circuito – tornou-se a tese central da proposta. A arquitetura de governança humana, presente desde a concepção do método, foi reposicionada como objeto científico do projeto e tornada imediatamente legível: cada etapa de geração é submetida a um checkpoint automático de consistência e a um checkpoint humano com justificativa registrada, fundamentados na literatura de human-in-the-loop (Seções 3, 4 e 6.1).</p>
           <p><strong>Prova de Conceito.</strong> A Assessoria #1, no despacho de reconsideração, indicou como caminho o desenvolvimento de uma Prova de Conceito com cinco elementos: documento concreto de exemplo, fases de desenvolvimento detalhadas, pontos críticos expostos, metodologia demonstrada na prática e inserção das ferramentas simulada através de protótipos de interface. A nova versão atende aos cinco: o GDD "Termômetro Zero" constitui o baseline empírico documentado; o fluxo de oito etapas está especificado e ilustrado (Figura 1); e a metodologia completa, com os protótipos de interface, está publicamente disponível (Seção 3, TRL 2 com prova de conceito documentada).</p>
-          <p><strong>Premissa do GDD.</strong> A afirmação contestada pela Assessoria #2 – o GDD como "primeiro e mais estratégico passo" – foi removida. A nova versão reconhece explicitamente que diferentes contextos posicionam o documento em momentos distintos do fluxo, e define o método como aplicável antes, depois ou em paralelo à prototipação (Seção 3).</p>
+          <p><strong>Premissa do GDD.</strong> A observação da Assessoria #2 sobre a afirmação do GDD como "primeiro e mais estratégico passo" foi acolhida: a afirmação foi removida, e a nova versão reconhece explicitamente que diferentes contextos posicionam o documento em momentos distintos do fluxo, definindo o método como aplicável antes, depois ou em paralelo à prototipação (Seção 3).</p>
           <p><strong>Métricas e critérios de validade.</strong> A métrica anterior foi substituída: a hipótese passa a ser a redução do tempo de produção de um GDD completo e válido de cerca de dois meses para aproximadamente cinco dias, com "completo e válido" definido operacionalmente pelos cinco critérios do modelo de Roungas (2016). O Lean Canvas foi atualizado na mesma direção.</p>
           <p><strong>Detalhamento metodológico.</strong> Foram incorporados: protocolo de entrevistas com recrutamento por amostragem intencional, mitigação de viés e submissão a Comitê de Ética em Pesquisa através da Plataforma Brasil (Etapa 3); ferramentas e arquitetura da Fase 2 nomeadas, com tratamento dos custos de API, da propriedade intelectual frente a fornecedores e da LGPD (Etapa 4); e justificativa da abordagem de validação documental em estudo de caso único, compatível com o TRL 3 pretendido (Etapa 8).</p>
-          <p><strong>Concorrência, PI e mercado.</strong> A análise comparativa foi ampliada (Quadro 1), incluindo nominalmente as soluções citadas pela Assessoria #2 – Promethean AI, Leonardo AI, InWorld AI, Charisma AI, Meshy AI, Unity AI e LLMs de uso geral –, além da análise de patentes com verificação de liberdade de operação. A demanda de mercado foi ancorada em dados setoriais e dimensionada em TAM, SAM e SOM com fontes (Seções 5 e 7).</p>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-head">
-          <span class="section-num">7.3</span>
-          <span class="section-title">Divergências entre os pareceres</span>
-        </div>
-        <div class="section-body">
-          <p>Registra-se, com respeito ao trabalho das Assessorias, que os pareceres apresentaram divergências relevantes entre si, que dificultaram a definição de um caminho único de revisão: (i) a Assessoria #1 avaliou os objetivos como "Muito Bom" no despacho inicial e como não claramente apresentados na reconsideração – versão que ela própria reconhece "melhor apresentada que a anterior"; (ii) a mesma Assessoria #1 considerou, no despacho inicial, que "os planos estão bem detalhados e demonstram o domínio da área", enquanto o Colegiado do mesmo despacho concluiu "plano de trabalho incipiente"; (iii) na reconsideração, a Assessoria #1 avaliou que "os perfis indicados são adequados" e que "o orçamento está bem dimensionado", enquanto a Assessoria #2, na mesma rodada, considerou a equipe "subdimensionada"; (iv) as duas Assessorias indicaram direções opostas – a #2 sugeriu abandonar os LLMs por uma ferramenta de orquestração; a #1 admitiu o caminho dos LLMs condicionado à Prova de Conceito. A nova versão seguiu a indicação mais concreta e verificável, a da Assessoria #1, integralmente atendida.</p>
-          <p>Por fim, quanto à experiência da Pesquisadora Responsável: o item 2.a do próprio formulário de análise estabelece que "a titulação acadêmica não é um requisito essencial para o pesquisador PIPE; a experiência profissional e capacitação técnica são primordiais". A trajetória da proponente atende precisamente a esse critério: concepção e operação de uma plataforma de jogos educativos comercialmente validada, implantada em escolas públicas e em empresas como BASF, Valgroup e Aegea, e a produção documentada da prova de conceito que fundamenta este projeto – na nova versão, com a competência em IA generativa estruturada no fluxo de governança e nas responsabilidades técnicas da equipe.</p>
+          <p><strong>Concorrência, propriedade intelectual e mercado.</strong> A análise comparativa foi ampliada (Quadro 1), incluindo nominalmente as soluções citadas pela Assessoria #2 – Promethean AI, Leonardo AI, InWorld AI, Charisma AI, Meshy AI, Unity AI e LLMs de uso geral –, além da análise de patentes com verificação de liberdade de operação. A demanda de mercado foi ancorada em dados setoriais e dimensionada em TAM, SAM e SOM com fontes (Seções 5 e 7).</p>
+          <p><strong>Escolhas diante de orientações distintas.</strong> Em alguns pontos, os pareceres ofereceram orientações diferentes entre si – o que é natural em avaliações independentes – e, nesses casos, registro com transparência as escolhas feitas. Quanto à direção tecnológica, a Assessoria #2 sugeriu substituir os LLMs por uma ferramenta de orquestração, enquanto a Assessoria #1 admitiu o caminho dos LLMs condicionado à demonstração em Prova de Conceito; a nova versão seguiu esta última orientação, por ser objetivamente verificável, e a Prova de Conceito encontra-se documentada e disponível. Quanto ao dimensionamento da equipe, que recebeu avaliações distintas, a nova versão detalha entregáveis, dedicação e responsabilidades por perfil (Seção 8), oferecendo elementos objetivos para a apreciação do Comitê.</p>
+          <p><strong>Equipe e competência técnica.</strong> Quanto ao apontamento sobre a competência técnica em IA generativa – dirigido ao perfil técnico da equipe –, a nova versão amplia e estrutura a equipe: à bolsa TT-V, único perfil técnico indicado na versão anterior, soma-se agora uma bolsa TT-IV, com responsabilidades e entregáveis definidos por perfil (Seção 8). O bolsista TT-V responde pelo desenvolvimento e implementação do fluxo governado, com entregáveis verificáveis por etapa; o TT-IV, pelo apoio à pesquisa, sistematização de evidências e validação; e a governança do método permanece sob coordenação da Pesquisadora Responsável. Minha formação em Design (UNESP), com ênfase em sistemas, metodologia de projeto e documentação técnica, e a trajetória de concepção e operação de uma plataforma de jogos educativos comercialmente validada – implantada em escolas públicas e em empresas como BASF, Valgroup e Aegea – sustentam a condução metodológica do projeto, da qual a prova de conceito documentada é resultado direto.</p>
+          <p>Agradeço a atenção dedicada à proposta e permaneço à disposição para quaisquer esclarecimentos adicionais.</p>
+          <p>Respeitosamente,</p>
+          <p>Carolina Pérez Ferrés<br>Pesquisadora Responsável – Cidade Azul Comunicação<br>Processo de referência: 2025/12980-7</p>
         </div>
       </div>
 

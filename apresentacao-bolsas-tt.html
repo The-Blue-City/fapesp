@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apresentação das Bolsas TT · PIPE FAPESP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #3d3d3d;
+    --ink-faint: #8a8a8a;
+    --accent: #1f3a5f;
+    --accent-soft: #eef2f7;
+    --rule: #d9d9d9;
+    --rule-soft: #ececec;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 40px 96px;
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 4px 10px;
+    margin-bottom: 28px;
+  }
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .page-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .page-deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .doc-status {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 48px;
+  }
+  .doc-status-item { display: flex; flex-direction: column; gap: 4px; }
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .doc-status-value { font-size: 14px; font-weight: 500; }
+
+  .gdocs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin-bottom: 48px;
+    background: var(--paper);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .gdocs-link:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .gdocs-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    margin: 40px 0 14px;
+  }
+  p { font-size: 16px; color: var(--ink-soft); margin-bottom: 18px; }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-size: 14.5px;
+  }
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--accent-soft);
+  }
+  td {
+    padding: 12px 14px;
+    vertical-align: top;
+    border: 1px solid var(--rule-soft);
+    color: var(--ink-soft);
+  }
+  td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .footer {
+    margin-top: 64px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 640px) {
+    .page { padding: 40px 20px 64px; }
+    .page-title { font-size: 30px; }
+    .doc-status { gap: 24px; }
+    table { font-size: 13px; }
+    td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <span class="tag">Doc 05a · Anexo aos planos de atividades</span>
+  <h1 class="page-title">Apresentação das <em>Bolsas de Treinamento Técnico</em></h1>
+  <p class="page-deck">
+    Documento de apresentação previsto no item 8.3 do formulário FAPESP de Plano de
+    Atividades (fapesp.br/tt): descreve como as duas Bolsas TT solicitadas se
+    inter-relacionam e se complementam, sem sobreposição de tarefas.
+  </p>
+
+  <div class="doc-status">
+    <div class="doc-status-item">
+      <span class="doc-status-label">Projeto</span>
+      <span class="doc-status-value">Sistema de Geração de Game Design Documents com Governança Humana e Inteligência Artificial</span>
+    </div>
+    <div class="doc-status-item">
+      <span class="doc-status-label">Bolsas solicitadas</span>
+      <span class="doc-status-value">1 × TT-V · 1 × TT-IV (9 meses · 40h semanais)</span>
+    </div>
+  </div>
+
+  <a class="gdocs-link" href="https://docs.google.com/document/d/1jfPWikdF7BckPrsOLst4Fk4qyWdYzp_QCq7TVBpVynU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 3h-9a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/>
+      <path d="M21 3h-6m6 0v6m0-6L10 14"/>
+    </svg>
+    Editar no Google Docs
+  </a>
+
+  <h2>Por que duas bolsas</h2>
+  <p>
+    O projeto solicita duas Bolsas de Treinamento Técnico com planos individuais e funções de
+    natureza distinta. O bolsista <strong>TT-V</strong> é o ponto focal técnico: responde pelo
+    desenvolvimento e pela implementação do fluxo governado de geração de GDDs – os módulos de
+    software, a integração de APIs de modelos de linguagem, o banco de dados, os <i>checkpoints</i>
+    automáticos de consistência e os mecanismos de validação humana –, com entregáveis verificáveis
+    por etapa. O bolsista <strong>TT-IV</strong> sustenta a base empírica e documental da pesquisa:
+    sistematiza referências e evidências, presta apoio operacional às entrevistas, constrói o corpus
+    de GDDs reais e registra as validações realizadas ao longo do fluxo. Um constrói e opera o
+    instrumento; o outro produz e organiza as evidências que permitem validá-lo. Ambos atuam sob a
+    coordenação metodológica da Pesquisadora Responsável (PE-III), que define os protocolos, conduz
+    as entrevistas, exerce os <i>checkpoints</i> humanos com justificativa registrada e analisa os
+    resultados.
+  </p>
+
+  <h2>Complementaridade ao longo das três fases</h2>
+  <table>
+    <tr>
+      <th>Fase</th>
+      <th>Bolsista TT-V</th>
+      <th>Bolsista TT-IV</th>
+    </tr>
+    <tr>
+      <td>Fase 1 · Bases conceituais e empíricas (Etapas 1–3)</td>
+      <td>Revisão bibliográfica técnica (IA generativa, arquiteturas, ferramentas) e apoio técnico à preparação das entrevistas</td>
+      <td>Busca e sistematização de referências; apoio operacional às entrevistas (agendamento, registro e transcrição); categorização dos dados</td>
+    </tr>
+    <tr>
+      <td>Fase 2 · Desenvolvimento do protótipo (Etapas 4–6)</td>
+      <td>Implementação do fluxo governado de oito etapas, dos <i>checkpoints</i> automáticos e dos mecanismos de validação humana</td>
+      <td>Coleta e classificação manual do corpus de GDDs reais, que alimenta os testes comparativos e a definição de critérios de consistência</td>
+    </tr>
+    <tr>
+      <td>Fase 3 · Validação em ambiente real (Etapas 7–9)</td>
+      <td>Execução dos testes, controle de versões, relatórios técnicos por etapa e operação da coleta da medição do tempo de produção ante o <i>baseline</i></td>
+      <td>Monitoramento dos testes e registro das evidências – inclusive da medição –, garantindo rastreabilidade e integridade dos dados</td>
+    </tr>
+  </table>
+
+  <h2>Fronteiras e necessidade de ambas as bolsas</h2>
+  <p>
+    Nenhuma tarefa é compartilhada entre os bolsistas: as interfaces entre os planos são
+    entregas, não atividades. O corpus organizado pelo TT-IV alimenta os testes comparativos
+    implementados pelo TT-V; os testes executados pelo TT-V geram as saídas cujas evidências o
+    TT-IV registra e organiza para a análise da Pesquisadora Responsável. Sem o TT-V, não há
+    protótipo do fluxo governado; sem o TT-IV, não há base de evidências rastreável que permita
+    verificar a hipótese de pesquisa – a redução do tempo de produção de um GDD completo e válido,
+    aferida pelos cinco critérios do modelo de Roungas (2016). As duas bolsas são, portanto,
+    individualmente necessárias e mutuamente complementares para a execução da pesquisa.
+  </p>
+
+  <div class="footer">Cidade Azul Comunicação · Processo PIPE Fase 1 · 2026</div>
+
+</div>
+</body>
+</html>
