@@ -270,6 +270,27 @@
   .profile-link a:hover { text-decoration: underline; }
 
   /* ─────────────────────────── DOCUMENT SECTIONS ─────────────────────────── */
+  .gdocs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin-bottom: 48px;
+    background: var(--paper);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .gdocs-link:hover { background: var(--accent); color: var(--paper); }
+  .gdocs-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
   .doc-section {
     margin-bottom: 64px;
     scroll-margin-top: 20px;
@@ -437,6 +458,27 @@
   }
 
   /* ─── Indicators grid ─── */
+  .indicators-list {
+    margin: 24px 0;
+  }
+  .indicator-row {
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .indicator-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 20px;
+  }
+  .indicator-row .indicator-label { flex: 1; }
+  .indicator-row .doc-list { flex-basis: 100%; margin: 10px 0 4px; }
+
   .indicators {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -489,11 +531,9 @@
     font-size: 15px;
     line-height: 1.65;
     color: var(--ink-soft);
-    padding: 12px 0 12px 28px;
+    padding: 8px 0 8px 28px;
     position: relative;
   }
-
-  .doc-list li:last-child { border-bottom: none; }
 
   .doc-list li::before {
     content: '–';
@@ -511,37 +551,6 @@
   }
 
   /* ─── Status banner ─── */
-  /* ─── Botão Google Docs ─── */
-  .gdocs-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    margin-bottom: 48px;
-    background: var(--paper);
-    border: 1px solid var(--accent);
-    border-radius: 2px;
-    color: var(--accent);
-    text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: background 0.15s ease, color 0.15s ease;
-  }
-  .gdocs-link:hover {
-    background: var(--accent);
-    color: var(--paper);
-  }
-  .gdocs-link svg {
-    width: 14px;
-    height: 14px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.6;
-  }
-
   .doc-status {
     background: var(--paper-warm);
     border-left: 3px solid var(--accent);
@@ -752,7 +761,6 @@
       </div>
     </div>
 
-    <!-- ──────────── SEÇÃO 1 ──────────── -->
     <a class="gdocs-link" href="https://docs.google.com/document/d/1RKt_X1U1zd8hmp5YsL3BuDUv1CRdrtxW5hRaH4oGuUE/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M14 3h-9a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/>
@@ -761,6 +769,7 @@
       Editar no Google Docs
     </a>
 
+    <!-- ──────────── SEÇÃO 1 ──────────── -->
     <section class="doc-section" id="sec-1">
       <div class="doc-section-head">
         <span class="doc-section-num">01</span>
@@ -815,7 +824,7 @@
             <div class="item-period">Maio/2024 – atual</div>
           </div>
           <div class="item-body">
-            <p>Sócia da <a href="https://www.pok.tech" target="_blank" style="color:var(--accent);text-decoration:none;">POK (pok.tech)</a>, plataforma que permite a emissão e validação de certificados, diplomas e credenciais digitais por instituições educacionais e corporativas, com armazenamento em blockchain. Através de microcredenciais e trilhas formativas, a POK instrumentaliza o setor de educação na transição para a educação baseada em competências e confere a dimensão profissional à plataforma The Blue City. Atua na liderança estratégica e na expansão da plataforma no Brasil e no exterior, com foco em empregabilidade, rastreabilidade de conquistas profissionais e transformação digital da educação.</p>
+            <p>Sócia da <a href="https://pok.tech" target="_blank" style="color:var(--accent);text-decoration:none;">POK (pok.tech)</a>, plataforma que permite a emissão e validação de certificados, diplomas e credenciais digitais por instituições educacionais e corporativas, com armazenamento em blockchain. Através de microcredenciais e trilhas formativas, a POK instrumentaliza o setor de educação na transição para a educação baseada em competências e confere a dimensão profissional à plataforma The Blue City. Atua na liderança estratégica e na expansão da plataforma no Brasil e no exterior, com foco em empregabilidade, rastreabilidade de conquistas profissionais e transformação digital da educação.</p>
             <p>Atuação direta na definição metodológica da plataforma, na articulação entre requisitos técnicos, desenho de processos e critérios de validação, bem como na coordenação de equipes multidisciplinares envolvidas no desenvolvimento, documentação e governança dos sistemas digitais.</p>
           </div>
         </div>
@@ -877,9 +886,7 @@
           </div>
           <div class="item-body">
             <p>Ferres, C. Prova de conceito de método de geração de Game Design Documents (GDDs) com governança humana – checkpoints automáticos e humanos com justificativa registrada –, aplicada na produção do GDD "Termômetro Zero" para a plataforma The Blue City, com metodologia e protótipos de interface documentados e publicamente disponíveis.</p>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all;">
-              <a href="https://the-blue-city.github.io/fabulus/00-fabulus_metodologia.html" target="_blank" style="color:var(--accent);text-decoration:none;">↗ the-blue-city.github.io/fabulus/00-fabulus_metodologia.html</a>
-            </p>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all;"><a href="https://the-blue-city.github.io/fabulus/00-fabulus_metodologia.html" target="_blank" style="color:var(--accent);text-decoration:none;">↗ the-blue-city.github.io/fabulus/00-fabulus_metodologia.html</a></p>
           </div>
           <div class="item-justify">
             <span class="item-justify-label">Justificativa</span>
@@ -908,10 +915,7 @@
           </div>
           <div class="item-body">
             <p>Ferres, C.; Andrighetti, M.; Borba, G. Série documental em 13 episódios sobre a invisibilização dos rios urbanos e suas relações com o desenvolvimento das cidades. Produção contemplada pela Ancine, com veiculação nacional e enfoque em educação ambiental.</p>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all;">
-              <a href="https://www.imdb.com/title/tt33836853/" target="_blank" style="color:var(--accent);text-decoration:none;">↗ imdb.com/title/tt33836853</a> &nbsp;·&nbsp;
-              <a href="https://sopadigital.myportfolio.com/serie-as-cidades-azuis" target="_blank" style="color:var(--accent);text-decoration:none;">↗ sopadigital.myportfolio.com/serie-as-cidades-azuis</a>
-            </p>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all;"><a href="https://www.imdb.com/title/tt33836853" target="_blank" style="color:var(--accent);text-decoration:none;">↗ imdb.com/title/tt33836853</a> · <a href="https://sopadigital.myportfolio.com/serie-as-cidades-azuis" target="_blank" style="color:var(--accent);text-decoration:none;">↗ sopadigital.myportfolio.com/serie-as-cidades-azuis</a></p>
           </div>
           <div class="item-justify">
             <span class="item-justify-label">Justificativa</span>
@@ -926,12 +930,7 @@
           </div>
           <div class="item-body">
             <p>Ferres, C.; Soalheiro, B.; Burgierman, D.; Mello, L.; Dib, P.; Pill, D.; Bertogna, B.; Machado, R.; Louback, A.; Liminha, R. A plataforma Cidade Azul foi lançada em 2015, em um projeto que reuniu tecnologia, arte e intervenções urbanas em prol da causa dos rios de São Paulo. O objetivo do projeto era desenterrar os rios invisíveis de São Paulo, começando pela consciência das pessoas. A plataforma incluía audioguias de cursos d'água que foram soterrados, em nome do "progresso" da cidade. Assim, com celular e fone de ouvido, os paulistanos podiam fazer os percursos e entender a história hídrica de São Paulo. A plataforma desenvolveu mais um audioguia no centro da cidade, no encontro dos rios Itororó, Saracura e Japurá (Bixiga), e ficou disponível ao público até 2017.</p>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all;">
-              Vídeos de lançamento:
-              <a href="https://youtu.be/teOB9mn-lfo" target="_blank" style="color:var(--accent);text-decoration:none;">↗ Rio Verde (youtu.be/teOB9mn-lfo)</a> &nbsp;·&nbsp;
-              <a href="https://youtu.be/PNrZkn0EFkM" target="_blank" style="color:var(--accent);text-decoration:none;">↗ Encontro dos Rios (youtu.be/PNrZkn0EFkM)</a><br>
-              Apresentação: <a href="https://cidadeazul.org" target="_blank" style="color:var(--accent);text-decoration:none;">↗ cidadeazul.org</a>
-            </p>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;word-break:break-all;">Vídeos de lançamento: <a href="https://youtu.be/teOB9mn-lfo" target="_blank" style="color:var(--accent);text-decoration:none;">↗ Rio Verde (youtu.be/teOB9mn-lfo)</a> · <a href="https://youtu.be/PNrZkn0EFkM" target="_blank" style="color:var(--accent);text-decoration:none;">↗ Encontro dos Rios (youtu.be/PNrZkn0EFkM)</a> · Apresentação: <a href="https://cidadeazul.org" target="_blank" style="color:var(--accent);text-decoration:none;">↗ cidadeazul.org</a></p>
           </div>
           <div class="item-justify">
             <span class="item-justify-label">Justificativa</span>
@@ -968,88 +967,88 @@
           Indicação separada das quantidades totais por categoria.
         </div>
 
-        <div class="indicators">
-          <div class="indicator">
-            <span class="indicator-label">1. Livros publicados</span>
+        <div class="indicators-list">
+          <div class="indicator-row">
+            <span class="indicator-num">1.</span>
+            <span class="indicator-label">Livros publicados</span>
             <span class="indicator-value zero">0</span>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">2. Publicações em periódicos com seletiva política editorial</span>
+          <div class="indicator-row">
+            <span class="indicator-num">2.</span>
+            <span class="indicator-label">Publicações em periódicos com seletiva política editorial</span>
             <span class="indicator-value zero">0</span>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">3. Capítulos de livros</span>
+          <div class="indicator-row">
+            <span class="indicator-num">3.</span>
+            <span class="indicator-label">Capítulos de livros</span>
             <span class="indicator-value zero">0</span>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">4. Dissertações de mestrado – 4.a) orientadas e já defendidas / 4.b) em andamento</span>
+          <div class="indicator-row">
+            <span class="indicator-num">4.</span>
+            <span class="indicator-label">Dissertações de mestrado orientadas (4.a defendidas / 4.b em andamento)</span>
             <span class="indicator-value zero">0 / 0</span>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">5. Teses de doutorado – 5.a) orientadas e já defendidas / 5.b) em andamento</span>
+          <div class="indicator-row">
+            <span class="indicator-num">5.</span>
+            <span class="indicator-label">Teses de doutorado orientadas (5.a defendidas / 5.b em andamento)</span>
             <span class="indicator-value zero">0 / 0</span>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">6. Supervisões de pós-doutorado – 6.a) concluídas / 6.b) em andamento</span>
+          <div class="indicator-row">
+            <span class="indicator-num">6.</span>
+            <span class="indicator-label">Supervisões de pós-doutorado (6.a concluídas / 6.b em andamento)</span>
             <span class="indicator-value zero">0 / 0</span>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">7. Quantidade de citações na literatura científica internacional</span>
+          <div class="indicator-row">
+            <span class="indicator-num">7.</span>
+            <span class="indicator-label">Citações na literatura científica internacional</span>
             <span class="indicator-value zero">0</span>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">8. Patentes solicitadas, concedidas e licenciadas</span>
+          <div class="indicator-row">
+            <span class="indicator-num">8.</span>
+            <span class="indicator-label">Patentes solicitadas, concedidas e licenciadas</span>
             <span class="indicator-value zero">Não há</span>
           </div>
-        </div>
-
-        <div class="indicators" style="grid-template-columns:1fr;margin:28px 0 12px 0;">
-          <div class="indicator" style="border-right:none;">
-            <span class="indicator-label"><strong>9. Produtos desenvolvidos e lançados no mercado</strong></span>
+          <div class="indicator-row">
+            <span class="indicator-num">9.</span>
+            <span class="indicator-label">Produtos desenvolvidos e lançados no mercado</span>
             <span class="indicator-value has">5</span>
-          </div>
-        </div>
-        <ul class="doc-list">
+            <ul class="doc-list">
           <li><strong>Plataforma de certificação digital POK – Proof of Knowledge (2024)</strong> – ferramenta em blockchain para emissão e rastreabilidade de microcredenciais educacionais e profissionais.</li>
           <li><strong>Plataforma de jogos The Blue City (2023)</strong> – sistema gamificado para engajamento socioambiental com empresas e comunidades, articulando metas ESG e impacto real. Desenvolvida com apoio das empresas Aegea, BASF e Valgroup, através de patrocínio via Lei de Incentivo à Cultura (Lei Rouanet). Combina storytelling, audiovisual e missões no mundo real para formar embaixadores ambientais e promover soluções sustentáveis em escala local.</li>
           <li><strong>Série de TV As Cidades Azuis (2019)</strong> – série documental com 13 episódios de 26 minutos, exibida nacionalmente em canais públicos e culturais. Realizada com patrocínio da Ancine e produzida em parceria com a Sopa Digital, foi filmada em diversas cidades do país combinando entrevistas, imagens de arquivo, trilha sonora original e linguagem acessível para promover educação ambiental.</li>
           <li><strong>Plataforma Cidade Azul (2015)</strong> – plataforma de audioguias georreferenciados sobre os rios invisíveis de São Paulo, unindo tecnologia, arte e intervenções urbanas. Permitia percorrer, com celular e fones de ouvido, os trajetos de cursos d'água soterrados e compreender a história hídrica da cidade; disponível ao público até 2017.</li>
           <li><strong>Intervenção artística Viva Rio Pinheiros (2014)</strong> – instalação de um mural artístico de 100 metros na ciclovia do Rio Pinheiros, em São Paulo, realizada como ação de mobilização cultural e ambiental. A iniciativa integrou arte urbana, engajamento comunitário e ativismo ecológico, com apoio institucional e financiamento coletivo, promovendo o debate público sobre a revitalização dos rios urbanos.</li>
         </ul>
-
-        <div class="indicators" style="grid-template-columns:1fr;margin:28px 0 12px 0;">
-          <div class="indicator" style="border-right:none;">
-            <span class="indicator-label"><strong>10. Processos otimizados implementados em empresas ou organizações sociais</strong></span>
-            <span class="indicator-value has">4</span>
           </div>
-        </div>
-        <ul class="doc-list">
+          <div class="indicator-row">
+            <span class="indicator-num">10.</span>
+            <span class="indicator-label">Processos otimizados implementados em empresas ou organizações sociais</span>
+            <span class="indicator-value has">4</span>
+            <ul class="doc-list">
           <li><strong>Fluxo governado de geração de GDD – método Fabulus</strong> – aplicado na produção do GDD Termômetro Zero para a plataforma The Blue City (2025–2026), com checkpoints automáticos e humanos e registro de decisões.</li>
           <li><strong>Metodologia de engajamento ESG com gamificação</strong> – aplicada em empresas como Aegea, BASF e Valgroup através da plataforma The Blue City.</li>
           <li><strong>Metodologia de mapeamento narrativo de rios urbanos invisibilizados</strong> – aplicada através da plataforma Cidade Azul, integrando design urbano, educação ambiental e cultura.</li>
           <li><strong>Modelo de exposição educativa em espaço público com tecnologia audiovisual</strong> – exemplificado pela animação O Caminho das Águas, em exibição contínua no Centro de Inovação Verde Bruno Covas.</li>
         </ul>
-
-        <div class="indicators" style="grid-template-columns:1fr;margin:28px 0 12px 0;">
-          <div class="indicator" style="border-right:none;">
-            <span class="indicator-label"><strong>11. Empresas criadas ou apoiadas</strong></span>
-            <span class="indicator-value has">2</span>
           </div>
-        </div>
-        <ul class="doc-list">
+          <div class="indicator-row">
+            <span class="indicator-num">11.</span>
+            <span class="indicator-label">Empresas criadas ou apoiadas</span>
+            <span class="indicator-value has">2</span>
+            <ul class="doc-list">
           <li><strong>The Blue City</strong> – 2022 – presente</li>
           <li><strong>POK – Proof of Knowledge</strong> – cofundadora, 2024 – presente</li>
         </ul>
-
-        <div class="indicators" style="grid-template-columns:1fr;margin:28px 0 12px 0;">
-          <div class="indicator" style="border-right:none;">
-            <span class="indicator-label"><strong>12. Consultorias técnicas e científicas relevantes</strong></span>
-            <span class="indicator-value has">1</span>
           </div>
-        </div>
-        <ul class="doc-list">
+          <div class="indicator-row">
+            <span class="indicator-num">12.</span>
+            <span class="indicator-label">Consultorias técnicas e científicas relevantes</span>
+            <span class="indicator-value has">1</span>
+            <ul class="doc-list">
           <li>Consultoria e implementação de estratégias de engajamento ESG com base em jogos digitais e indicadores socioambientais para empresas do setor de saneamento, química e embalagens sustentáveis.</li>
         </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1062,7 +1061,7 @@
       <div class="doc-content">
 
         <h3 class="doc-subsection-title">6.a – Informações biográficas complementares</h3>
-        <p>Nos últimos quinze anos, atuei de forma destacada na intersecção entre design, inovação urbana e tecnologias educacionais aplicadas a desafios socioambientais. Fundei a The Blue City, uma plataforma que utiliza jogos digitais para engajar comunidades e empresas em ações ESG, reconhecida por sua capacidade de formar lideranças locais e gerar impacto mensurável. Também sou sócia da POK, plataforma de certificação baseada em blockchain voltada à transformação digital da educação e da formação profissional.</p>
+        <p>Em mais de duas décadas de atuação profissional desde a graduação (2002), atuei de forma destacada na intersecção entre design, inovação urbana e tecnologias educacionais aplicadas a desafios socioambientais. Fundei a The Blue City, uma plataforma que utiliza jogos digitais para engajar comunidades e empresas em ações ESG, reconhecida por sua capacidade de formar lideranças locais e gerar impacto mensurável. Também sou sócia da POK, plataforma de certificação baseada em blockchain voltada à transformação digital da educação e da formação profissional.</p>
         <p>Minha atuação combina empreendedorismo de impacto, liderança de projetos complexos e interlocução ativa com instituições públicas, privadas e do terceiro setor no Brasil e no exterior. Atualmente, lidero o desenvolvimento do método Fabulus de geração governada de documentos de design de jogos, objeto da presente proposta.</p>
 
         <h3 class="doc-subsection-title">6.b – Experiência internacional em pesquisa</h3>
@@ -1081,7 +1080,7 @@
 
         <div class="item-card" style="margin-top:24px;">
           <div class="item-head">
-            <div class="item-title">Observação adicional – <i>Clipping</i> de imprensa</div>
+            <div class="item-title">Observação adicional – Clipping de imprensa</div>
           </div>
           <div class="item-body">
             <p>Está disponível publicamente um <i>clipping</i> com matérias jornalísticas, reportagens e registros públicos que evidenciam a repercussão e o impacto dos projetos desenvolvidos ao longo da trajetória. Esse material complementa os indicadores qualitativos da atuação e contribui para a análise da relevância social, educacional e ambiental das soluções criadas.</p>
