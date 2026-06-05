@@ -385,7 +385,7 @@
   .canvas-block-body li:last-child { margin-bottom: 0; }
 
   .canvas-block-body li::before {
-    content: '—';
+    content: '–';
     position: absolute;
     left: 0;
     color: var(--accent);
@@ -452,7 +452,7 @@
   .doc-list li:last-child { border-bottom: none; }
 
   .doc-list li::before {
-    content: '—';
+    content: '–';
     position: absolute;
     left: 0;
     color: var(--accent);
@@ -667,7 +667,7 @@
     <div class="doc-status">
       <div class="doc-status-item">
         <span class="doc-status-label">Versão atual</span>
-        <span class="doc-status-value">v.2 — em revisão para nova submissão</span>
+        <span class="doc-status-value">v.2 – em revisão para nova submissão</span>
       </div>
       <div class="doc-status-item">
         <span class="doc-status-label">Arquivo SAGe</span>
@@ -692,7 +692,7 @@
 
     <div class="lean-canvas">
 
-      <!-- COL 1 — Problemas (tall) + Soluções existentes -->
+      <!-- COL 1 – Problemas (tall) + Soluções existentes -->
       <div class="canvas-block" id="bloco-1" style="grid-column:1 / span 2;grid-row:1;">
         <div class="canvas-block-head">
           <span class="canvas-block-num">01</span>
@@ -701,7 +701,7 @@
         <div class="canvas-block-body">
           <ul>
             <li>Produzir um GDD completo e válido exige consultoria especializada: ~2 meses de trabalho e US$ 2–8 mil por documento.</li>
-            <li>60% dos estúdios brasileiros são independentes, com recursos limitados (Abragames, 2024).</li>
+            <li>60% dos estúdios brasileiros são independentes, com recursos limitados (Abragames e ApexBrasil, 2024).</li>
             <li>LLMs genéricos não governam dependências entre seções nem contêm inconsistências.</li>
           </ul>
         </div>
@@ -714,14 +714,14 @@
         </div>
         <div class="canvas-block-body">
           <ul>
-            <li>Ludo.ai e Wayline: geram GDDs, mas sem base ontológica, sem checkpoints humanos e só em inglês.</li>
+            <li>Ludo.ai e Wayline: geram GDDs, mas sem base ontológica, sem <i>checkpoints</i> humanos e só em inglês.</li>
             <li>Machinations.io: balanceamento sistêmico, não documentação.</li>
             <li>LLMs de uso geral: fragmentos sem consistência entre seções nem registro de decisões.</li>
           </ul>
         </div>
       </div>
 
-      <!-- COL 2 — Solução + Métricas -->
+      <!-- COL 2 – Solução + Métricas -->
       <div class="canvas-block" id="bloco-3" style="grid-column:3 / span 2;grid-row:1;">
         <div class="canvas-block-head">
           <span class="canvas-block-num">03</span>
@@ -730,7 +730,7 @@
         <div class="canvas-block-body">
           <ul>
             <li>Método de geração governada de GDDs: 8 etapas sequenciais com dependências explícitas.</li>
-            <li>IA gera; cada saída passa por checkpoint automático + validação humana com justificativa registrada.</li>
+            <li>IA gera; cada saída passa por <i>checkpoint</i> automático + validação humana com justificativa registrada.</li>
             <li>Base ontológica de 10 seções (Roungas, 2016), com 5 critérios de qualidade ativos como governança.</li>
           </ul>
         </div>
@@ -743,14 +743,14 @@
         </div>
         <div class="canvas-block-body">
           <ul>
-            <li>Tempo de produção de um GDD completo e válido: de ~2 meses para ~5 dias (vs. baseline sem governança).</li>
+            <li>Tempo de produção de um GDD completo e válido: de ~2 meses para ~5 dias (ante o <i>baseline</i> empírico documentado, produzido com LLMs de uso geral, sem governança).</li>
             <li>Validade contra os 5 critérios de Roungas: completude, consistência, aderência pedagógica, adequação ao público e rastreabilidade.</li>
-            <li>Registro de decisões e justificativas em todos os checkpoints.</li>
+            <li>Registro de decisões e justificativas em todos os <i>checkpoints</i>.</li>
           </ul>
         </div>
       </div>
 
-      <!-- COL 3 — PUV (tall, spans both rows) -->
+      <!-- COL 3 – PUV (tall, spans both rows) -->
       <div class="canvas-block puv" id="bloco-5" style="grid-column:5 / span 2;grid-row:1 / span 2;">
         <div class="canvas-block-head">
           <span class="canvas-block-num">05</span>
@@ -770,7 +770,7 @@
         </div>
       </div>
 
-      <!-- COL 4 — Vantagem + Canais -->
+      <!-- COL 4 – Vantagem + Canais -->
       <div class="canvas-block" id="bloco-7" style="grid-column:7 / span 2;grid-row:1;">
         <div class="canvas-block-head">
           <span class="canvas-block-num">07</span>
@@ -799,7 +799,7 @@
         </div>
       </div>
 
-      <!-- COL 5 — Segmentos + Primeiros clientes -->
+      <!-- COL 5 – Segmentos + Primeiros clientes -->
       <div class="canvas-block" id="bloco-9" style="grid-column:9 / span 2;grid-row:1;">
         <div class="canvas-block-head">
           <span class="canvas-block-num">09</span>
@@ -808,8 +808,8 @@
         <div class="canvas-block-body">
           <ul>
             <li>Estúdios independentes e PMEs (~60% do mercado brasileiro).</li>
-            <li>Edtechs, plataformas de educação digital e instituições de ensino.</li>
-            <li>Empresas: treinamento, onboarding, ESG e advergames.</li>
+            <li>Plataformas de educação digital (<i>edtechs</i>).</li>
+            <li>Empresas: treinamento, <i>onboarding</i>, ESG e <i>advergames</i>.</li>
             <li>Devs independentes, educadores, designers e consultores.</li>
           </ul>
         </div>
@@ -831,7 +831,7 @@
       </div>
 
 
-      <!-- ROW 3 — Custos + Receitas (rodapé do canvas) -->
+      <!-- ROW 3 – Custos + Receitas (rodapé do canvas) -->
       <div class="canvas-block" id="bloco-11" style="grid-column:1 / span 5;grid-row:3;">
         <div class="canvas-block-head">
           <span class="canvas-block-num">11</span>
@@ -856,9 +856,9 @@
         <div class="canvas-block-body">
           <ul>
             <li>SaaS B2B e B2C: assinaturas mensais e pacotes pré-pagos.</li>
-            <li>Licenciamento white-label para grandes plataformas e organizações.</li>
-            <li>TAM (serious games global, 2025): R$ 84,7 bilhões (US$ 16,91 bi).</li>
-            <li>SAM (indústria brasileira de jogos): R$ 1,26 bilhão (US$ 251,6 mi).</li>
+            <li>Licenciamento <i>white-label</i> para grandes plataformas e organizações.</li>
+            <li>TAM (<i>serious games</i> global, 2025): R$ 84,7 bilhões (US$ 16,91 bi).</li>
+            <li>SAM (indústria brasileira de jogos, 2022): R$ 1,26 bilhão (US$ 251,6 mi).</li>
             <li>SOM (fase de pré-produção, 10–20%): R$ 126–252 milhões (US$ 25–50 mi).</li>
           </ul>
         </div>
