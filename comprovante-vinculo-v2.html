@@ -177,7 +177,7 @@
 
   /* ───────────── MAIN ───────────── */
   .main {
-    margin-left: 0;
+    margin-left: var(--sidebar-w);
     flex: 1;
     min-width: 0;
   }
@@ -186,43 +186,6 @@
     margin: 0 auto;
     padding: 64px 56px 120px;
   }
-  .topnav {
-    margin-bottom: 44px;
-  }
-  .topnav-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    text-decoration: none;
-    margin-bottom: 16px;
-    transition: color 0.15s ease;
-  }
-  .topnav-back:hover { color: var(--accent); }
-  .topnav-mark {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    line-height: 1.15;
-    margin-bottom: 8px;
-  }
-  .topnav-mark em { font-style: normal; font-weight: 400; color: var(--accent); }
-  .topnav-sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-
   .page-eyebrow {
     display: flex;
     align-items: center;
@@ -379,15 +342,34 @@
 
 
 
+<div class="mobile-topbar">
+  <div class="mobile-mark">Comprovante de Vínculo · v2</div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Comprovante de <em>Vínculo</em> · v2</div>
+    <div class="sidebar-sub">Pesquisador Responsável · pequena empresa</div>
+  </div>
+
+  <div class="sidebar-label">Documento</div>
+  <a class="nav-item" href="#termo"><span class="nav-num">—</span><span>Termo de esclarecimento</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1 · 2025/12980-7
+  </div>
+</aside>
+
 <!-- ═══════════════ MAIN ═══════════════ -->
 <main class="main">
   <div class="page-content">
-
-    <div class="topnav">
-      <a href="guia-pipe-fapesp.html" class="topnav-back">← Voltar ao guia</a>
-      <div class="topnav-mark">Comprovante de <em>Vínculo</em> · v2</div>
-      <div class="topnav-sub">Pesquisador Responsável · pequena empresa</div>
-    </div>
 
     <div class="page-eyebrow">
       <span>Comprovante de vínculo do Pesquisador Responsável</span>
@@ -444,6 +426,13 @@
   </div>
 </main>
 
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  }
+</script>
 
 </body>
 </html>
