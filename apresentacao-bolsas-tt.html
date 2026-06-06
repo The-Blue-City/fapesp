@@ -44,16 +44,55 @@
     padding: 4px 10px;
     margin-bottom: 28px;
   }
+  .topnav {
+    margin-bottom: 44px;
+  }
+  .topnav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .topnav-back:hover { color: var(--accent); }
+  .topnav-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .topnav-mark em { font-style: normal; font-weight: 400; color: var(--accent); }
+  .topnav-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
   .page-title {
     font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 40px;
+    font-weight: 400;
+    font-size: 32px;
     line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
   }
   .page-title em {
     font-style: normal;
+    font-weight: 400;
     color: var(--accent);
   }
   .page-deck {
@@ -171,24 +210,18 @@
 <body>
 <div class="page">
 
-  <span class="tag">Doc 05a · Anexo aos planos de atividades</span>
+  <div class="topnav">
+    <a href="guia-pipe-fapesp.html" class="topnav-back">← Voltar ao guia</a>
+    <div class="topnav-mark">Apresentação das <em>Bolsas TT</em></div>
+    <div class="topnav-sub">Plano de Atividades · PIPE FAPESP</div>
+  </div>
+
   <h1 class="page-title">Apresentação das <em>Bolsas de Treinamento Técnico</em></h1>
   <p class="page-deck">
     Documento de apresentação previsto no item 8.3 do formulário FAPESP de Plano de
     Atividades (fapesp.br/tt): descreve como as duas Bolsas TT solicitadas se
     inter-relacionam e se complementam, sem sobreposição de tarefas.
   </p>
-
-  <div class="doc-status">
-    <div class="doc-status-item">
-      <span class="doc-status-label">Projeto</span>
-      <span class="doc-status-value">Sistema de Geração de Game Design Documents com Governança Humana e Inteligência Artificial</span>
-    </div>
-    <div class="doc-status-item">
-      <span class="doc-status-label">Bolsas solicitadas</span>
-      <span class="doc-status-value">1 × TT-V · 1 × TT-IV (9 meses · 40h semanais)</span>
-    </div>
-  </div>
 
   <a class="gdocs-link" href="https://docs.google.com/document/d/1jfPWikdF7BckPrsOLst4Fk4qyWdYzp_QCq7TVBpVynU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" aria-hidden="true">
