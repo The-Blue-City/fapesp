@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anexo II · Infraestrutura institucional · v2 · PIPE FAPESP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --ok: #2d5a3d;
+    --ok-soft: #e9f1ec;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ───────────── SIDEBAR ───────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sidebar-back {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .sidebar-mark .v2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 2px 7px;
+    vertical-align: middle;
+    margin-left: 6px;
+    letter-spacing: 0.06em;
+  }
+  .sidebar-sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+  .sidebar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 22px 32px 8px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 32px;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-left-color: var(--accent);
+  }
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    min-width: 26px;
+  }
+  .sidebar-doc-btn {
+    margin: 20px 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    background: var(--accent);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .sidebar-doc-btn:hover { background: var(--accent-deep); }
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ───────────── MOBILE TOPBAR ───────────── */
+  .mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    z-index: 200;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .menu-btn span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.35);
+    z-index: 150;
+  }
+
+  /* ───────────── MAIN ───────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-width: 0;
+  }
+  .page-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 56px 120px;
+  }
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
+  }
+  .page-eyebrow .tag {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 10px;
+    font-weight: 600;
+  }
+  .page-eyebrow .tag.v2 {
+    background: var(--accent);
+  }
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(34px, 4.5vw, 46px);
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    margin-bottom: 18px;
+  }
+  .page-deck {
+    font-size: 17px;
+    color: var(--ink-mute);
+    line-height: 1.6;
+    max-width: 620px;
+    margin-bottom: 36px;
+  }
+
+  /* status */
+  .doc-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 18px;
+  }
+  .doc-status-item {
+    flex: 1 1 200px;
+    padding: 16px 20px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .doc-status-item:last-child { border-right: none; }
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .doc-status-value {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* ─── Botão Google Docs ─── */
+  .gdocs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin-bottom: 48px;
+    background: var(--paper);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .gdocs-link:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .gdocs-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+  }
+
+  /* ───────────── HEADER FIELDS ───────────── */
+  .section-anchor { scroll-margin-top: 80px; }
+  .header-block {
+    border: 1px solid var(--rule);
+    margin-bottom: 64px;
+  }
+  .header-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 26px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .header-field:last-child { border-bottom: none; }
+  .header-field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .header-field-value {
+    font-size: 15.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .header-field-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--warn);
+    letter-spacing: 0.04em;
+  }
+
+  /* ───────────── SECTION GROUPS / QA ───────────── */
+  .section-group { margin-bottom: 64px; }
+  .section-group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-group-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .section-group-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+  }
+  .qa-card {
+    border: 1px solid var(--rule);
+    margin-bottom: 18px;
+  }
+  .qa-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 18px 26px;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--rule);
+  }
+  .qa-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .qa-question {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .qa-answer {
+    padding: 20px 26px;
+    font-size: 14.5px;
+    color: var(--ink-mute);
+    line-height: 1.65;
+  }
+  .qa-answer p + p { margin-top: 12px; }
+  .qa-answer strong { color: var(--ink-soft); font-weight: 600; }
+
+  /* ───────────── DECLARAÇÕES ───────────── */
+  .decl-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+  }
+  .decl-block { margin-bottom: 36px; }
+  .decl-text {
+    font-size: 14.5px;
+    color: var(--ink-mute);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .decl-name {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .decl-role {
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+
+  .doc-footnote {
+    margin-top: 48px;
+    padding: 20px 24px;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--accent);
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.65;
+  }
+
+  /* ───────────── RESPONSIVE ───────────── */
+  @media (max-width: 980px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.25s ease; }
+    .sidebar.open { transform: translateX(0); }
+    body.menu-open #sidebar-overlay { display: block; }
+    .mobile-topbar { display: flex; }
+    .main { margin-left: 0; }
+    .page-content { padding: 96px 24px 80px; }
+    .checkup-item { grid-template-columns: 36px 1fr; }
+    .checkup-to { grid-column: 2; border-top: 1px dashed var(--rule-soft); }
+    .checkup-from { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-topbar">
+  <div class="mobile-mark">Anexo II · Infraestrutura · v2</div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Anexo II · Infraestrutura<span class="v2">v2</span></div>
+    <div class="sidebar-sub">Informação da Instituição Sede · nova versão em preparação</div>
+  </div>
+
+  <div class="sidebar-label">Cabeçalho</div>
+  <a class="nav-item" href="#cabecalho"><span class="nav-num">—</span><span>Dados do projeto</span></a>
+
+  <div class="sidebar-label">1 — Infraestrutura existente</div>
+  <a class="nav-item" href="#sec-1a"><span class="nav-num">1.a</span><span>Serviços técnicos</span></a>
+  <a class="nav-item" href="#sec-1b"><span class="nav-num">1.b</span><span>Administração e gestão</span></a>
+
+  <div class="sidebar-label">2 — Infraestrutura adicional</div>
+  <a class="nav-item" href="#sec-2a"><span class="nav-num">2.a</span><span>Pessoal</span></a>
+  <a class="nav-item" href="#sec-2b"><span class="nav-num">2.b</span><span>Instalações</span></a>
+  <a class="nav-item" href="#sec-2c"><span class="nav-num">2.c</span><span>Serviços</span></a>
+
+  <div class="sidebar-label">Declarações</div>
+  <a class="nav-item" href="#decl-1"><span class="nav-num">—</span><span>Da Instituição Sede</span></a>
+  <a class="nav-item" href="#decl-2"><span class="nav-num">—</span><span>Do Pesquisador Responsável</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1 · 2025/12980-7
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span class="tag">Doc 07</span>
+      <span>Anexo II · Infraestrutura institucional</span>
+      <span class="tag v2">v2</span>
+    </div>
+
+    <h1 class="page-title">Anexo II · <em>Infraestrutura</em> institucional</h1>
+    <p class="page-deck">
+      Informação aprovada pela Instituição Sede sobre a infraestrutura disponível
+      para o desenvolvimento do projeto. Documento de declaração formal.
+    </p>
+
+    <div class="doc-status">
+      <div class="doc-status-item">
+        <span class="doc-status-label">Versão</span>
+        <span class="doc-status-value">v.2</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Arquivo SAGe</span>
+        <span class="doc-status-value">Anexo II_InformacaoInstituicao.pdf</span>
+      </div>
+      <div class="doc-status-item">
+        <span class="doc-status-label">Modelo FAPESP</span>
+        <span class="doc-status-value">Novembro/2019</span>
+      </div>
+    </div>
+
+    <a class="gdocs-link" href="https://docs.google.com/document/d/1L7dhBu4XxmX1sorKzOoemsG1Sldm0bXFG1MwSezAwkM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 3h-9a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/>
+        <path d="M21 3h-6m6 0v6m0-6L10 14"/>
+      </svg>
+      Editar no Google Docs
+    </a>
+
+    <!-- ──────────── CABEÇALHO ──────────── -->
+    <section class="header-block section-anchor" id="cabecalho">
+      <div class="header-field">
+        <span class="header-field-label">Título do projeto</span>
+        <span class="header-field-value">Sistema de Geração de Game Design Documents com Governança Humana e Inteligência Artificial</span>
+      </div>
+      <div class="header-field">
+        <span class="header-field-label">Bolsista</span>
+        <span class="header-field-value">Carolina Pérez Ferrés</span>
+      </div>
+      <div class="header-field">
+        <span class="header-field-label">Pesquisador Responsável e/ou Orientador/Supervisor</span>
+        <span class="header-field-value">Carolina Pérez Ferrés</span>
+      </div>
+      <div class="header-field">
+        <span class="header-field-label">Instituição Sede</span>
+        <span class="header-field-value">Cidade Azul Comunicação Ltda</span>
+      </div>
+    </section>
+
+    <!-- ──────────── 1 · INFRAESTRUTURA EXISTENTE ──────────── -->
+    <section class="section-group section-anchor" id="sec-1">
+      <div class="section-group-head">
+        <span class="section-group-num">01</span>
+        <h2 class="section-group-title">Infraestrutura existente</h2>
+      </div>
+
+      <article class="qa-card section-anchor" id="sec-1a">
+        <div class="qa-head">
+          <span class="qa-num">1.a)</span>
+          <span class="qa-question">A Instituição Sede oferece serviços técnicos ou pessoal técnico de apoio ao projeto de pesquisa proposto? Em caso afirmativo, por favor, detalhe.</span>
+        </div>
+        <div class="qa-answer">
+          <p>Sim. A empresa dispõe de capacidade técnica especializada e capaz de oferecer suporte ao
+          projeto, com equipe fixa e rede de parceiros técnicos, e know-how consolidado em jogos
+          educativos através de sua plataforma comercialmente validada.</p>
+          <p>Como apoio técnico ao projeto, oferece a infraestrutura que sustenta as três fases do
+          plano de pesquisa: ambiente de desenvolvimento, softwares e bases de dados próprios,
+          sistemas de versionamento e proteção digital, acesso a APIs de modelos de linguagem e a
+          plataforma The Blue City, já em operação, que servirá de ambiente para a validação
+          prevista na Fase 3.</p>
+        </div>
+      </article>
+
+      <article class="qa-card section-anchor" id="sec-1b">
+        <div class="qa-head">
+          <span class="qa-num">1.b)</span>
+          <span class="qa-question">A Instituição Sede oferece serviços de administração e gestão de projetos (contabilidade, prestação de contas, compras, importações, preparação de propostas de financiamento, agendamento de reuniões, acompanhamento, supervisão de equipamentos, contatos com visitantes, representação em eventos etc.)? Em caso afirmativo, por favor, detalhe.</span>
+        </div>
+        <div class="qa-answer">
+          <p>Sim. A gestão administrativa, contábil e de compras é realizada com apoio de escritório de
+          contabilidade especializado. A empresa já opera com controle orçamentário, emissão de
+          notas fiscais, prestação de contas e relacionamento com fornecedores, além de estrutura
+          para acompanhar cronogramas, reuniões e eventos institucionais, dando suporte
+          administrativo ao projeto durante toda a vigência.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ──────────── 2 · INFRAESTRUTURA ADICIONAL ──────────── -->
+    <section class="section-group section-anchor" id="sec-2">
+      <div class="section-group-head">
+        <span class="section-group-num">02</span>
+        <h2 class="section-group-title">Infraestrutura adicional</h2>
+      </div>
+
+      <article class="qa-card section-anchor" id="sec-2a">
+        <div class="qa-head">
+          <span class="qa-num">2.a)</span>
+          <span class="qa-question">O projeto, caso aprovado, demandará pessoal adicional de apoio técnico e/ou administrativo, a ser providenciado pela Instituição Sede em prazo que não comprometa o andamento do projeto? Em caso afirmativo, por favor, detalhe.</span>
+        </div>
+        <div class="qa-answer">
+          <p>Não. O projeto não demandará pessoal adicional de apoio técnico ou administrativo por parte
+          da Instituição Sede. Toda a equipe necessária para a execução das atividades está
+          prevista no plano de trabalho – pesquisadora responsável (PE-III) e bolsistas de
+          treinamento técnico (TT-V e TT-IV) vinculados diretamente ao projeto através das bolsas
+          solicitadas à FAPESP, sem exigir complementação institucional.</p>
+        </div>
+      </article>
+
+      <article class="qa-card section-anchor" id="sec-2b">
+        <div class="qa-head">
+          <span class="qa-num">2.b)</span>
+          <span class="qa-question">O projeto, caso aprovado, demandará instalações (ou alterações de instalações) adicionais, a serem providenciadas pela Instituição Sede em prazo que não comprometa o andamento do projeto? Em caso afirmativo, por favor, detalhe.</span>
+        </div>
+        <div class="qa-answer">
+          <p>Não. As instalações atuais da empresa são suficientes para a execução do projeto, incluindo
+          espaço físico, mobiliário e equipamentos de informática adequados às três fases do plano
+          de pesquisa.</p>
+        </div>
+      </article>
+
+      <article class="qa-card section-anchor" id="sec-2c">
+        <div class="qa-head">
+          <span class="qa-num">2.c)</span>
+          <span class="qa-question">O projeto, caso aprovado, demandará serviços adicionais necessários, a serem providenciados pela Instituição Sede em prazo que não comprometa o andamento do projeto? Em caso afirmativo, por favor, detalhe.</span>
+        </div>
+        <div class="qa-answer">
+          <p>Não. Os serviços já existentes são suficientes para apoiar o projeto. Caso surjam demandas
+          específicas, estas serão providenciadas com a agilidade necessária para não comprometer
+          o cronograma.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ──────────── DECLARAÇÕES ──────────── -->
+    <section class="section-group section-anchor" id="declaracoes">
+      <div class="section-group-head">
+        <span class="section-group-num">—</span>
+        <h2 class="section-group-title">Declarações e assinaturas</h2>
+      </div>
+
+      <p class="decl-date">São Paulo, junho de 2026</p>
+
+      <div class="decl-block section-anchor" id="decl-1">
+        <p class="decl-text">Declaro o compromisso da Instituição Sede em prover o apoio descrito nos itens acima.</p>
+        <p class="decl-name">Carolina Pérez Ferrés</p>
+        <p class="decl-role">Sócia da empresa Cidade Azul Comunicação Ltda</p>
+      </div>
+
+      <div class="decl-block section-anchor" id="decl-2">
+        <p class="decl-text">Declaro que os itens listados acima são suficientes para a perfeita execução do projeto apresentado à FAPESP sob minha responsabilidade.</p>
+        <p class="decl-name">Carolina Pérez Ferrés</p>
+        <p class="decl-role">Pesquisadora Responsável</p>
+      </div>
+
+    </section>
+
+  </div>
+</main>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  }
+  document.querySelectorAll('.nav-item').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.innerWidth <= 980) toggleSidebar();
+    });
+  });
+</script>
+
+</body>
+</html>
