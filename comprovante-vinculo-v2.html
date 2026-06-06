@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprovante de Vínculo · NOVA VERSÃO · PIPE FAPESP Fase 1</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ───────────── SIDEBAR ───────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sidebar-back {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .sidebar-mark .v2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 2px 7px;
+    vertical-align: middle;
+    margin-left: 8px;
+    letter-spacing: 0.06em;
+  }
+  .sidebar-sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+  .sidebar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 22px 32px 8px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 32px;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-left-color: var(--accent);
+  }
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    min-width: 26px;
+  }
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ───────────── MOBILE TOPBAR ───────────── */
+  .mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    z-index: 200;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .menu-btn span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.35);
+    z-index: 150;
+  }
+
+  /* ───────────── MAIN ───────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-width: 0;
+  }
+  .page-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 56px 120px;
+  }
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
+  }
+  .page-eyebrow .tag {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 10px;
+    font-weight: 600;
+  }
+  .page-eyebrow .tag.v2 { background: var(--accent); }
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .page-title em { font-style: normal; font-weight: 400; color: var(--accent); }
+  .page-deck {
+    font-size: 17px;
+    color: var(--ink-mute);
+    line-height: 1.6;
+    max-width: 620px;
+    margin-bottom: 36px;
+  }
+
+  /* status */
+  .doc-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+  .doc-status-item {
+    flex: 1 1 200px;
+    padding: 16px 20px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .doc-status-item:last-child { border-right: none; }
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .doc-status-value {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* ─── Botão Google Docs ─── */
+  .gdocs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin: 0 0 48px;
+    background: var(--paper);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .gdocs-link:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .gdocs-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+  }
+
+  /* ───────────── DOCUMENTO ───────────── */
+  .section-anchor { scroll-margin-top: 80px; }
+  .doc-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .doc-body p {
+    font-size: 15px;
+    color: var(--ink-mute);
+    line-height: 1.75;
+    margin-bottom: 18px;
+    max-width: 680px;
+  }
+  .doc-body strong {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .doc-date {
+    font-size: 15px;
+    color: var(--ink-mute);
+    margin: 36px 0 28px;
+  }
+  .doc-sign-label {
+    font-size: 15px;
+    color: var(--ink-mute);
+    margin-bottom: 40px;
+  }
+  .doc-sign-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    padding-top: 10px;
+    border-top: 1px solid var(--ink);
+    display: inline-block;
+    min-width: 280px;
+  }
+
+  /* ───────────── RESPONSIVE ───────────── */
+  @media (max-width: 980px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.25s ease; }
+    .sidebar.open { transform: translateX(0); }
+    body.menu-open #sidebar-overlay { display: block; }
+    .mobile-topbar { display: flex; }
+    .main { margin-left: 0; }
+    .page-content { padding: 96px 24px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-topbar">
+  <div class="mobile-mark">Comprovante de Vínculo · v2</div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Comprovante de Vínculo · v2</div>
+    <div class="sidebar-sub">Pesquisador Responsável · pequena empresa</div>
+  </div>
+
+  <div class="sidebar-label">Documento</div>
+  <a class="nav-item" href="#termo"><span class="nav-num">—</span><span>Termo de esclarecimento</span></a>
+  <a class="nav-item" href="#assinatura"><span class="nav-num">—</span><span>Assinatura</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1 · 2025/12980-7
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span>Comprovante de vínculo do Pesquisador Responsável</span>
+    </div>
+
+    <h1 class="page-title">Comprovante de <em>Vínculo</em> com a empresa</h1>
+    <p class="page-deck">
+      Termo de esclarecimento sobre o vínculo formal e permanente da Pesquisadora Responsável
+      com a Instituição Sede.
+    </p>
+
+    
+
+    <a class="gdocs-link" href="https://docs.google.com/document/d/1s5lAx-RvK9qny81EanUyP_WhjdmF8o-dyR50E1vkEqU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 3h-9a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/>
+        <path d="M21 3h-6m6 0v6m0-6L10 14"/>
+      </svg>
+      Editar no Google Docs
+    </a>
+
+    <!-- ──────────── TERMO ──────────── -->
+    <section class="section-anchor" id="termo">
+      <h2 class="doc-heading">Termo de Esclarecimento sobre Vínculo com a Empresa</h2>
+
+      <div class="doc-body">
+        <p>
+          Eu, <strong>Carolina Pérez Ferrés</strong>, inscrita no CPF sob o nº 214.033.468-01, na
+          qualidade de <strong>Pesquisadora Responsável</strong> da proposta submetida à FAPESP no
+          âmbito do Programa PIPE, venho através deste documento esclarecer que mantenho
+          <strong>vínculo formal e permanente</strong> com a empresa
+          <strong>Cidade Azul Comunicação Ltda</strong>, inscrita no CNPJ sob o nº
+          09.287.883/0001-37, na condição de <strong>única sócia</strong>, conforme comprovado pelo
+          Contrato Social registrado na Junta Comercial do Estado de São Paulo.
+        </p>
+        <p>
+          Anexo a este termo, encaminho cópia do referido documento societário, no qual consta meu
+          nome como responsável legal pela empresa.
+        </p>
+        <p>
+          Declaro, ainda, que meu envolvimento com a empresa é ativo, integral e permanente,
+          conforme exigido pela FAPESP para atuação como Pesquisadora Responsável no projeto.
+        </p>
+      </div>
+    </section>
+
+    <!-- ──────────── ASSINATURA ──────────── -->
+    <section class="section-anchor" id="assinatura">
+      <p class="doc-date">São Paulo, junho de 2026</p>
+      <p class="doc-sign-label">Assinatura:</p>
+      <p class="doc-sign-name">Carolina Pérez Ferrés</p>
+    </section>
+
+  </div>
+</main>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  }
+  document.querySelectorAll('.nav-item').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.innerWidth <= 980) toggleSidebar();
+    });
+  });
+</script>
+
+</body>
+</html>

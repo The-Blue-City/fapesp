@@ -152,14 +152,51 @@
 
   /* ─────────────────────────── MAIN ─────────────────────────── */
   .main {
-    margin-left: var(--sidebar-w);
-    width: calc(100% - var(--sidebar-w));
+    margin-left: 0;
+    width: 100%;
     min-height: 100vh;
   }
 
   .page-content {
     padding: 80px 80px 120px;
     max-width: 1280px;
+  }
+
+  .topnav {
+    margin-bottom: 44px;
+  }
+  .topnav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .topnav-back:hover { color: var(--accent); }
+  .topnav-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .topnav-mark em { font-weight: 400; color: var(--accent); }
+  .topnav-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
   }
 
   .page-eyebrow {
@@ -192,14 +229,14 @@
   .page-title {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: 36px;
-    line-height: 1.1;
+    font-size: 32px;
+    line-height: 1.15;
     letter-spacing: -0.02em;
     color: var(--ink);
     margin-bottom: 20px;
   }
 
-  .page-title em { color: var(--accent); }
+  .page-title em { font-style: normal; font-weight: 400; color: var(--accent); }
 
   .page-deck {
     font-family: 'Fraunces', serif;
@@ -213,59 +250,37 @@
   }
 
   /* ─── Status banner ─── */
-  .doc-status {
-    background: var(--paper-warm);
-    border-left: 3px solid var(--accent);
-    padding: 20px 24px;
-    margin-bottom: 48px;
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .doc-status-item { display: flex; flex-direction: column; gap: 4px; }
-
-  .doc-status-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-
-  .doc-status-value {
-    font-family: 'Fraunces', serif;
-    font-size: 15px;
-    color: var(--ink);
-  }
-
-  .doc-status-action {
-    margin-left: auto;
+  .gdocs-link {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
+    gap: 10px;
+    padding: 12px 20px;
+    margin-bottom: 48px;
     background: var(--paper);
     border: 1px solid var(--accent);
-    border-radius: 6px;
-    padding: 16px 26px;
+    border-radius: 2px;
+    color: var(--accent);
     text-decoration: none;
-    transition: all 0.15s ease;
-    white-space: nowrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .gdocs-link:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .gdocs-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
   }
 
-  .doc-status-action:hover { background: var(--accent-soft); }
-
-  .doc-status-action svg { flex-shrink: 0; }
-
   @media (max-width: 720px) {
-    .doc-status-action { margin-left: 0; width: 100%; justify-content: center; }
   }
 
   /* ─────────────────────────── LEAN CANVAS GRID ─────────────────────────── */
@@ -597,7 +612,6 @@
     .page-content { padding: 32px 20px 60px; }
     .page-title { font-size: 26px; }
     .page-deck { font-size: 15px; margin-bottom: 36px; }
-    .doc-status { flex-direction: column; gap: 16px; align-items: flex-start; }
     .lean-canvas {
       grid-template-columns: 1fr;
     }
@@ -612,48 +626,20 @@
 <body>
 
 <!-- ═══════════════ MOBILE TOPBAR ═══════════════ -->
-<div id="mobile-topbar">
-  <div class="mobile-mark">Modelo de <em>Negócios</em></div>
-  <button class="menu-btn" onclick="toggleSidebar()">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 <!-- ═══════════════ SIDEBAR ═══════════════ -->
-<aside class="sidebar">
-  <div class="sidebar-header">
-    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
-    <div class="sidebar-mark">Modelo de <em>Negócios</em></div>
-    <div class="sidebar-sub">Lean Canvas · Nova versão · PIPE Fase 1</div>
-  </div>
-
-  <div class="sidebar-label">Blocos do Canvas</div>
-  <a class="nav-item" href="#bloco-1"><span class="nav-num">01</span><span>Problemas</span></a>
-  <a class="nav-item" href="#bloco-2"><span class="nav-num">02</span><span>Soluções existentes</span></a>
-  <a class="nav-item" href="#bloco-3"><span class="nav-num">03</span><span>Solução</span></a>
-  <a class="nav-item" href="#bloco-4"><span class="nav-num">04</span><span>Métricas-chave</span></a>
-  <a class="nav-item" href="#bloco-5"><span class="nav-num">05</span><span>Proposta única de valor</span></a>
-  <a class="nav-item" href="#bloco-5"><span class="nav-num">06</span><span>Conceito de alto nível</span></a>
-  <a class="nav-item" href="#bloco-7"><span class="nav-num">07</span><span>Vantagem vencedora</span></a>
-  <a class="nav-item" href="#bloco-8"><span class="nav-num">08</span><span>Canais</span></a>
-  <a class="nav-item" href="#bloco-9"><span class="nav-num">09</span><span>Segmentos de clientes</span></a>
-  <a class="nav-item" href="#bloco-10"><span class="nav-num">10</span><span>Primeiros clientes</span></a>
-  <a class="nav-item" href="#bloco-11"><span class="nav-num">11</span><span>Custos no PIPE Fase 1</span></a>
-  <a class="nav-item" href="#bloco-12"><span class="nav-num">12</span><span>Receitas e mercado</span></a>
-
-  <div class="sidebar-footer">
-    Cidade Azul Comunicação · 2026<br>
-    Processo PIPE Fase 1
-  </div>
-</aside>
 
 <!-- ═══════════════ MAIN ═══════════════ -->
 <main class="main">
   <div class="page-content">
 
+    <div class="topnav">
+      <a href="guia-pipe-fapesp.html" class="topnav-back">← Voltar ao guia</a>
+      <div class="topnav-mark">Modelo de <em>Negócios</em> · v2</div>
+      <div class="topnav-sub">Nova versão · PIPE FAPESP</div>
+    </div>
+
     <div class="page-eyebrow">
-      <span class="tag">Doc 06 · v2</span>
       <span>Anexo 5 · Lean Canvas</span>
       <span class="sep"></span>
     </div>
@@ -664,24 +650,13 @@
       do problema identificado ao mercado endereçável, em 12 blocos.
     </p>
 
-    <div class="doc-status">
-      <div class="doc-status-item">
-        <span class="doc-status-label">Versão atual</span>
-        <span class="doc-status-value">v.2 – em revisão para nova submissão</span>
-      </div>
-      <div class="doc-status-item">
-        <span class="doc-status-label">Arquivo SAGe</span>
-        <span class="doc-status-value">Canvas_TheBlueCity.pdf</span>
-      </div>
-      <div class="doc-status-item">
-        <span class="doc-status-label">Tagline</span>
-        <span class="doc-status-value">De dois meses para cinco dias</span>
-      </div>
-      <a class="doc-status-action" href="https://docs.google.com/document/d/1ibr9qtsffm4TXWBVH2bR0jArNYipsFf2hzayDNYUFhk/edit?usp=sharing" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Editar no Google Docs
-      </a>
-    </div>
+    <a class="gdocs-link" href="https://docs.google.com/document/d/1ibr9qtsffm4TXWBVH2bR0jArNYipsFf2hzayDNYUFhk/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 3h-9a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/>
+        <path d="M21 3h-6m6 0v6m0-6L10 14"/>
+      </svg>
+      Editar no Google Docs
+    </a>
 
     <!-- ═════════════ CANVAS VISUAL ═════════════ -->
 
@@ -871,39 +846,5 @@
   </div>
 </main>
 
-<script>
-  function toggleSidebar() {
-    const sb = document.querySelector('.sidebar');
-    const ov = document.getElementById('sidebar-overlay');
-    const isOpen = sb.classList.toggle('open');
-    ov.style.display = isOpen ? 'block' : 'none';
-  }
-
-  const sections = document.querySelectorAll('.canvas-block[id], .doc-section[id]');
-  const navItems = document.querySelectorAll('.nav-item');
-
-  function updateActive() {
-    const scrollY = window.scrollY + 120;
-    let currentId = '';
-    sections.forEach(sec => {
-      if (sec.offsetTop <= scrollY) currentId = sec.id;
-    });
-    navItems.forEach(item => {
-      item.classList.toggle('active', item.getAttribute('href') === '#' + currentId);
-    });
-  }
-
-  window.addEventListener('scroll', updateActive);
-  updateActive();
-
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      if (window.innerWidth <= 720) {
-        document.querySelector('.sidebar').classList.remove('open');
-        document.getElementById('sidebar-overlay').style.display = 'none';
-      }
-    });
-  });
-</script>
 </body>
 </html>
