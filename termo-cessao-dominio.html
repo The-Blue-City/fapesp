@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termo de Aceitação de Transferência de Domínio · PIPE FAPESP Fase 1</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --ink-mute: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-warm: #fafaf7;
+    --rule: #e5e5e0;
+    --rule-soft: #f0f0eb;
+    --accent: #1f3a5f;
+    --accent-soft: #e8edf4;
+    --accent-deep: #142845;
+    --warn: #8a3a1f;
+    --warn-soft: #f5ebe5;
+    --sidebar-w: 320px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  /* ───────────── SIDEBAR ───────────── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--paper);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+  }
+  .sidebar-header {
+    padding: 36px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sidebar-back {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s ease;
+  }
+  .sidebar-back:hover { color: var(--accent); }
+  .sidebar-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .sidebar-mark .v2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 2px 7px;
+    vertical-align: middle;
+    margin-left: 8px;
+    letter-spacing: 0.06em;
+  }
+  .sidebar-sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+  .sidebar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 22px 32px 8px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 32px;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-left-color: var(--accent);
+  }
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    min-width: 26px;
+  }
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 32px 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ───────────── MOBILE TOPBAR ───────────── */
+  .mobile-topbar {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    z-index: 200;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .mobile-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .menu-btn span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+  #sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.35);
+    z-index: 150;
+  }
+
+  /* ───────────── MAIN ───────────── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-width: 0;
+  }
+  .page-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 56px 120px;
+  }
+  .page-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
+  }
+  .page-eyebrow .tag {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 10px;
+    font-weight: 600;
+  }
+  .page-eyebrow .tag.v2 { background: var(--accent); }
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .page-title em { font-style: normal; font-weight: 400; color: var(--accent); }
+  .page-deck {
+    font-size: 17px;
+    color: var(--ink-mute);
+    line-height: 1.6;
+    max-width: 620px;
+    margin-bottom: 36px;
+  }
+
+  /* status */
+  .doc-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+  .doc-status-item {
+    flex: 1 1 200px;
+    padding: 16px 20px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .doc-status-item:last-child { border-right: none; }
+  .doc-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .doc-status-value {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* ─── Botão Google Docs ─── */
+  .gdocs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin: 0 0 48px;
+    background: var(--paper);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .gdocs-link:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .gdocs-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+  }
+
+  /* ───────────── DOCUMENTO ───────────── */
+  .section-anchor { scroll-margin-top: 80px; }
+  .doc-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .doc-body p {
+    font-size: 15px;
+    color: var(--ink-mute);
+    line-height: 1.75;
+    margin-bottom: 18px;
+    max-width: 680px;
+  }
+  .doc-body strong {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .doc-date {
+    font-size: 15px;
+    color: var(--ink-mute);
+    margin: 36px 0 28px;
+  }
+  .doc-sign-label {
+    font-size: 15px;
+    color: var(--ink-mute);
+    margin-bottom: 40px;
+  }
+  .doc-sign-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    padding-top: 10px;
+    border-top: 1px solid var(--ink);
+    display: inline-block;
+    min-width: 280px;
+  }
+
+  .doc-sign-block { display: block; }
+  .doc-sign-role {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+
+  /* ───────────── RESPONSIVE ───────────── */
+  @media (max-width: 980px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.25s ease; }
+    .sidebar.open { transform: translateX(0); }
+    body.menu-open #sidebar-overlay { display: block; }
+    .mobile-topbar { display: flex; }
+    .main { margin-left: 0; }
+    .page-content { padding: 96px 24px 80px; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<div class="mobile-topbar">
+  <div class="mobile-mark">Termo de Cessão</div>
+  <button class="menu-btn" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="guia-pipe-fapesp.html" class="sidebar-back">← Voltar ao guia</a>
+    <div class="sidebar-mark">Termo de <em>Cessão</em></div>
+    <div class="sidebar-sub">Transferência de Domínio · PIPE FAPESP</div>
+  </div>
+
+  <div class="sidebar-label">Documento</div>
+  <a class="nav-item" href="#termo"><span class="nav-num">—</span><span>Termo de aceitação</span></a>
+
+  <div class="sidebar-footer">
+    Cidade Azul Comunicação · 2026<br>
+    Processo PIPE Fase 1 · 2025/12980-7
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+  <div class="page-content">
+
+    <div class="page-eyebrow">
+      <span>Termo de Aceitação · Donatária/Cessionária</span>
+    </div>
+
+    <h1 class="page-title">Termo de Aceitação de <em>Transferência de Domínio</em> de Materiais</h1>
+    <p class="page-deck">
+      Aceitação da cessão de uso e/ou doação de materiais adquiridos com recursos da
+      FAPESP, conforme a Portaria CS nº 18/2002 (modelo FAPESP).
+    </p>
+
+    
+
+    <!-- ──────────── TERMO ──────────── -->
+    <section class="section-anchor" id="termo">
+      <h2 class="doc-heading">Termo de Aceitação de Transferência de Domínio de Materiais por Cessão de Uso e/ou Doação</h2>
+
+      <div class="doc-body">
+        <p>
+          <strong>Processo n.º:</strong> <br>
+          <strong>Outorgado:</strong> <br>
+          <strong>Doadora/Cedente:</strong> Fundação de Amparo à Pesquisa do Estado de São Paulo<br>
+          <strong>Donatária/Cessionária:</strong> Cidade Azul Comunicação Eireli
+        </p>
+
+        <p>
+          <strong>Cláusula Primeira</strong><br>
+          Tendo em vista os termos da Portaria CS nº 18/2002, do Conselho Superior da Fundação de
+          Amparo à Pesquisa do Estado de São Paulo, a <strong>DONATÁRIA/CESSIONÁRIA</strong> acima
+          identificada, através de seu representante legal, declara, expressamente, para os fins de
+          direito, que aceita a cessão e/ou doação e transferência de domínio do material permanente
+          nacional e/ou importado e/ou material de consumo importado a ser adquirido com os recursos
+          da <strong>DOADORA/CEDENTE</strong>, nos termos e condições seguintes.
+        </p>
+        <p>
+          <strong>Cláusula Segunda</strong><br>
+          A <strong>DONATÁRIA/CESSIONÁRIA</strong> compromete-se a manter o material permanente em
+          boas condições de uso e assegurar ao <strong>OUTORGADO</strong> e/ou membro de sua equipe
+          de pesquisa, a sua plena e efetiva utilização até a conclusão do projeto no prazo
+          estabelecido no Termo de Outorga, e em condições consideradas adequadas pela FAPESP para a
+          consecução dos objetivos do projeto de pesquisa constante do Termo de Outorga respectivo.
+        </p>
+        <p>
+          § 1º A <strong>DONATÁRIA/CESSIONÁRIA</strong> compromete-se, também, a facilitar a
+          especialistas na matéria, acesso ao referido material para fins de pesquisa, sem ônus ao
+          interessado, exceto por eventuais custos de operação e manutenção do próprio material.
+        </p>
+        <p>
+          § 2º O Termo de Doação e/ou Cessão e a relação dos documentos e materiais permanentes
+          adquiridos serão entregues oportunamente pela <strong>DOADORA/CEDENTE</strong>,
+          obrigando-se a <strong>DONATÁRIA/CESSIONÁRIA</strong> a conservá-los em seus arquivos para
+          efeito de fiscalização por parte do Tribunal de Contas do Estado, à qual a
+          <strong>DOADORA/CEDENTE</strong> está sujeita.
+        </p>
+        <p>
+          § 3º Após a conclusão do projeto, a <strong>DONATÁRIA/CESSIONÁRIA</strong> compromete-se a
+          manter o material permanente em boas condições de uso e assegurar ao OUTORGADO ou outro
+          pesquisador indicado pela FAPESP a sua efetiva utilização, nos prazos e condições
+          consideradas adequadas pela FAPESP.
+        </p>
+        <p>
+          <strong>Cláusula Terceira</strong><br>
+          A <strong>DONATÁRIA</strong> compromete-se, caso seja concretizada a doação, a efetuar os
+          lançamentos contábeis em sua conta patrimonial e informar os respectivos números de
+          registro dos bens à <strong>FAPESP</strong>, no prazo de trinta dias.
+        </p>
+        <p>
+          <strong>Cláusula Quarta</strong><br>
+          Em se tratando de empresas ou entidades privadas participantes de programas apoiados pela
+          <strong>FAPESP</strong>, a doação será condicionada ao cumprimento da alínea "a", inciso
+          II, art. 76, da Lei Federal nº 14.133, de 1º de abril de 2021.
+        </p>
+        <p>
+          <strong>Cláusula Quinta</strong><br>
+          Consiste em obrigação do <strong>OUTORGADO</strong> comunicar expressa e imediatamente à
+          FAPESP, qualquer alteração quanto aos seus dados cadastrais, da instituição de vínculo,
+          bem como do representante legal da mesma.
+        </p>
+        <p>
+          Parágrafo Único – A constatação pela FAPESP de incongruência dos dados em referência
+          consiste em desobediência às normas da FAPESP, podendo implicar na inclusão do nome do
+          beneficiário no Cadastro de Inadimplentes da FAPESP simultaneamente à suspensão da
+          lavratura do Termo de Doação e/ou Cessão de Uso de Transferência de Materiais até a
+          regularização de tal pendência.
+        </p>
+        <p>
+          <strong>Donatária/Cessionária</strong><br>
+          Nome: Cidade Azul Comunicação Eireli<br>
+          Endereço: Rua Fradique Coutinho 212, 2º andar, Pinheiros, São Paulo, SP<br>
+          CEP: 05416-000<br>
+          CNPJ: 09.287.883/0001-37
+        </p>
+        <p>
+          <strong>Representante Legal</strong><br>
+          Nome: Carolina Pérez Ferrés<br>
+          RNE: W262538-9 · CPF: 214.033.468-01<br>
+          Endereço: Rua Texas 685, casa, Brooklin Paulista, São Paulo, SP · CEP: 04557-000
+        </p>
+      </div>
+    </section>
+
+    <!-- ──────────── ASSINATURA ──────────── -->
+    <section class="section-anchor" id="assinatura">
+      <p class="doc-date">São Paulo, 30 de Maio de 2025</p>
+      <div class="doc-sign-block"><p class="doc-sign-name">Carolina Pérez Ferrés<br><span class="doc-sign-role">Assinatura do representante legal</span></p></div>
+      <div class="doc-sign-block"><p class="doc-sign-name" style="margin-top: 40px;">Ciente:<br><span class="doc-sign-role">Outorgado</span></p></div>
+    </section>
+
+  </div>
+</main>
+
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  }
+</script>
+
+</body>
+</html>
