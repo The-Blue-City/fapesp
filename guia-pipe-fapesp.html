@@ -460,6 +460,11 @@
     display: flex;
     align-items: center;
   }
+  .field-value.review {
+    background: #fbf3cf;
+    border-left-color: #d4b54a;
+    color: var(--ink-mute);
+  }
 
   .field-value.filled {
     color: var(--ink);
@@ -477,7 +482,8 @@
     opacity: 0.6;
   }
 
-  .field-value.filled::before { display: none; }
+  .field-value.filled::before,
+  .field-value.review::before { display: none; }
 
   .field-hint {
     margin-top: 10px;
@@ -825,7 +831,7 @@
   <div class="sidebar-label section">Telas do SAGe</div>
   <div class="nav-item" onclick="goTo(1)">
     <span class="nav-num">01</span>
-    <span class="nav-text">Identificação do Processo</span>
+    <span class="nav-text">Identificação da Proposta</span>
   </div>
   <div class="nav-item" onclick="goTo(2)">
     <span class="nav-num">02</span>
@@ -883,6 +889,14 @@
           espelhando a ordem em que os campos aparecem na plataforma da FAPESP.
         </p>
 
+        <a class="gdocs-link" href="https://sage.fapesp.br/SAGe_WEB/proposalManagement.do" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 3h-9a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/>
+            <path d="M21 3h-6m6 0v6m0-6L10 14"/>
+          </svg>
+          Acesso ao SAGe
+        </a>
+
         <div class="intro-grid">
           <div class="intro-stat">
             <div class="intro-stat-label">Sistema</div>
@@ -934,84 +948,60 @@
         <div class="field">
           <div class="field-head">
             <span class="field-name">Grupo de Financiamento</span>
-            <div class="field-meta"><span class="pill fixed">Valor fixo</span></div>
+            <div class="field-meta"><span class="pill done">Valor fixo</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">Auxílio à Pesquisa</div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Linha de Fomento</span>
-            <div class="field-meta"><span class="pill fixed">Valor fixo</span></div>
+            <div class="field-meta"><span class="pill done">Valor fixo</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">Programas de Inovação Tecnológica / PIPE - Programa FAPESP Pesquisa Inovativa em Pequenas Empresas / PIPE - Fase 1 / Fluxo Contínuo</div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Beneficiário</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">Carolina Pérez Ferrés</div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Responsável</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">Carolina Pérez Ferrés</div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Data de Início</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">07/06/2026</div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Duração</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">9 meses</div>
         </div>
 
         <div class="field">
           <div class="field-head">
             <span class="field-name">Vínculo Institucional do Processo</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+            <div class="field-meta"><span class="pill done">Obrigatório</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">Cidade Azul Comunicação Ltda</div>
           <div class="field-hint">Instituição de Pesquisa / Empresa principal vinculada ao processo</div>
         </div>
 
-        <div class="field">
-          <div class="field-head">
-            <span class="field-name">Data de Abertura</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
-          </div>
-          <div class="field-value"></div>
-        </div>
-
-        <div class="field">
-          <div class="field-head">
-            <span class="field-name">Categoria de Pesquisa</span>
-            <div class="field-meta"><span class="pill required">Obrigatório</span></div>
-          </div>
-          <div class="field-value"></div>
-          <div class="field-hint">Opções: Pesquisa Tecnológica · Pesquisa Científica · Pesquisa Aplicada</div>
-        </div>
-
-        <div class="field">
-          <div class="field-head">
-            <span class="field-name">Modelo de Formulário</span>
-            <div class="field-meta"><span class="pill fixed">Valor fixo</span></div>
-          </div>
-          <div class="field-value"></div>
-        </div>
       </div>
 
       <div class="page-nav">
@@ -1055,50 +1045,50 @@
           <div class="field">
             <div class="field-head">
               <span class="field-name">Título em Português</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Sistema de Geração de Game Design Documents com Governança Humana e Inteligência Artificial</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Título em Inglês</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Game Design Document Generation System with Human Governance and Artificial Intelligence</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Sub-área de Conhecimento</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Interdisciplinar</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Especialidade</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Engenharia de Software / Interação Humano-Computador</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Palavras-chave</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Game Design Document · aprendizagem baseada em jogos · governança de IA · inteligência artificial generativa · processamento de linguagem natural · human-in-the-loop</div>
             <div class="field-hint">Uma palavra-chave por linha</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Classificação Nacional de Atividades Econômicas (CNAE)</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Desenvolvimento de programas de computador sob encomenda · Desenvolvimento e licenciamento de programas de computador customizáveis · Atividades profissionais, científicas e técnicas não especificadas anteriormente</div>
           </div>
         </div>
       </div>
@@ -1114,10 +1104,9 @@
           <div class="field">
             <div class="field-head">
               <span class="field-name">Instituição de Pesquisa / Empresa Principal</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
-            <div class="field-hint">Empresa beneficiária do auxílio PIPE</div>
+            <div class="field-value filled">Cidade Azul Comunicação Ltda</div>
           </div>
         </div>
       </div>
@@ -1136,46 +1125,12 @@
           <div class="field">
             <div class="field-head">
               <span class="field-name">Pesquisador Responsável</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
-            <div class="field-hint">Nome · Função · Horas semanais dedicadas · Vigência · Vínculo principal</div>
+            <div class="field-value filled">Carolina Pérez Ferrés</div>
           </div>
 
-          <div class="field">
-            <div class="field-head">
-              <span class="field-name">Responsável pela Empresa</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
-            </div>
-            <div class="field-value"></div>
-          </div>
-
-          <div class="field">
-            <div class="field-head">
-              <span class="field-name">Coordenador junto à Empresa</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
-            </div>
-            <div class="field-value"></div>
-          </div>
-
-          <div class="field">
-            <div class="field-head">
-              <span class="field-name">Pesquisadores Associados</span>
-              <div class="field-meta"><span class="pill optional">Opcional</span></div>
-            </div>
-            <div class="field-value"></div>
-            <div class="field-hint">Co-pesquisadores com experiência complementar ao projeto</div>
-          </div>
-
-          <div class="field">
-            <div class="field-head">
-              <span class="field-name">Bolsistas (PE / TT)</span>
-              <div class="field-meta"><span class="pill optional">Opcional nesta tela</span></div>
-            </div>
-            <div class="field-value"></div>
-            <div class="field-hint">Cadastrados na Tela 03 — Quotas de Bolsa</div>
-          </div>
-        </div>
+                                                </div>
       </div>
 
       <!-- Sub-aba 2D -->
@@ -1189,49 +1144,49 @@
           <div class="field">
             <div class="field-head">
               <span class="field-name">Resumo em Português</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Sistema de geração de Game Design Documents (GDDs) em que a produção do documento é estruturada em etapas com dependências explícitas, cada uma submetida a checkpoint automático de consistência e a validação humana especializada com justificativa registrada. A inteligência artificial generativa atua como componente de execução, subordinada à governança humana, e o sistema assegura que o GDD resultante seja completo, internamente consistente e aderente aos objetivos de aprendizagem, reduzindo significativamente e de forma mensurável o tempo de produção.</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Resumo em Inglês</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Game Design Document (GDD) generation system in which document production is structured into stages with explicit dependencies, each subject to an automatic consistency checkpoint and to specialized human validation with recorded justification. Generative artificial intelligence operates as an execution component, subordinated to human governance, and the system ensures that the resulting GDD is complete, internally consistent, and aligned with learning objectives, while significantly and measurably reducing production time.</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Objetivos</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Desenvolver e validar um sistema de geração governada de Game Design Documents, estruturado em etapas com dependências explícitas, em que cada saída da inteligência artificial é submetida a checkpoint automático de consistência e a validação humana especializada com justificativa registrada. O objetivo é tornar a elaboração do GDD mais ágil e acessível, reduzindo de forma mensurável o tempo de produção sem transferir à automação o papel decisório e criativo, que permanece sob responsabilidade humana.</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Resultados Previstos</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Protótipo funcional do sistema de geração governada, com fluxo de oito etapas, checkpoints automáticos de consistência e mecanismos de validação humana rastreáveis; corpus de GDDs reais para testes comparativos; base de evidências com registro das decisões de validação; e medição da redução do tempo de produção de um GDD completo e válido, aferida pelos critérios de qualidade do modelo de Roungas (2016), em validação em ambiente real na plataforma The Blue City.</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">Aplicações Comerciais da Pesquisa</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Oferta do sistema em modelo SaaS, com assinaturas mensais e pacotes pré-pagos, e licenciamento white-label para grandes plataformas e organizações. Os segmentos endereçados são estúdios independentes e pequenas e médias empresas de desenvolvimento de jogos, que representam cerca de 60% do mercado brasileiro, plataformas de educação digital e empresas que utilizam jogos em treinamento, onboarding, ESG e advergames. Os primeiros clientes potenciais incluem a plataforma The Blue City e seus clientes corporativos.</div>
           </div>
 
           <div class="field">
             <div class="field-head">
               <span class="field-name">O projeto poderá obter resultados que justifiquem solicitação de patente?</span>
-              <div class="field-meta"><span class="pill required">Obrigatório</span></div>
+              <div class="field-meta"><span class="pill done">Obrigatório</span></div>
             </div>
-            <div class="field-value"></div>
+            <div class="field-value filled">Sim</div>
             <div class="field-hint">Opções: Sim · Não</div>
           </div>
         </div>
@@ -1271,7 +1226,7 @@
             <span class="field-name">Material Permanente</span>
             <div class="field-meta"><span class="pill optional">Excepcional na Fase 1</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Detalhar a partir do bloco Capital e Custeio + Reserva Técnica — R$ 12.000,00 (total do bloco)</div>
           <div class="field-hint">Valor em R$ e US$. Concedido somente em condições excepcionais</div>
         </div>
       </div>
@@ -1287,7 +1242,7 @@
             <span class="field-name">Despesas de Transporte</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Detalhar a partir do bloco Capital e Custeio + Reserva Técnica</div>
         </div>
 
         <div class="field">
@@ -1295,7 +1250,7 @@
             <span class="field-name">Diárias</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Detalhar a partir do bloco Capital e Custeio + Reserva Técnica</div>
         </div>
 
         <div class="field">
@@ -1303,7 +1258,7 @@
             <span class="field-name">Material de Consumo</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Detalhar a partir do bloco Capital e Custeio + Reserva Técnica</div>
         </div>
 
         <div class="field">
@@ -1311,7 +1266,7 @@
             <span class="field-name">Serviços de Terceiros</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Detalhar a partir do bloco Capital e Custeio + Reserva Técnica</div>
           <div class="field-hint">Apenas de natureza técnica e eventual</div>
         </div>
       </div>
@@ -1327,7 +1282,7 @@
             <span class="field-name">Reserva Técnica — Benefícios Complementares</span>
             <div class="field-meta"><span class="pill required">Obrigatório</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Detalhar a partir do bloco Capital e Custeio + Reserva Técnica</div>
         </div>
 
         <div class="field">
@@ -1335,7 +1290,7 @@
             <span class="field-name">Reserva Técnica — Custo de Infraestrutura Direta do Projeto</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Detalhar a partir do bloco Capital e Custeio + Reserva Técnica</div>
           <div class="field-hint">Percentual padrão: 15% (País) · 15% (Exterior)</div>
         </div>
 
@@ -1344,7 +1299,7 @@
             <span class="field-name">Provisão para Importação</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Não se aplica</div>
           <div class="field-hint">Percentual padrão: 15% (Exterior)</div>
         </div>
       </div>
@@ -1363,7 +1318,7 @@
             <span class="field-name">Pesquisador em Pequenas Empresas (PE)</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">PE-III · 40h/sem · R$ 11.070,00/mês · 9 meses · R$ 99.630,00</div>
           <div class="field-hint">Níveis disponíveis: PE-1 · PE-2 · PE-3</div>
         </div>
 
@@ -1372,7 +1327,7 @@
             <span class="field-name">Treinamento Técnico (TT)</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value filled">TT-V · R$ 9.760,00/mês · R$ 87.840,00 — TT-IV · R$ 4.520,00/mês · R$ 40.680,00 (ambos 40h/sem · 9 meses)</div>
           <div class="field-hint">Níveis disponíveis: TT-1 · TT-2 · TT-3 · TT-4 · TT-4A · TT-5</div>
         </div>
       </div>
@@ -1388,7 +1343,7 @@
             <span class="field-name">Outras fontes de financiamento</span>
             <div class="field-meta"><span class="pill optional">Opcional</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Não se aplica</div>
           <div class="field-hint">Recursos próprios · Aceleradoras · Investidores · Outras agências</div>
         </div>
       </div>
@@ -1854,7 +1809,7 @@
             <span class="field-name">Bancos utilizados pela Empresa Principal</span>
             <div class="field-meta"><span class="pill required">Obrigatório</span></div>
           </div>
-          <div class="field-value"></div>
+          <div class="field-value review">Confirmar banco e agência da conta da empresa</div>
           <div class="field-hint">Nome do banco · código · agência · conta corrente</div>
         </div>
       </div>
@@ -1964,7 +1919,6 @@
       </div>
     </div>
   </section>
-
 
   <!-- ──────────── PAGE 8 · INFORMAÇÕES ADICIONAIS ──────────── -->
   <section class="page" id="page-7">
